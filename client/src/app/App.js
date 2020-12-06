@@ -10,8 +10,12 @@ import { PageLayout } from './layouts';
 
 import { 
   LoginPage,
-  AdminKidsPage,
-  AdminFichePage,
+  SupervisorKidsPage,
+  SupervisorFichePage,
+  SupervisorTimelinePage,
+  SupervisorSettingsPage,
+  SupervisorMountainFiche,
+  SupervisorDialogFiche,
 } from './pages';
 
 
@@ -23,9 +27,13 @@ function App() {
           // Authentication
           <RouteWithLayout exact path={Routes.AUTHENTICATION} component={LoginPage} layout={PageLayout} />
 
-          // Admin
-          <RouteWithLayout exact path={Routes.ADMIN_KID} component={AdminKidsPage} layout={PageLayout} />
-          <RouteWithLayout exact path={Routes.ADMIN_FICHE} component={AdminFichePage} layout={PageLayout} />
+          // Supervisor
+          <RouteWithLayout exact path={Routes.SUPERVISOR_KID} component={SupervisorKidsPage} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_FICHE} component={SupervisorFichePage} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_TIMELINE} component={SupervisorTimelinePage} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_SETTINGS} component={SupervisorSettingsPage} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_MOUNTAIN} component={SupervisorMountainFiche} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_DIALOG} component={SupervisorDialogFiche} layout={PageLayout} />
         </Switch>
       </Router>
     </div>

@@ -1,25 +1,25 @@
 import { default as React } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
-import './AdminFichePage.scss'
+import './SupervisorFichePage.scss'
 
 import { Nav } from '../../components'
 
-const AdminFichePage = () => {
+const SupervisorFichePage = () => {
 	return (
 		<div>
 			<Nav />
-			<div className="admin-fiche">
+			<div className="supervisor-fiche">
 				<h1>Selecteer een fiche</h1>
 
-				<form className="admin-fiche__filter">
-					<div className="admin-fiche__filter-search">
+				<form className="supervisor-fiche__filter">
+					<div className="supervisor-fiche__filter-search">
 						<FaSearch />
 						<input type="text" placeholder="Zoek op naam.."></input>
 					</div>
 				</form>
 
-				<div className="admin-fiche__content">
+				<div className="supervisor-fiche__content">
 					fiches
 				</div>
 				
@@ -29,4 +29,4 @@ const AdminFichePage = () => {
 	
 };
 
-export default AdminFichePage;
+export default SupervisorFichePage;

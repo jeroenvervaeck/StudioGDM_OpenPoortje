@@ -1,6 +1,6 @@
 @import '../../_sass/abstracts/index';
 
-.admin-kids {
+.supervisor-fiche {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
@@ -11,16 +11,12 @@
 		color: $color-gray;
 	}
 	&__filter {
-		display: flex;
-		flex-wrap: nowrap;
-		justify-content: space-between;
-		align-items: center;
 		padding-bottom: 20px;
 		width: 100%;
+		margin-left: 60px;
 
 		&-search {
 			width: 45%;
-			text-align: left;
 			border: 2px $color-gray solid;
 			border-radius: 20px;
 			padding: 5px;
@@ -40,23 +36,10 @@
 				padding: 5px;
 			}
 		}
-		&-icons {
-			width: 30%;
-			display: flex;
-			justify-content: space-evenly;
-
-			svg {
-				padding: 8px;
-				border: 2px $color-gray solid;
-				border-radius: 10px;
-				color: $color-gray;
-			}
-		}
 	}
 
 	&__content {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
+		margin-left: 60px;
+
 	}
 }

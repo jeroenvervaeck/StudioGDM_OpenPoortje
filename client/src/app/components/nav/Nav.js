@@ -1,11 +1,13 @@
 import { default as React, useState } from 'react';
+import { Link } from "react-router-dom";
+import * as Routes from '../../routes';
 import { FaBars, FaUserAlt, FaTimes, FaExchangeAlt, FaMountain, FaComments, FaFolder, FaBookmark, FaWrench } from 'react-icons/fa';
 
 import './nav.scss'
 
 
 const Nav = ({}) => {
-  const [showNav, setShowNav] = useState(true);
+  const [showNav, setShowNav] = useState(false);
   const onClick = () => setShowNav(!showNav);
 
   return (
@@ -38,34 +40,36 @@ const Nav = ({}) => {
                       <h2>Kind-user</h2>
                       <p>Kind-email</p>
                     </div>
-                    <FaExchangeAlt />
+                    <Link to={Routes.SUPERVISOR_KID}>
+                      <FaExchangeAlt />
+                    </Link>
                   </div>
               </div>
             </div>
             <div className="nav-block__routes">
               <div className="nav-block__routes-main">
                 <div className="nav-block__routes-main-wrapper">
-                  <div className="nav-block__routes-main-wrapper-element">
+                  <Link to={Routes.SUPERVISOR_MOUNTAIN} className="nav-block__routes-main-wrapper-element">
                     <FaMountain size={20} />
                     <p>Berglijn</p>
-                  </div>
-                  <div className="nav-block__routes-main-wrapper-element">
+                  </Link>
+                  <Link to={Routes.SUPERVISOR_DIALOG} className="nav-block__routes-main-wrapper-element">
                     <FaComments size={20} />
                     <p>Dialoog</p>
-                  </div>
+                  </Link>
                 </div>
-                <div className="nav-block__routes-main-element">
+                <Link to={Routes.SUPERVISOR_FICHE} className="nav-block__routes-main-element">
                   <FaFolder size={20} />
                   <p>Fiches</p>
-                </div>
-                <div className="nav-block__routes-main-element">
+                </Link>
+                <Link to={Routes.SUPERVISOR_TIMELINE} className="nav-block__routes-main-element">
                   <FaBookmark size={20} />
                   <p>Tijdlijn</p>
-                </div>
-                <div className="nav-block__routes-main-element">
+                </Link>
+                <Link to={Routes.SUPERVISOR_SETTINGS} className="nav-block__routes-main-element">
                   <FaWrench size={20} />
                   <p>Instellingen</p>
-                </div>
+                </Link>
               </div>
               <div className="nav-block__routes-logout">
                 <p>Uitloggen</p>

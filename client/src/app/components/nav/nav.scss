@@ -141,7 +141,15 @@
 						}
 					}
 					// swap child icon 
-					//svg:nth-child(5) {}
+					a {
+						text-decoration: none;
+						color: $color-white;
+						svg:nth-child(1) {
+							border: none;
+							background-color: $color-01;
+						}
+					}
+
 				}
 			}
 		}
@@ -165,6 +173,8 @@
 						align-items: center;
 						justify-content: space-evenly;
 						box-shadow: 0px 0px 2px 1px $color-white;
+						text-decoration: none;
+						color: $color-white;
 
 						p {
 							margin: 0;
@@ -182,7 +192,9 @@
 					align-items: center;
 					justify-content: space-evenly;
 					box-shadow: 0px 0px 2px 1px $color-white;
-
+					text-decoration: none;
+					color: $color-white;
+					
 					p {
 						margin: 0;
 					}

@@ -1,8 +1,13 @@
 export const AUTHENTICATION = '/auth';
 
-// Admin
-export const ADMIN_KID = '/admin/kids';
-export const ADMIN_FICHE = '/admin/fiche';
+// supervisor
+export const SUPERVISOR_KID = '/supervisor/kids';
+export const SUPERVISOR_FICHE = '/supervisor/fiche';
+export const SUPERVISOR_TIMELINE = '/supervisor/timeline';
+export const SUPERVISOR_SETTINGS = '/supervisor/settings';
+export const SUPERVISOR_MOUNTAIN = '/supervisor/fiche/mountain';
+export const SUPERVISOR_DIALOG = '/supervisor/fiche/dialog';
+
 
 // Token
 export const TOKEN_SUPERVISOR = '/token/supervisor';
