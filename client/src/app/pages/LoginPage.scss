@@ -1,0 +1,83 @@
+@import '../_sass/abstracts/index';
+
+.login {
+	background-color: green;
+	height: 100vh;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	h1 {
+		margin: 50px 0;
+		color: $color-white;
+		font-size: 52px;
+	}
+	&__form {
+		background-color: $color-white;
+		box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.30);
+		width: 40%;
+		border-radius: 10px;
+		padding: 30px 50px;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		h2 {
+			margin: 0;
+			font-size: 42px;
+			color: $blue;
+		}
+
+		&-credenials {
+			width: 100%;
+			padding: 30px 0;
+			color: gray;
+
+			&-username {
+				display: flex;
+				align-items: center;
+				border-bottom: solid gray 2px;
+
+				
+				svg {
+					padding: 15px;
+				}
+				input {
+					border: none;
+					padding: 10px;
+					width: 100%;
+					font-size: 18px;
+				}
+			}
+			&-password {
+				display: flex;
+				align-items: center;
+				border-bottom: solid gray 2px;
+				margin-top: 20px;
+
+				svg {
+					padding: 15px;
+				}
+				input {
+					border: none;
+					padding: 10px;
+					width: 100%;
+					font-size: 18px;
+				}
+			}
+		}
+		// submit button
+		&-btn {
+			width: 100%;
+			margin-top: 20px;
+			padding: 10px 0;
+			border-radius: 20px;
+			color: $color-white;
+			background-color: $blue;
+			font-size: 18px;
+			border: none;
+		}
+	}
+}

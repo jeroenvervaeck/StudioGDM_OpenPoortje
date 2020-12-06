@@ -1,0 +1,62 @@
+@import '../../_sass/abstracts/index';
+
+.admin-kids {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	padding: 0 30px; 
+
+	h1 {
+		font-size: 38px;
+		color: $color-gray;
+	}
+	&__filter {
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		align-items: center;
+		padding-bottom: 20px;
+		width: 100%;
+
+		&-search {
+			width: 45%;
+			text-align: left;
+			border: 2px $color-gray solid;
+			border-radius: 20px;
+			padding: 5px;
+			display: flex;
+			align-items: center;
+
+			svg {
+				color: $color-gray;
+				margin: 5px;
+				margin-left: 15px;
+			}
+			input {
+				border: none;
+				margin-left: 10px;
+				width: 80%;
+				font-size: 14px;
+				padding: 5px;
+			}
+		}
+		&-icons {
+			width: 30%;
+			display: flex;
+			justify-content: space-evenly;
+
+			svg {
+				padding: 8px;
+				border: 2px $color-gray solid;
+				border-radius: 10px;
+				color: $color-gray;
+			}
+		}
+	}
+
+	&__content {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+}
