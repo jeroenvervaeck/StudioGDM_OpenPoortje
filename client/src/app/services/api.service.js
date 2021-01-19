@@ -51,13 +51,33 @@ const ApiProvider = ({children}) => {
     return response;
   }
 
+  const getKidsOfOrganisation = async () => {
+    const auth = JSON.parse(getCookie('auth'));
+    const url = `${BASE_URL}/supervisor/kids`;
+
+    const options = {
+      method:'GET',
+      headers: new Headers({
+          'Authorization': 'Bearer '+ auth.token, 
+          'Content-Type': 'application/json',
+        }), 
+    }
+
+    const response = await fetch(url, options).then((result) => result.json());
+
+    console.log(response)
+
+    return response;
+  }
+
 
   return (
     <ApiContext.Provider value={{ 
       setCookie,
       getCookie,
       eraseCookie,
-      updateUserData
+      updateUserData,
+      getKidsOfOrganisation
      }}>
       {children}
     </ApiContext.Provider>
