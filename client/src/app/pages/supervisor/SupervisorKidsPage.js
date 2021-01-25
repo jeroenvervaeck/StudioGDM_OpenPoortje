@@ -1,4 +1,6 @@
-import { default as React } from 'react';
+import { default as React, useEffect, useState } from 'react';
+import { useApi } from '../../services'; 
+
 import { FaSearch, FaWrench, FaSortAlphaDown, FaSortNumericDown } from 'react-icons/fa';
 
 import './SupervisorKidsPage.scss'
@@ -6,6 +8,18 @@ import './SupervisorKidsPage.scss'
 import { Kid } from '../../components'
 
 const SupervisorKidsPage = () => {
+	const { getKidsOfOrganisation } = useApi();
+	const [ kids, setKids ] = useState();
+
+	useEffect(() => {
+		const fetchKids = async () => {
+			const kidsResponse = await getKidsOfOrganisation();
+			setKids(kidsResponse.kids)
+		}
+
+		if (!kids || !kids.length) fetchKids() ;
+	}, []);
+
 	return (
 		<div className="supervisor-kids">
 			<h1>Selecteer een kind</h1>
@@ -23,19 +37,19 @@ const SupervisorKidsPage = () => {
 			</form>
 
 			<div className="supervisor-kids__content">
-				<Kid firstname="firstname" lastname="lastname" />
-				<Kid firstname="jeroen" lastname="vervaeck" />
-				<Kid firstname="jeroen" lastname="vervaeck" />
-				<Kid firstname="jeroen" lastname="vervaeck" />
-				<Kid firstname="jeroen" lastname="vervaeck" />
-				<Kid firstname="jeroen" lastname="vervaeck" />
-				<Kid firstname="jeroen" lastname="vervaeck" />
-				<Kid firstname="jeroen" lastname="vervaeck" />
-				<Kid firstname="jeroen" lastname="vervaeck" />
-				<Kid firstname="jeroen" lastname="vervaeck" />
-				<Kid firstname="jeroen" lastname="vervaeck" />
-				<Kid firstname="jeroen" lastname="vervaeck" />
-				<Kid firstname="jeroen" lastname="vervaeck" />
+				{
+					(kids && kids.length)
+					? kids.map((kid, index) => 
+						<Kid 
+							key={'kid-'+index}
+							firstname={kid.first_name} 
+							lastname={kid.last_name} 
+							color={kid.theme_color}
+						/>
+					)
+					: <p>Hier zou een leuke loading animation moeten komen...</p>
+				}
+				
 			</div>
 		</div>
 	);

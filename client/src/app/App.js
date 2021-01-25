@@ -6,6 +6,7 @@ import './app.scss';
 import * as Routes from './routes';
 
 import { RouteWithLayout } from './utilities';
+import { ApiProvider, AuthProvider } from './services'; 
 import { PageLayout } from './layouts';
 
 import { 
@@ -22,6 +23,8 @@ import {
 function App() {
   return (
     <div className="App">
+      <ApiProvider>
+      <AuthProvider>
       <Router basename='/'>
         <Switch>
           // Authentication
@@ -36,6 +39,8 @@ function App() {
           <RouteWithLayout exact path={Routes.SUPERVISOR_DIALOG} component={SupervisorDialogFiche} layout={PageLayout} />
         </Switch>
       </Router>
+      </AuthProvider>
+      </ApiProvider>
     </div>
   );
 }
