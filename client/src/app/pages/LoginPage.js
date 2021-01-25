@@ -1,10 +1,11 @@
-import { default as React } from 'react';
+import { default as React, useState } from 'react';
 import { FaUserAlt, FaLock } from 'react-icons/fa';
-
 
 import './LoginPage.scss'
 
 const LoginPage = () => {
+	const [selected, setSelected] = useState('kid')
+	
 	return (
 		<div className="login">
 			<h1>Welkom!</h1>
@@ -22,10 +23,14 @@ const LoginPage = () => {
 						<input type="password" placeholder="Wachtwoord"></input>
 					</div>
 					<div className="login__form-credenials-type">
-						<input type="radio" id="kid" name="" value="kid"></input>
-						<label htmlFor="kid">Kind</label><br></br>
-						<input type="radio" id="supervisor" name="" value="supervisor"></input>
-						<label htmlFor="supervisor">Begeleider</label><br></br>
+						<label>
+							<input type="radio" name="auth" value="kid" onClick={() => {setSelected('kid')}} />
+							Kind
+						</label>
+						<label>
+							<input type="radio" name="auth" value="organisation" onClick={() => {setSelected('organisation')}} />
+							Organisatie
+						</label>
 					</div>
 				</div>
 

@@ -1,7 +1,7 @@
 import { default as React, useState } from 'react';
 import { Link } from "react-router-dom";
 import * as Routes from '../../routes';
-import { FaBars, FaUserAlt, FaTimes, FaExchangeAlt, FaMountain, FaComments, FaFolder, FaBookmark, FaWrench } from 'react-icons/fa';
+import { FaBars, FaUserAlt, FaTimes, FaExchangeAlt, FaMountain, FaComments, FaFolder, FaBookmark, FaWrench, FaHome } from 'react-icons/fa';
 
 import './nav.scss'
 
@@ -59,6 +59,10 @@ const Nav = ({}) => {
                   </Link>
                 </div>
                 <Link to={Routes.SUPERVISOR_FICHE} className="nav-block__routes-main-element">
+                  <FaHome size={20} />
+                  <p>Startpagina</p>
+                </Link>
+                <Link to={Routes.SUPERVISOR_FICHE} className="nav-block__routes-main-element">
                   <FaFolder size={20} />
                   <p>Fiches</p>
                 </Link>
@@ -70,9 +74,6 @@ const Nav = ({}) => {
                   <FaWrench size={20} />
                   <p>Instellingen</p>
                 </Link>
-              </div>
-              <div className="nav-block__routes-logout">
-                <p>Uitloggen</p>
               </div>
             </div>
           </div>
