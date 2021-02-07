@@ -37,14 +37,6 @@ const LoginPage = () => {
 						<input type="password" id="password" placeholder="Wachtwoord"></input>
 					</div>
 					<div className="login__form-credenials-type">
-						<label>
-							<input type="radio" name="auth" value="kid" onClick={() => {setSelected('kid')}} />
-							Kind
-						</label>
-						<label>
-							<input type="radio" name="auth" value="organisation" onClick={() => {setSelected('organisation')}} />
-							Organisatie
-						</label>
 						<input type="radio" id="kid" name="authMode" value="kid" defaultChecked={true} onClick={() => setAuthMode('kid')}></input>
 						<label htmlFor="kid">Kind</label><br></br>
 						<input type="radio" id="supervisor" name="authMode" value="supervisor" onClick={() => setAuthMode('supervisor')}></input>

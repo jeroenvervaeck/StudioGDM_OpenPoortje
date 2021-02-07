@@ -1,0 +1,36 @@
+@import '../../_sass/abstracts/variables';
+
+.supervisor-dialog {
+
+}
+
+.supervisor-mountain {
+	
+}
+
+.save-fiche {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	svg {
+		color: $color-white;
+		background-color: $color-01;
+		padding: 20px;
+		border-radius: 100%;
+	}
+	&__title {
+		font-size: 30px;
+		color: $color-gray;
+		margin: 20px;
+	}
+	&__nav {
+		color: $color-white;
+		font-size: 30px;
+		background-color: $color-01;
+		padding: 30px 40px;
+		border-radius: 50px;
+		margin: 0;
+	}
+}
