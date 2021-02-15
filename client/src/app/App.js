@@ -20,13 +20,15 @@ function App() {
       <Router basename='/'>
         <Switch>
           // Authentication
-          <RouteWithLayout exact path={Routes.AUTHENTICATION} component={Pages.LoginPage} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.LOGIN_MAIN} component={Pages.LoginMainPage} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.LOGIN_SECONDARY} component={Pages.LoginSecondaryPage} layout={PageLayout} />
           // Oraganisation
           <RouteWithLayout exact path={Routes.ORGANISATION_DASHBOARD} component={Pages.OrganisationDashboardPage} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.ORGANISATION_CRUD_KIDS} component={Pages.OrganisationCRUDkidsPage} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.ORGANISATION_CRUD_SUPERVISOR} component={Pages.OrganisationCRUDsupervisorPage} layout={PageLayout} />
           // Supervisor
           <RouteWithLayout exact path={Routes.SUPERVISOR_KID} component={Pages.SupervisorKidsPage} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_DASHBOARD} component={Pages.SupervisorDashboardPage} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_FICHE} component={Pages.SupervisorFichePage} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_TIMELINE} component={Pages.SupervisorTimelinePage} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_SETTINGS} component={Pages.SupervisorSettingsPage} layout={PageLayout} />

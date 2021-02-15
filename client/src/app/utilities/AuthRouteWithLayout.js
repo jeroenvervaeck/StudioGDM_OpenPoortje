@@ -16,7 +16,7 @@ const AuthRouteWithLayout = ({ component, layout, ...rest }) => {
       return !!currentUser ? (
         renderMergedProps(component, layout, routeProps)
       ) : (
-          <Redirect to={Routes.AUTHENTICATION} />
+          <Redirect to={Routes.LOGIN_MAIN} />
         );
     }
     } />
