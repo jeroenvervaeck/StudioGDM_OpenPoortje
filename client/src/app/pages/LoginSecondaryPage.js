@@ -22,7 +22,6 @@ const LoginSecondaryPage = () => {
 
 	return (
 		<div className="login">
-			<h1>Welkom!</h1>
 
 			<form className="login__form">
 				<h2>KID-OK-KIT</h2>

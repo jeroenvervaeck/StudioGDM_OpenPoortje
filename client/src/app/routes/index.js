@@ -1,4 +1,4 @@
-export const LOGIN_MAIN = '/login';
+export const LOGIN_MAIN = '/';
 export const LOGIN_SECONDARY = '/supervisor/login';
 
 // organisation

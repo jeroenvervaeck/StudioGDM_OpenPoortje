@@ -22,7 +22,6 @@ const LoginMainPage = () => {
 
 	return (
 		<div className="login">
-			<h1>Welkom!</h1>
 
 			<form className="login__form">
 				<h2>KID-OK-KIT</h2>
@@ -48,7 +47,6 @@ const LoginMainPage = () => {
 			</form>
 		</div>
 	);
-	
 };
 
 export default LoginMainPage;
