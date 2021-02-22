@@ -59,7 +59,7 @@ const OrganisationCRUDkidsPage = () => {
 	return (
 		<div className="organisation-crud-kids">
 			{
-				(!checkIsLoggedIn() || getLoggedInRole() !== 'organisation') 
+				(getLoggedInRole() !== 'organisation') 
 				? <Redirect to={Routes.LOGIN_MAIN}/> 
 				: null
 			}

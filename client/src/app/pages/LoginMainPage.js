@@ -7,10 +7,9 @@ import { FaUserAlt, FaLock } from 'react-icons/fa';
 
 import './LoginPage.scss'
 
-const LoginMainPage = () => {
+const LoginMainPage = (props) => {
 	const { getToken, checkIsLoggedIn, getLoggedInRole } = useAuth();
 
-	const [selected, setSelected] = useState('kid');
 	const [ authMode, setAuthMode ] = useState('kid');
 
 	const submit = async (e) => {
@@ -19,14 +18,16 @@ const LoginMainPage = () => {
 		const password = document.getElementById('password').value;
 
 		const response = await getToken(authMode, username, password);
-		console.log(response);
+		window.location.reload();
 	}
 
 	return (
 		<div className="login">
 			{
-				(checkIsLoggedIn()) 
-				? <Redirect to={(getLoggedInRole() === 'organisation') ? ORGANISATION_DASHBOARD : ''}/> 
+				(getLoggedInRole() !== '') 
+				? <Redirect to={
+						(getLoggedInRole() === 'organisation') ? ORGANISATION_DASHBOARD : ''
+					}/> 
 				: null
 			}
 

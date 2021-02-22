@@ -8,11 +8,11 @@ import { logo } from '../../assets';
 import './organisation.scss'
 
 const OrganisationDashboardPage = () => {
-	const { checkIsLoggedIn, getLoggedInRole } = useAuth();
+	const { getLoggedInRole } = useAuth();
 	return (
 		<div className="organisation-dashboard">
 			{
-				(!checkIsLoggedIn() || getLoggedInRole() !== 'organisation') 
+				(getLoggedInRole() !== 'organisation') 
 				? <Redirect to={Routes.LOGIN_MAIN}/> 
 				: null
 			}

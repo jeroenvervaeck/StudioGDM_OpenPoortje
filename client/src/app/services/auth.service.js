@@ -35,17 +35,18 @@ const AuthProvider = ({ children }) => {
     return response;
   }
 
-  const checkIsLoggedIn = async () => {
-    if (getCookie('auth') && !sessionStorage.getItem('user')) {
-			await updateUserData();
-      return true
-		}
-    return false;
+  const checkForUserUpdate = async () => {
+    if (!sessionStorage.getItem('user')) await updateUserData();
   }
 
   const getLoggedInRole = () => {
     const auth = JSON.parse(getCookie('auth'));
-    return auth.role;
+    console.log(auth)
+    if (auth !== null) {
+      checkForUserUpdate();
+      return auth.role;
+    }
+    return '';
   }
 
   const getUserData = () => {
@@ -55,7 +56,6 @@ const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider value={{ 
       getToken,
-      checkIsLoggedIn,
       getLoggedInRole,
       getUserData
     }}>
