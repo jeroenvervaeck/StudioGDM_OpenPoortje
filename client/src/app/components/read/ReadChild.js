@@ -3,7 +3,7 @@ import { logo } from '../../assets'
 
 import './read.scss'
 
-const ReadChild = ({skinTone, themeColor}) => {
+const ReadChild = ({kid, onClose}) => {
   return (
     <div className="read-child">
 		<img src={logo}></img>
@@ -11,15 +11,15 @@ const ReadChild = ({skinTone, themeColor}) => {
 		<p>Kind bij Het Open Poortje.</p>
 		<div className="read-child__record">
 			<h1>Voornaam</h1>
-			<p>name</p>
+			<p>{kid.first_name}</p>
 		</div>
 		<div className="read-child__record">
 			<h1>Familienaam</h1>
-			<p>name</p>
+			<p>{kid.last_name}</p>
 		</div>
 		<div className="read-child__record">
 			<h1>Adres</h1>
-			<p>adress</p>
+			<p>Wordt Nog niet opgeslaan</p>
 		</div>
 		<div className="read-child__record">
 			<h1>Begeleider</h1>
@@ -27,13 +27,13 @@ const ReadChild = ({skinTone, themeColor}) => {
 		</div>
 		<div className="read-child__record-color">
 			<h1>Huidskleur</h1>
-			<div style={{backgroundColor: skinTone}}></div>
+			<div style={{backgroundColor: kid.skin_color}}></div>
 		</div>
 		<div className="read-child__record-color">
 			<h1>Themakleur</h1>
-			<div style={{backgroundColor: themeColor}}></div>
+			<div style={{backgroundColor: kid.theme_color}}></div>
 		</div>
-		<h2 onClick={ () => console.log('make the component disapear') }>Klaar</h2>
+		<h2 onClick={ onClose }>Klaar</h2>
     </div>
   );
 };

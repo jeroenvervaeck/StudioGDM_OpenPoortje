@@ -1,15 +1,17 @@
 import { default as React, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { useAuth } from '../services';
+import { ORGANISATION_DASHBOARD } from '../routes';
 
 import { FaUserAlt, FaLock } from 'react-icons/fa';
 
 import './LoginPage.scss'
 
 const LoginMainPage = () => {
-	const [selected, setSelected] = useState('kid')
-	
+	const { getToken, checkIsLoggedIn, getLoggedInRole } = useAuth();
+
+	const [selected, setSelected] = useState('kid');
 	const [ authMode, setAuthMode ] = useState('kid');
-	const { getToken } = useAuth();
 
 	const submit = async (e) => {
 		e.preventDefault();
@@ -22,6 +24,11 @@ const LoginMainPage = () => {
 
 	return (
 		<div className="login">
+			{
+				(checkIsLoggedIn()) 
+				? <Redirect to={(getLoggedInRole() === 'organisation') ? ORGANISATION_DASHBOARD : ''}/> 
+				: null
+			}
 
 			<form className="login__form">
 				<h2>KID-OK-KIT</h2>
@@ -38,8 +45,8 @@ const LoginMainPage = () => {
 					<div className="login__form-credenials-type">
 						<input type="radio" id="kid" name="authMode" value="kid" defaultChecked={true} onClick={() => setAuthMode('kid')}></input>
 						<label htmlFor="kid">Kind</label><br></br>
-						<input type="radio" id="supervisor" name="authMode" value="supervisor" onClick={() => setAuthMode('supervisor')}></input>
-						<label htmlFor="supervisor">Begeleider</label><br></br>
+						<input type="radio" id="supervisor" name="authMode" value="supervisor" onClick={() => setAuthMode('organisation')}></input>
+						<label htmlFor="supervisor">Organisatie</label><br></br>
 					</div>
 				</div>
 

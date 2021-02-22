@@ -1,4 +1,6 @@
 import { default as React } from 'react';
+import { Redirect } from 'react-router-dom';
+import { useAuth } from '../../services';
 import { Link } from 'react-router-dom';
 import * as Routes from '../../routes';
 import { logo } from '../../assets';
@@ -6,8 +8,15 @@ import { logo } from '../../assets';
 import './organisation.scss'
 
 const OrganisationDashboardPage = () => {
+	const { checkIsLoggedIn, getLoggedInRole } = useAuth();
 	return (
 		<div className="organisation-dashboard">
+			{
+				(!checkIsLoggedIn() || getLoggedInRole() !== 'organisation') 
+				? <Redirect to={Routes.LOGIN_MAIN}/> 
+				: null
+			}
+
 			<div className="organisation-dashboard__top">
 				<h1>Dashboard voor:</h1>
 				<img src={logo}></img>
