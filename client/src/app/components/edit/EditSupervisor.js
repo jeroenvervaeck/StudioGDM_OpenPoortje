@@ -3,7 +3,7 @@ import { FaEdit } from 'react-icons/fa';
 
 import './edit.scss'
 
-const EditSupervisor = ({}) => {
+const EditSupervisor = ({supervisor, onclose, reload}) => {
   return (
     <form className="edit-supervisor">
 		<FaEdit />
@@ -23,7 +23,7 @@ const EditSupervisor = ({}) => {
 		</div>
 		<div className="edit-supervisor__buttons">
 			<p onClick= { () => console.log('make the component disapear') }>Annuleren</p>
-			<input type="submit" value="Opslaan"></input>
+			<input type="submit" value="Opslaan" ></input>
 		</div>
     </form>
   );

@@ -1,11 +1,14 @@
 import { default as React, useState } from 'react';
+import { useApi } from '../../services';
 import { FaEdit } from 'react-icons/fa';
 
 import './edit.scss'
 
-const EditChild = ({}) => {
-  const [ selectedSkintone, setSelectedSkintone ] = useState('') // put skintone color here from DB, to have it checked
-  const [ selectedThemeColor, setSelectedThemeColor ] = useState('') // put theme color here from DB, to have it checked
+const EditChild = ({kid, onClose, reload}) => {
+	const { editKid } = useApi();
+
+  const [ selectedSkintone, setSelectedSkintone ] = useState(kid.skin_color) // put skintone color here from DB, to have it checked
+  const [ selectedThemeColor, setSelectedThemeColor ] = useState(kid.theme_color) // put theme color here from DB, to have it checked
 
   return (
     <form className="edit-child">
@@ -14,19 +17,19 @@ const EditChild = ({}) => {
 		<p>U bewerkt een bestaande record in de database van kinderen.</p>
 		<div className="edit-child__input">
 			<p>Voornaam:</p>
-			<input type='text' defaultValue={'child_data'}></input>
+			<input type='text' id="first_name" defaultValue={kid.first_name}></input>
 		</div>
 		<div className="edit-child__input">
 			<p>Familienaam:</p>
-			<input type='text' defaultValue={'child_data'}></input>
+			<input type='text' id="last_name" defaultValue={kid.last_name}></input>
 		</div>
 		<div className="edit-child__input">
 			<p>Adres:</p>
-			<input type='text' defaultValue={'child_data'}></input>
+			<input type='text' id="addres" defaultValue={'Wordt (nog) niet bewaard'}></input>
 		</div>
 		<div className="edit-child__input">
 			<p>Geboortedatum:</p>
-			<input type='text' defaultValue={'child_data'}></input>
+			<input type='date' id="birthdate" defaultValue={new Date(kid.birth_date).toISOString().substr(0,10)}></input>
 		</div>
 		<div className="edit-child__input-skintone">
 			<p>Huidskleur:</p>
@@ -71,8 +74,18 @@ const EditChild = ({}) => {
 			</div>
 		</div>
 		<div className="edit-child__buttons">
-			<p onClick={ () => console.log('make the component disapear') }>Annuleren</p>
-			<input type="submit" value="Opslaan"></input>
+			<p onClick={ onClose }>Annuleren</p>
+			<input type="submit" value="Opslaan" onClick={(e) => {
+				e.preventDefault();
+				editKid(kid._id, {
+					first_name: document.getElementById('first_name').value,
+					last_name: document.getElementById('last_name').value,
+					birth_date: new Date(document.getElementById('birthdate').value),
+					theme_color: selectedThemeColor,
+					skin_color: selectedSkintone,
+				}).then(reload)
+				.then(onClose);
+			}}></input>
 		</div>
     </form>
   );

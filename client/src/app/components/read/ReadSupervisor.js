@@ -3,19 +3,19 @@ import { logo } from '../../assets'
 
 import './read.scss'
 
-const ReadSupervisor = ({}) => {
+const ReadSupervisor = ({supervisor, onClose}) => {
   return (
     <div className="read-supervisor">
 		<img src={logo}></img>
-		<h1>Begeleider "Jeroen De begeleider"</h1>
+		<h1>Begeleider "{supervisor.auth.username}"</h1>
 		<p>begeleider bij Het Open Poortje.</p>
 		<div className="read-supervisor__record">
 			<h1>Voornaam</h1>
-			<p>name</p>
+			<p>{supervisor.first_name}</p>
 		</div>
 		<div className="read-supervisor__record">
 			<h1>Familienaam</h1>
-			<p>name</p>
+			<p>{supervisor.last_name}</p>
 		</div>
 		<div className="read-supervisor__record">
 			<h1>Organisatie</h1>
@@ -25,7 +25,7 @@ const ReadSupervisor = ({}) => {
 			<h1>Begeleider sinds</h1>
 			<p>date</p>
 		</div>
-		<h2 onClick={ () => console.log('make the component disapear') }>Klaar</h2>
+		<h2 onClick={ onClose }>Klaar</h2>
     </div>
   );
 };

@@ -1,9 +1,12 @@
 import { default as React, useState } from 'react';
+import { useApi } from '../../services';  
 import { FaPlus } from 'react-icons/fa';
 
 import './add.scss'
 
-const AddChild = ({}) => {
+const AddChild = ({ onClose, reload }) => {
+  const { newKid, updateUserData } = useApi();
+
   const [ selectedSkintone, setSelectedSkintone ] = useState('')
   const [ selectedThemeColor, setSelectedThemeColor ] = useState('')
 
@@ -14,19 +17,19 @@ const AddChild = ({}) => {
 		<p>U voegt een nieuwe record toe aan de database van kinderen.</p>
 		<div className="add-child__input">
 			<p>Voornaam:</p>
-			<input type='text' placeholder='...'></input>
+			<input type='text' id="first_name" placeholder='...'></input>
 		</div>
 		<div className="add-child__input">
 			<p>Familienaam:</p>
-			<input type='text' placeholder='...'></input>
+			<input type='text' id="last_name" placeholder='...'></input>
 		</div>
 		<div className="add-child__input">
 			<p>Adres:</p>
-			<input type='text' placeholder='...'></input>
+			<input type='text' id="addres" placeholder='...'></input>
 		</div>
 		<div className="add-child__input">
 			<p>Geboortedatum:</p>
-			<input type='text' placeholder='...'></input>
+			<input type='date' id="birthdate" placeholder='...'></input>
 		</div>
 		<div className="add-child__input-skintone">
 			<p>Huidskleur:</p>
@@ -71,8 +74,20 @@ const AddChild = ({}) => {
 			</div>
 		</div>
 		<div className="add-child__buttons">
-			<p onClick={ () => console.log('make the component disapear') }>Annuleren</p>
-			<input type="submit" value="Opslaan"></input>
+			<p onClick={ onClose }>Annuleren</p>
+			<input type="submit" value="Opslaan"onClick={(e) => {
+				e.preventDefault();
+				newKid({
+					first_name: document.getElementById('first_name').value,
+					last_name: document.getElementById('last_name').value,
+					birth_date: new Date(document.getElementById('birthdate').value),
+					password: 'secret',
+					theme_color: selectedThemeColor,
+					skin_color: selectedSkintone,
+					organisation_id: JSON.parse(sessionStorage.getItem('user'))._id
+				}).then(reload)
+				.then(onClose);
+			}}></input>
 		</div>
     </form>
   );

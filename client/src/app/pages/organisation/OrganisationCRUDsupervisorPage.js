@@ -1,4 +1,6 @@
-import { default as React } from 'react';
+import { default as React, useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
+import { useAuth, useApi } from '../../services';
 import { Link } from 'react-router-dom';
 import * as Routes from '../../routes';
 import { FaPlus, FaTrash, FaRegEye, FaEdit, FaSearch } from 'react-icons/fa'
@@ -9,12 +11,87 @@ import { Delete, AddSupervisor, EditSupervisor, ReadSupervisor } from '../../com
 import './organisation.scss'
 
 const OrganisationCRUDsupervisorPage = () => {
+
+	const { checkIsLoggedIn, getLoggedInRole } = useAuth();
+	const { getSupervisorsOfOrganisation } = useApi();
+
+	const [ supervisors, setSupervisors ] = useState();
+
+	const [ supervisorToEdit, setSupervisorToEdit ] = useState(); 
+	const [ supervisorToRead, setSupervisorToRead ] = useState(); 
+	const [ supervisorToDelete, setSupervisorToDelete ] = useState(); 
+	const [ addSupervisorIsVisible, setAddSupervisorIsVisible ] = useState(false); 
+
+	useEffect(() => {
+		const getSupervisors = async  () => {
+			const supervisors = await getSupervisorsOfOrganisation();
+			setSupervisors(supervisors.supervisors);
+		}
+		console.log(supervisors)
+		if (!supervisors || !supervisors.length) getSupervisors();
+	});
+
+	const renderSupervisors = () => {
+		return supervisors.map((supervisor, index) => {
+			return(
+				<tr key={"supervisor-"+index}>
+					<td>{supervisor.auth.username}</td>
+					<td>{supervisor.first_name}</td>
+					<td>{supervisor.last_name}</td>
+					<td>
+						<FaRegEye 
+							onClick={() => setSupervisorToRead(supervisor)}
+						/>
+					</td>
+					<td>
+						<FaEdit 
+							onClick={() => setSupervisorToEdit(supervisor)}
+						/>
+					</td>
+					<td>
+						<FaTrash 
+							onClick={() => setSupervisorToDelete(supervisor)}
+						/>
+					</td>
+				</tr>
+			);
+		});
+	}
+
 	return (
 		<div className="organisation-crud-supervisor">
-			{ false  && <Delete /> }
-			{ false  && <AddSupervisor /> }
-			{ false  && <EditSupervisor /> }
-			{ false  && <ReadSupervisor /> }
+
+			{
+				(!checkIsLoggedIn() || getLoggedInRole() !== 'organisation') 
+				? <Redirect to={Routes.LOGIN_MAIN}/> 
+				: null
+			}
+			{ 
+				supervisorToDelete  && <Delete 
+					kid={supervisorToDelete}
+					onClose={() => setSupervisorToDelete()}
+					reload={() => setSupervisors()}
+				/> 
+			}
+			{ 
+				addSupervisorIsVisible  && <AddSupervisor
+					onClose={() => setAddSupervisorIsVisible(false)}
+					reload={() => setSupervisors()}
+				/> 
+			 }
+			{ 
+				supervisorToEdit  && <EditSupervisor
+					kid={supervisorToEdit}
+					onClose={() => setSupervisorToEdit(undefined)}
+					reload={() => setSupervisors()}
+				/> 
+			}
+			{ 
+				supervisorToRead  && <ReadSupervisor
+					supervisor={supervisorToRead}
+					onClose={() => setSupervisorToRead(undefined)}
+				/> 
+			}
 			<div className="organisation-crud-supervisor__top">
 				<img src={ logo }></img>
 				<h1>Begeleider</h1>
@@ -33,24 +110,15 @@ const OrganisationCRUDsupervisorPage = () => {
 						<th>Bewerk</th>
 						<th>Wis</th>
 					</tr>
-					<tr>
-						<td>jeroverv</td>
-						<td>Jeroen</td>
-						<td>Vervaeck</td>
-						<td>
-							<FaRegEye />
-						</td>
-						<td>
-		 					<FaEdit />
-						</td>
-						<td>
-							<FaTrash />
-						</td>
-					</tr>
+					{
+						(supervisors)
+						? renderSupervisors()
+						: null
+					}
 				</tbody>
 			</table>
 			<div className="organisation-crud-supervisor__bottom">
-				 <div className="organisation-crud-supervisor__bottom-btn">
+				 <div className="organisation-crud-supervisor__bottom-btn" onClick={() => setAddSupervisorIsVisible(true)}>
 					 <FaPlus />
 					 <p>Begeleider toevoegen</p>
 				 </div>
