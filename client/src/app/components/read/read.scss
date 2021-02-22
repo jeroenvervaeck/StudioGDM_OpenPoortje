@@ -1,0 +1,133 @@
+@import '../../_sass/abstracts/variables';
+
+.read-supervisor {
+	position: absolute;
+	left: 50%;
+	margin-left: -320px;
+	border: rgba(161,161,161,0.75) 1px solid;
+	box-shadow: 2px 2px 5px 0px rgba(161,161,161,0.75);
+	width: 540px;
+	border-radius: 20px;
+	background-color: $color-white;
+	padding: 40px 60px;
+
+	img {
+		width: 100%;
+		height: 60px;
+		object-fit: contain;
+		margin-bottom: 30px;
+	}
+	h1 {
+		margin: 6px 0;
+		font-size: 24px;
+		color: $color-text;
+	}
+	p {
+		margin: 6px 0;
+		font-size: 14px;
+		color: $color-text;
+		margin-bottom: 20px;
+	}
+	&__record {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		margin: 6px 0;
+		h1 {
+			width: 40%;
+			margin: 0;
+			font-size: 18px;
+			font-weight: 600;
+		}
+		p {
+			width: 60%;
+			padding: 8px 12px;
+			margin: 0;
+			font-size: 18px;
+		}
+	}
+	h2 {
+		margin-top: 30px;
+		font-size: 18px;
+		width: 100%;
+		padding: 20px 0;
+		background-color: $color-01;
+		border-radius: 50px;
+		text-align: center;
+		color: $color-white;
+	}
+}
+
+.read-child {
+	position: absolute;
+	left: 50%;
+	margin-left: -320px;
+	border: rgba(161,161,161,0.75) 1px solid;
+	box-shadow: 2px 2px 5px 0px rgba(161,161,161,0.75);
+	width: 540px;
+	border-radius: 20px;
+	background-color: $color-white;
+	padding: 40px 60px;
+
+	img {
+		width: 100%;
+		height: 60px;
+		object-fit: contain;
+		margin-bottom: 30px;
+	}
+	h1 {
+		margin: 6px 0;
+		font-size: 24px;
+		color: $color-text;
+	}
+	p {
+		margin: 6px 0;
+		font-size: 14px;
+		color: $color-text;
+		margin-bottom: 20px;
+	}
+	&__record {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		margin: 6px 0;
+		h1 {
+			width: 40%;
+			margin: 0;
+			font-size: 18px;
+			font-weight: 600;
+		}
+		p {
+			width: 60%;
+			padding: 8px 12px;
+			margin: 0;
+			font-size: 18px;
+		}
+		&-color {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			margin: 12px 0;
+			h1 {
+				width: 40%;
+				margin: 0;
+				font-size: 18px;
+				font-weight: 600;
+			}
+			div {
+				width: 40px;
+				height: 40px;
+			}
+		}
+	}
+	h2 {
+		margin-top: 30px;
+		font-size: 18px;
+		width: 100%;
+		padding: 20px 0;
+		background-color: $color-01;
+		border-radius: 50px;
+		text-align: center;
+		color: $color-white;
+	}
+}

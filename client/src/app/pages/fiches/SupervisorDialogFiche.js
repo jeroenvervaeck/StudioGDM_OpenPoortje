@@ -1,6 +1,6 @@
 import { default as React } from 'react';
 
-import './SupervisorDialogFiche.scss'
+import './fiches.scss'
 
 const SupervisorDialogFiche = () => {
 	return (

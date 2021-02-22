@@ -1,0 +1,241 @@
+@import '../../_sass/abstracts/variables';
+
+.add-child {
+	position: absolute;
+	left: 50%;
+	margin-left: -320px;
+	border: rgba(161,161,161,0.75) 1px solid;
+	box-shadow: 2px 2px 5px 0px rgba(161,161,161,0.75);
+	width: 540px;
+	border-radius: 20px;
+	background-color: $color-white;
+	padding: 40px 60px;
+
+	svg {
+		color: $color-text;
+		width: 100%;
+		text-align: center;
+		font-size: 40px;
+		margin-bottom: 30px;
+	}
+	h1 {
+		margin: 6px 0;
+		font-size: 24px;
+		color: $color-text;
+	}
+	p {
+		margin: 6px 0;
+		font-size: 14px;
+		color: $color-text;
+		margin-bottom: 20px;
+	}
+	&__input {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		margin: 6px 0;
+		p {
+			width: 30%;
+			margin: 0;
+		}
+		input {
+			width: 70%;
+			padding: 8px 12px;
+			border: rgba(161,161,161,0.75) 1px solid;
+			box-shadow: 1px 1px 2px 0px rgba(161,161,161,0.75);
+		}
+	}
+	&__input-skintone {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		margin: 12px 0;
+
+		p {
+			width: 30%;
+			margin: 0;
+
+		}
+		&-wrapper {
+			width: 70%;
+			display: flex;
+
+			label {
+				position: relative;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				margin-right: 20px;
+				height: 40px;
+				width: 40px;
+
+				&:nth-child(1) { background-color: $skintone-brown; }
+				&:nth-child(2) { background-color: $skintone-orange; }
+				&:nth-child(3) { background-color: $skintone-pink; }
+				&:nth-child(4) { background-color: $skintone-pale; }
+
+				input {
+					position: absolute;
+					opacity: 0;
+					height: 40px;
+					width: 40px;
+					margin: 0;
+				}
+				.checkmark {
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 40px;
+					width: 40px;
+					font-size: 20px;
+					color: $color-white;
+					text-align: center;
+				}
+			}
+		}
+	}
+	&__input-theme {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		margin: 12px 0;
+
+		p {
+			width: 30%;
+			margin: 0;
+
+		}
+		&-wrapper {
+			width: 70%;
+			display: flex;
+
+			label {
+				position: relative;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				margin-right: 20px;
+				height: 40px;
+				width: 40px;
+
+				&:nth-child(1) { background-color: $color-01; }
+				&:nth-child(2) { background-color: $color-02; }
+				&:nth-child(3) { background-color: $color-03; }
+				&:nth-child(4) { background-color: $color-04; }
+
+				input {
+					position: absolute;
+					opacity: 0;
+					height: 40px;
+					width: 40px;
+					margin: 0;
+				}
+				.checkmark {
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 40px;
+					width: 40px;
+					font-size: 20px;
+					color: $color-white;
+					text-align: center;
+				}
+			}
+		}
+	}
+	&__buttons {
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+		margin-top: 30px;
+		p {
+			width: 40%;
+			text-align: center;
+			margin: 0;
+			font-size: 18px;
+			padding: 20px 0;
+		}
+		input {
+			width: 50%;
+			background-color: $color-01;
+			border: none;
+			color: $color-white;
+			padding: 20px 0;
+			border-radius: 50px;
+			font-size: 18px;
+		}
+	}
+}
+
+.add-supervisor {
+	position: absolute;
+	left: 50%;
+	margin-left: -320px;
+	top: 50%;
+	margin-top: -220px;
+	border: rgba(161,161,161,0.75) 1px solid;
+	box-shadow: 2px 2px 5px 0px rgba(161,161,161,0.75);
+	width: 540px;
+	border-radius: 20px;
+	background-color: $color-white;
+	padding: 40px 60px;
+
+	svg {
+		color: $color-text;
+		width: 100%;
+		text-align: center;
+		font-size: 40px;
+		margin-bottom: 30px;
+	}
+	h1 {
+		margin: 6px 0;
+		font-size: 24px;
+		color: $color-text;
+	}
+	p {
+		margin: 6px 0;
+		font-size: 14px;
+		color: $color-text;
+		margin-bottom: 20px;
+	}
+	&__input {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		margin: 6px 0;
+		p {
+			width: 30%;
+			margin: 0;
+		}
+		input {
+			width: 70%;
+			padding: 8px 12px;
+			border: rgba(161,161,161,0.75) 1px solid;
+			box-shadow: 1px 1px 2px 0px rgba(161,161,161,0.75);
+		}
+	}
+	&__buttons {
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+		margin-top: 30px;
+		p {
+			width: 40%;
+			text-align: center;
+			margin: 0;
+			font-size: 18px;
+			padding: 20px 0;
+		}
+		input {
+			width: 50%;
+			background-color: $color-01;
+			border: none;
+			color: $color-white;
+			padding: 20px 0;
+			border-radius: 50px;
+			font-size: 18px;
+		}
+	}
+}

@@ -1,7 +1,7 @@
 import { default as React, useState } from 'react';
 import { Link } from "react-router-dom";
 import * as Routes from '../../routes';
-import { FaBars, FaUserAlt, FaTimes, FaExchangeAlt, FaMountain, FaComments, FaFolder, FaBookmark, FaWrench } from 'react-icons/fa';
+import { FaBars, FaUserAlt, FaTimes, FaExchangeAlt, FaMountain, FaComments, FaFolder, FaBookmark, FaWrench, FaHome, FaInfo } from 'react-icons/fa';
 
 import './nav.scss'
 
@@ -27,7 +27,7 @@ const Nav = ({}) => {
                     <p>Admin-email</p>
                   </div>
                   {/* no show this icon */}
-                  <FaExchangeAlt />
+                  <FaExchangeAlt opacity={0} />
                 </div>
               </div>
               <div className="nav-block__credentials-kid">
@@ -40,9 +40,7 @@ const Nav = ({}) => {
                       <h2>Kind-user</h2>
                       <p>Kind-email</p>
                     </div>
-                    <Link to={Routes.SUPERVISOR_KID}>
-                      <FaExchangeAlt />
-                    </Link>
+                    <FaExchangeAlt opacity={0} />
                   </div>
               </div>
             </div>
@@ -59,6 +57,10 @@ const Nav = ({}) => {
                   </Link>
                 </div>
                 <Link to={Routes.SUPERVISOR_FICHE} className="nav-block__routes-main-element">
+                  <FaHome size={20} />
+                  <p>Startpagina</p>
+                </Link>
+                <Link to={Routes.SUPERVISOR_FICHE} className="nav-block__routes-main-element">
                   <FaFolder size={20} />
                   <p>Fiches</p>
                 </Link>
@@ -70,9 +72,10 @@ const Nav = ({}) => {
                   <FaWrench size={20} />
                   <p>Instellingen</p>
                 </Link>
-              </div>
-              <div className="nav-block__routes-logout">
-                <p>Uitloggen</p>
+                <Link to={Routes.SUPERVISOR_SETTINGS} className="nav-block__routes-main-element">
+                  <FaInfo size={20} />
+                  <p>Info</p>
+                </Link>
               </div>
             </div>
           </div>

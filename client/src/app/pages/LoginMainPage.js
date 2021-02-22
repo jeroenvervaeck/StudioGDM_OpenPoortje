@@ -3,10 +3,11 @@ import { useAuth } from '../services';
 
 import { FaUserAlt, FaLock } from 'react-icons/fa';
 
-
 import './LoginPage.scss'
 
-const LoginPage = () => {
+const LoginMainPage = () => {
+	const [selected, setSelected] = useState('kid')
+	
 	const [ authMode, setAuthMode ] = useState('kid');
 	const { getToken } = useAuth();
 
@@ -21,7 +22,6 @@ const LoginPage = () => {
 
 	return (
 		<div className="login">
-			<h1>Welkom!</h1>
 
 			<form className="login__form">
 				<h2>KID-OK-KIT</h2>
@@ -47,7 +47,6 @@ const LoginPage = () => {
 			</form>
 		</div>
 	);
-	
 };
 
-export default LoginPage;
+export default LoginMainPage;
