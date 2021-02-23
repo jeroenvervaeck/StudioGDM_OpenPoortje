@@ -5,7 +5,7 @@ import { FaPlus } from 'react-icons/fa';
 import './add.scss'
 
 const AddChild = ({ onClose, reload }) => {
-  const { newKid, updateUserData } = useApi();
+  const { newKid } = useApi();
 
   const [ selectedSkintone, setSelectedSkintone ] = useState('')
   const [ selectedThemeColor, setSelectedThemeColor ] = useState('')
@@ -75,7 +75,7 @@ const AddChild = ({ onClose, reload }) => {
 		</div>
 		<div className="add-child__buttons">
 			<p onClick={ onClose }>Annuleren</p>
-			<input type="submit" value="Opslaan"onClick={(e) => {
+			<input type="submit" value="Opslaan" onClick={(e) => {
 				e.preventDefault();
 				newKid({
 					first_name: document.getElementById('first_name').value,

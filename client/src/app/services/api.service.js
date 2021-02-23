@@ -150,6 +150,24 @@ const ApiProvider = ({children}) => {
     return response;
   }
 
+  const newSupervisor = async ( supervisor ) => {
+    const auth = JSON.parse(getCookie('auth'));
+    const url = `${BASE_URL}/organisation/supervisor`;
+
+    const options = {
+      method:'POST',
+      body: JSON.stringify(supervisor),
+      headers: new Headers({
+          'Authorization': 'Bearer '+ auth.token, 
+          'Content-Type': 'application/json',
+        }), 
+    }
+
+    const response = await fetch(url, options).then((result) => result.json());
+
+    return response;
+  }
+
   const editSupervisor = async ( supervisorId, changes ) => {
     console.log(supervisorId, changes)
     const auth = JSON.parse(getCookie('auth'));
@@ -206,6 +224,7 @@ const ApiProvider = ({children}) => {
       deleteKid,
 
       getSupervisorsOfOrganisation,
+      newSupervisor,
       editSupervisor,
       deleteSupervisor
      }}>
