@@ -101,8 +101,15 @@
 						}
 					}
 					// no show for this icon 
-					svg:nth-child(3) {
-						opacity: 0;
+					a {
+						text-decoration: none;
+						color: $color-white;
+						width: 34px;
+						svg:nth-child(1) {
+							font-size: 30px;
+							border: none;
+							background-color: $color-01;
+						}
 					}
 				}
 			}
@@ -149,6 +156,7 @@
 						svg:nth-child(1) {
 							border: none;
 							background-color: $color-01;
+							font-size: 24px;
 						}
 					}
 

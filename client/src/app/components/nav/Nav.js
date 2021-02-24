@@ -1,13 +1,14 @@
 import { default as React, useState } from 'react';
 import { Link } from "react-router-dom";
 import * as Routes from '../../routes';
-import { FaBars, FaUserAlt, FaTimes, FaExchangeAlt, FaMountain, FaComments, FaFolder, FaBookmark, FaWrench, FaHome, FaInfo } from 'react-icons/fa';
+import { FaBars, FaUserAlt, FaTimes, FaExchangeAlt, FaMountain, FaComments, FaFolder, FaBookmark, FaWrench, FaHome, FaInfo, FaBlog } from 'react-icons/fa';
+import { HiOutlineLogout } from 'react-icons/hi';
 
 import './nav.scss'
 
 
 const Nav = ({}) => {
-  const [showNav, setShowNav] = useState(false);
+  const [showNav, setShowNav] = useState(true);
   const onClick = () => setShowNav(!showNav);
 
   return (
@@ -26,8 +27,9 @@ const Nav = ({}) => {
                     <h2>Admin-user</h2>
                     <p>Admin-email</p>
                   </div>
-                  {/* no show this icon */}
-                  <FaExchangeAlt opacity={0} />
+                  <Link to={Routes.LOGIN_SECONDARY}>
+                    <HiOutlineLogout />
+                  </Link>
                 </div>
               </div>
               <div className="nav-block__credentials-kid">
@@ -40,7 +42,9 @@ const Nav = ({}) => {
                       <h2>Kind-user</h2>
                       <p>Kind-email</p>
                     </div>
-                    <FaExchangeAlt opacity={0} />
+                    <Link to={Routes.SUPERVISOR_KID}>
+                      <FaExchangeAlt />
+                    </Link>
                   </div>
               </div>
             </div>
@@ -56,7 +60,7 @@ const Nav = ({}) => {
                     <p>Dialoog</p>
                   </Link>
                 </div>
-                <Link to={Routes.SUPERVISOR_FICHE} className="nav-block__routes-main-element">
+                <Link to={Routes.SUPERVISOR_DASHBOARD} className="nav-block__routes-main-element">
                   <FaHome size={20} />
                   <p>Startpagina</p>
                 </Link>

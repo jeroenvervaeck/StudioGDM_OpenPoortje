@@ -9,7 +9,7 @@ const SupervisorDashboardPage = () => {
 		<div>
 			<Nav />
 			<div className="supervisor-dashboard">
-				dashboard page
+				<h1>Welkom bij de Kid-ok Kit</h1>
 			</div>
 		</div>
 	);

@@ -4,6 +4,21 @@
 	background: url(../assets/login.png) center/100%;
 	height: 100vh;
 
+	&__nav {
+		position: absolute;
+		top: 0;
+		left: 0;
+		text-decoration: none;
+
+		p {
+			color: $color-white;
+			background-color: $color-text;
+			padding: 10px 30px;
+			border-radius: 0 20px 20px 0;
+			box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.30);
+			font-weight: 600;
+		}
+	}
 	h1 {
 		margin: 50px 0;
 		color: $color-text;
@@ -12,13 +27,13 @@
 	&__form {
 		position: absolute;
 		left: 50%;
-		margin-left: -250px;
+		margin-left: -300px;
 		top: 50%;
 		margin-top: -200px;
 
 		background-color: $color-white;
 		box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.30);
-		width: 40%;
+		width: 500px;
 		border-radius: 10px;
 		padding: 30px 50px;
 

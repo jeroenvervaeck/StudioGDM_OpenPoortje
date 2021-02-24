@@ -1,6 +1,8 @@
 import { default as React, useState } from 'react';
 import { useAuth } from '../services';
-
+import { Link } from 'react-router-dom';
+import * as Routes from '../routes';
+ 
 import { FaUserAlt, FaLock } from 'react-icons/fa';
 
 import './LoginPage.scss'
@@ -22,6 +24,10 @@ const LoginSecondaryPage = () => {
 
 	return (
 		<div className="login">
+
+			<Link className="login__nav" to={Routes.ORGANISATION_DASHBOARD}>
+				<p>Beheer Open Poortje</p>
+			</Link>
 
 			<form className="login__form">
 				<h2>KID-OK-KIT</h2>
