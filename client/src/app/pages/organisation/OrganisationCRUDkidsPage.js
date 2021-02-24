@@ -11,10 +11,11 @@ import { Delete, AddChild, EditChild, ReadChild } from '../../components';
 import './organisation.scss'
 
 const OrganisationCRUDkidsPage = () => {
-	const { checkIsLoggedIn, getLoggedInRole } = useAuth();
-	const { getKidsOfOrganisation } = useApi();
+	const { getLoggedInRole } = useAuth();
+	const { getKidsOfOrganisation, deleteKid } = useApi();
 
 	const [ children, setChildren ] = useState();
+	const [ selectedChildren, setSelectedChildren ] = useState();
 
 	const [ childToEdit, setChildToEdit ] = useState(); 
 	const [ childToRead, setChildToRead ] = useState(); 
@@ -24,13 +25,14 @@ const OrganisationCRUDkidsPage = () => {
 	useEffect(() => {
 		const getKids = async  () => {
 			const kids = await getKidsOfOrganisation('organisation');
+			setSelectedChildren(kids.kids);
 			setChildren(kids.kids);
 		}
 		if (!children || !children.length) getKids();
 	}, [children]);
 
 	const renderChildren = () => {
-		return children.map((kid, index) => {
+		return selectedChildren.map((kid, index) => {
 			return(
 				<tr key={"kid-"+index}>
 					<td>{kid.auth.username}</td>
@@ -56,6 +58,18 @@ const OrganisationCRUDkidsPage = () => {
 		});
 	}
 
+	const onSearchChange = ( searchTerm ) => {
+		if (searchTerm === '') setSelectedChildren(children);
+		const results = children.filter((child) => 
+			child.first_name.toLowerCase().includes(searchTerm.toLowerCase()) 
+			|| 
+			child.last_name.toLowerCase().includes(searchTerm.toLowerCase())
+			||
+			child.auth.username.toLowerCase().includes(searchTerm.toLowerCase())
+		);
+		setSelectedChildren(results);
+	}
+
 	return (
 		<div className="organisation-crud-kids">
 			{
@@ -65,9 +79,10 @@ const OrganisationCRUDkidsPage = () => {
 			}
 			{ 
 				childToDelete  && <Delete 
-					kid={childToDelete}
+					person={childToDelete}
 					onClose={() => setChildToDelete(false)}
 					reload={() => setChildren()}
+					onDelete={deleteKid}
 				/> 
 			}
 			{ 
@@ -95,7 +110,7 @@ const OrganisationCRUDkidsPage = () => {
 				<h1>Kinderen</h1>
 				<div className="organisation-crud-kids__top-search">
 					<FaSearch />
-					<input type="text" placeholder="Zoek op naam.."></input>
+					<input type="text" placeholder="Zoek op naam.." onChange={(e) => onSearchChange(e.target.value)}></input>
 				</div>
 			 </div>
 			 <table className="organisation-crud-kids__table">
@@ -109,7 +124,7 @@ const OrganisationCRUDkidsPage = () => {
 						<th>Wis</th>
 					</tr>
 					{
-						(children) 
+						(selectedChildren) 
 						? renderChildren()
 						: null
 					}

@@ -150,6 +150,66 @@ const ApiProvider = ({children}) => {
     return response;
   }
 
+  const newSupervisor = async ( supervisor ) => {
+    const auth = JSON.parse(getCookie('auth'));
+    const url = `${BASE_URL}/organisation/supervisor`;
+
+    const options = {
+      method:'POST',
+      body: JSON.stringify(supervisor),
+      headers: new Headers({
+          'Authorization': 'Bearer '+ auth.token, 
+          'Content-Type': 'application/json',
+        }), 
+    }
+
+    const response = await fetch(url, options).then((result) => result.json());
+
+    return response;
+  }
+
+  const editSupervisor = async ( supervisorId, changes ) => {
+    console.log(supervisorId, changes)
+    const auth = JSON.parse(getCookie('auth'));
+    const url = `${BASE_URL}/organisation/supervisor`;
+
+    const body = {
+      id: supervisorId,
+      changes,
+    }
+
+    const options = {
+      method:'PATCH',
+      body: JSON.stringify(body),
+      headers: new Headers({
+          'Authorization': 'Bearer '+ auth.token, 
+          'Content-Type': 'application/json',
+        }), 
+    }
+
+    const response = await fetch(url, options).then((result) => result.json());
+
+    return response;
+  }
+
+  const deleteSupervisor = async ( supervisorId ) => {
+    const auth = JSON.parse(getCookie('auth'));
+    const url = `${BASE_URL}/organisation/supervisor`;
+
+    const options = {
+      method:'DELETE',
+      body: JSON.stringify({id: supervisorId}),
+      headers: new Headers({
+          'Authorization': 'Bearer '+ auth.token, 
+          'Content-Type': 'application/json',
+        }), 
+    }
+
+    const response = await fetch(url, options).then((result) => result.json());
+
+    return response;
+  }
+
   return (
     <ApiContext.Provider value={{ 
       user,
@@ -157,11 +217,16 @@ const ApiProvider = ({children}) => {
       getCookie,
       eraseCookie,
       updateUserData,
+
       getKidsOfOrganisation,
       editKid,
       newKid,
       deleteKid,
-      getSupervisorsOfOrganisation
+
+      getSupervisorsOfOrganisation,
+      newSupervisor,
+      editSupervisor,
+      deleteSupervisor
      }}>
       {children}
     </ApiContext.Provider>

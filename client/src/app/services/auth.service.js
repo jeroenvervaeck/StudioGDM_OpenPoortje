@@ -28,7 +28,7 @@ const AuthProvider = ({ children }) => {
 
     if (response.message) return {error: "Inloggegevens zijn onjuist!"}
 
-    setCookie('auth', JSON.stringify({token: response.token, role}), 1);
+    setCookie('auth', JSON.stringify({token: response.token, role}), 30);
 
     await updateUserData();
 
@@ -41,7 +41,6 @@ const AuthProvider = ({ children }) => {
 
   const getLoggedInRole = () => {
     const auth = JSON.parse(getCookie('auth'));
-    console.log(auth)
     if (auth !== null) {
       checkForUserUpdate();
       return auth.role;
