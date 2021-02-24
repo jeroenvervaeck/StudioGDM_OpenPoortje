@@ -1,5 +1,6 @@
 import { default as React } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { Fiches } from '../../components';
 
 import './SupervisorFichePage.scss'
 
@@ -20,7 +21,9 @@ const SupervisorFichePage = () => {
 				</form>
 
 				<div className="supervisor-fiche__content">
-					fiches
+					<Fiches catogerie="CKG" color="#EF4742" />
+					<Fiches catogerie="Ik" color="#FAAB4B" />
+					<Fiches catogerie="Rechten" color="#01AEB1" />
 				</div>
 				
 			</div>

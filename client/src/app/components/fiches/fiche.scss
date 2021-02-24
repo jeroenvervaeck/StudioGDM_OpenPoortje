@@ -1,0 +1,38 @@
+@import '../../_sass/abstracts/variables';
+
+.fiches {
+	margin-top: 20px;
+	box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.10);
+
+	&__main {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20px 28px;
+
+		h1 {
+			margin: 0;
+			font-size: 24px !important;
+			color: $color-white !important;
+		}
+		svg {
+			color: $color-white;
+			font-size: 32px;
+		}
+	}
+	&__list {
+
+	}
+}
+
+.fiche {
+	text-decoration: none;
+	p {
+		text-align: left;
+		border: $color-gray solid 1px;
+		padding: 20px 28px;
+		font-size: 20px;
+		margin: 0;
+		color: $color-text;
+	}
+}

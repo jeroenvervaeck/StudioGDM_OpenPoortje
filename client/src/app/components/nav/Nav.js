@@ -8,7 +8,7 @@ import './nav.scss'
 
 
 const Nav = ({}) => {
-  const [showNav, setShowNav] = useState(true);
+  const [showNav, setShowNav] = useState(false);
   const onClick = () => setShowNav(!showNav);
 
   return (

@@ -1,4 +1,6 @@
 import {default as Kid} from './kids/Kid';
+import {default as Fiches} from './fiches/Fiches';
+import {default as Fiche} from './fiches/Fiche';
 import {default as Nav} from './nav/Nav';
 import {default as Save} from './confirm/Save';
 import {default as Delete} from './confirm/Delete';
@@ -11,6 +13,8 @@ import {default as ReadSupervisor} from './read/ReadSupervisor';
 
 export {
   Kid,
+  Fiches,
+  Fiche,
   Nav,
   Save,
   Delete,
