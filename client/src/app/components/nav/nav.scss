@@ -3,7 +3,10 @@
 .nav {
 	position: absolute;
 	left: 0;
-	height: 100%;
+	top: 0;
+	min-height: 100vh;
+	height: 100vh;
+	box-sizing: border-box;
 	background-color: $color-01;
 
 	&-none {
