@@ -14,6 +14,7 @@ export const SUPERVISOR_TIMELINE = '/supervisor/timeline';
 export const SUPERVISOR_SETTINGS = '/supervisor/settings';
 
 // fiches
-export const SUPERVISOR_MOUNTAIN = '/supervisor/fiche/mountain';
-export const SUPERVISOR_DIALOG = '/supervisor/fiche/dialog';
+export const Begeleidingslijn = '/supervisor/Begeleidingslijn';
+export const Ervaringsdialoog = '/supervisor/Ervaringsdialoog';
+export const Hart = '/supervisor/Hart';
 export const SUPERVISOR_SAVE_FICHE = '/supervisor/fiche/save';

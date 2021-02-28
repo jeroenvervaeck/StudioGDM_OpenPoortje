@@ -78,6 +78,7 @@ const SupervisorSettingsPage = () => {
 							</div>
 						</div>
 					</div>
+					<input className="supervisor-settings__form-save" type="submit" value="Opslaan" onClick={(e) => { console.log(e) }}></input>
 				</form>
 
 			</div>

@@ -15,6 +15,7 @@ const Nav = ({}) => {
     <div className="nav">
       { showNav ? 
           <div className="nav-block">
+            <div className="nav-block__click-on-me" onClick={onClick}></div>
             <div className="nav-block__credentials">
               <div className="nav-block__credentials-supervisor">
                 <div className="nav-block__credentials-supervisor-title">
@@ -51,11 +52,11 @@ const Nav = ({}) => {
             <div className="nav-block__routes">
               <div className="nav-block__routes-main">
                 <div className="nav-block__routes-main-wrapper">
-                  <Link to={Routes.SUPERVISOR_MOUNTAIN} className="nav-block__routes-main-wrapper-element">
+                  <Link to={Routes.Begeleidingslijn} className="nav-block__routes-main-wrapper-element">
                     <FaMountain size={20} />
                     <p>Berglijn</p>
                   </Link>
-                  <Link to={Routes.SUPERVISOR_DIALOG} className="nav-block__routes-main-wrapper-element">
+                  <Link to={Routes.Ervaringsdialoog} className="nav-block__routes-main-wrapper-element">
                     <FaComments size={20} />
                     <p>Dialoog</p>
                   </Link>
