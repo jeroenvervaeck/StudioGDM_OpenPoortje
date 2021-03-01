@@ -7,6 +7,9 @@ import ReactDOM from 'react-dom';
 import Draggable from 'react-draggable';
 import { Link } from "react-router-dom";
 import * as Routes from '../../routes';
+
+import * as Screenshot from 'html2canvas';
+
 import './stickers.css'
 
 const images = [
@@ -139,11 +142,12 @@ class Board extends Component {
     }
     
 
-    render_each_note = function(note){
+    render_each_note = function(note, index){
       
         return (
 
             <Draggable 
+            key={"note-"+index}
             defaultPosition={{x: note.xpos, y: note.ypos}}
             onStop={(e, data) => {
                     this.setState({ defaultPosition: { x: data.x, y: data.y } });
@@ -164,10 +168,11 @@ class Board extends Component {
         )
     }
 
-    render_each_sticker = function(sticker){
+    render_each_sticker = function(sticker, index){
     
         return (
             <Draggable 
+            key={"sticker-"+index}
             defaultPosition={{x: sticker.xpos, y: sticker.ypos}}
             onStop={(e, data) => {
                     this.setState({ defaultPosition: { x: data.x, y: data.y } });
@@ -184,22 +189,38 @@ class Board extends Component {
     render() { 
         return (
             <div id="board">
-                {this.state.notes.map(this.render_each_note)}
-                {this.state.stickers.map(this.render_each_sticker)}
+                <button value="Screenshot" onClick={() => {
+                    Screenshot(document.querySelector("#board")).then((canvas) => {
+                        const img = canvas.toDataURL("image/png");
+                        // download png
+                        const element = document.createElement('a');
+                        element.setAttribute('href', img);
+                        element.setAttribute('download', 'file.png');
+
+                        element.style.display = 'none';
+                        document.body.appendChild(element);
+
+                        element.click();
+
+                        document.body.removeChild(element);
+                    });
+                }}/>
+                {(this.state.notes) ? this.state.notes.map(this.render_each_note) : null}
+                {(this.state.stickers) ? this.state.stickers.map(this.render_each_sticker) : null}
                 
-                <div id="stickerPopup" class="popup">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
+                <div id="stickerPopup" className="popup">
+                    <div className="modal-content">
+                        <span className="close">&times;</span>
                         <img src={images[0].url} alt={images[0]} onClick={() => this.create_sticker(images[0].url)}></img>
                         <img src={images[1].url} alt={images[1]} onClick={() => this.create_sticker(images[1].url)}></img>
                         <img src={images[2].url} alt={images[2]} onClick={() => this.create_sticker(images[2].url)}></img>
                         <Link to={Routes.SUPERVISOR_EIGENSTICKER} className="">
                         <img src={images[3].url} alt={images[3]}></img>
                         </Link>
-                        <button class="popup-btn" type="button" onClick={() => this.remove_stickers()}>Delete stickers</button>
+                        <button className="popup-btn" type="button" onClick={() => this.remove_stickers()}>Delete stickers</button>
                     </div>
                 </div>
-                <div class="buttons">
+                <div className="buttons">
                     <AddNoteButton onAdd={this.create_note}/>
                     <AddStickerButton/>
                 </div>
