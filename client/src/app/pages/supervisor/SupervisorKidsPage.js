@@ -2,6 +2,7 @@ import { default as React, useEffect, useState } from 'react';
 import { useApi, useAuth } from '../../services'; 
 import { Link, Redirect } from 'react-router-dom';
 import * as Routes from '../../routes';
+import { useHistory } from 'react-router-dom'
 
 import { FaSearch, FaWrench, FaSortAlphaDown, FaSortNumericDown } from 'react-icons/fa';
 
@@ -11,7 +12,8 @@ import { Kid } from '../../components'
 
 const SupervisorKidsPage = () => {
 	const { getKidsOfOrganisation } = useApi();
-	const { getLoggedInRole } = useAuth();
+	const { getLoggedInRole, getIsSupervisorLoggedIn } = useAuth();
+	const history = useHistory(); 
 
 	const [ children, setChildren ] = useState();
 	const [ selectedChildren, setSelectedChildren ] = useState();
@@ -46,6 +48,11 @@ const SupervisorKidsPage = () => {
 			? <Redirect to={Routes.LOGIN_MAIN}/> 
 			: null
 		}
+		{
+		  (!getIsSupervisorLoggedIn())
+				? <Redirect to={Routes.LOGIN_SECONDARY}/> 
+				: null
+		}
 			<h1>Selecteer een kind</h1>
 
 			<form className="supervisor-kids__filter">
@@ -70,6 +77,10 @@ const SupervisorKidsPage = () => {
 							lastname={kid.last_name} 
 							color={kid.theme_color}
 							birthdate={kid.birth_date}
+							onSelect={() => {
+								sessionStorage.setItem('selected-kid', JSON.stringify(kid));
+								history.push(Routes.SUPERVISOR_DASHBOARD);
+							}}
 						/>
 					)
 					: <p>Hier zou een leuke loading animation moeten komen...</p>
