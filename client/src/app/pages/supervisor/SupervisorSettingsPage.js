@@ -1,12 +1,17 @@
 import { default as React, useState } from 'react';
+import { useApi } from '../../services';
 
 import './SupervisorSettingsPage.scss'
 
 import { Nav } from '../../components'
 
 const SupervisorSettingsPage = () => {
-	const [ selectedSkintone, setSelectedSkintone ] = useState() // put skintone color here from DB, to have it checked
-	const [ selectedThemeColor, setSelectedThemeColor ] = useState() // put theme color here from DB, to have it checked
+	const { editKid } = useApi();
+
+	const [ selectedSkintone, setSelectedSkintone ] = useState(JSON.parse(sessionStorage.getItem('selected-kid')).skin_color) // put skintone color here from DB, to have it checked
+	const [ selectedThemeColor, setSelectedThemeColor ] = useState(JSON.parse(sessionStorage.getItem('selected-kid')).theme_color) // put theme color here from DB, to have it checked
+
+	const [ kid, setKid ] = useState(JSON.parse(sessionStorage.getItem('selected-kid')));
 
 	return (
 		<div>
@@ -18,19 +23,15 @@ const SupervisorSettingsPage = () => {
 						<h2>Algemeen</h2>
 						<div className="supervisor-settings__form-general-record">
 							<p>Voornaam</p>
-							<input type='text' id="first_name" defaultValue='firstname child'></input>
+							<input type='text' id="first_name" defaultValue={kid.first_name} disabled></input>
 						</div>
 						<div className="supervisor-settings__form-general-record">
 							<p>Familienaam</p>
-							<input type='text' id="first_name" defaultValue='firstname child'></input>
+							<input type='text' id="first_name" defaultValue={kid.last_name} disabled></input>
 						</div>
 						<div className="supervisor-settings__form-general-record">
-							<p>Adress</p>
-							<input type='text' id="first_name" defaultValue='firstname child'></input>
-						</div>
-						<div className="supervisor-settings__form-general-record">
-							<p>Begeleider</p>
-							<input type='text' id="first_name" defaultValue='firstname child'></input>
+							<p>Geboortedatum</p>
+							<input type='date' id="first_name" defaultValue={kid.birth_date} disabled></input>
 						</div>
 					</div>
 					<div className="supervisor-settings__form-personal">
@@ -78,6 +79,13 @@ const SupervisorSettingsPage = () => {
 							</div>
 						</div>
 					</div>
+					<input className="supervisor-settings__form-save" type="submit" value="Opslaan" onClick={(e) => {
+						e.preventDefault();
+						editKid(kid._id, {
+							theme_color: selectedThemeColor,
+							skin_color: selectedSkintone,
+						});
+					}}></input>
 				</form>
 
 			</div>

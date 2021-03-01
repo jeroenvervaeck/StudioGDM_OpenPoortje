@@ -5,7 +5,7 @@ import * as Routes from '../../routes';
 
 import './fiche.scss'
 
-const Fiches = ({ catogerie, color }) => {
+const Fiches = ({ catogerie, color, fiches }) => {
   const [show, setShow] = useState(false);
   const onClick = () => setShow(!show);
 
@@ -17,8 +17,9 @@ const Fiches = ({ catogerie, color }) => {
 		</div>
 		{ show ?
 			<div className="fiches__list">
-				<Fiche name="Begeleidingslijn" route={Routes.SUPERVISOR_MOUNTAIN} />
-				<Fiche name="Ervaringsdialoog" route={Routes.SUPERVISOR_DIALOG} />
+				{fiches.map(fiche => {
+					return <Fiche key={fiche} name={fiche} route={fiche} />
+				})}
 			</div>
 		 :
 			undefined

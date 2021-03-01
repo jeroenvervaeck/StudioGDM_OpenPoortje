@@ -11,6 +11,13 @@ const ApiProvider = ({children}) => {
 
   const [ user, setUser ] = useState(JSON.parse(sessionStorage.getItem('user')));
 
+  const colors = {
+	  'color-01': '#93B993',
+	  'color-02': '#e06e6a',
+	  'color-03': '#7ed5e5',
+	  'color-04': '#E89BC4',
+  }
+
   const setCookie =(name,value,days) => {
     var expires = "";
     if (days) {
@@ -37,7 +44,6 @@ const ApiProvider = ({children}) => {
   }
 
   const updateUserData = async () => {
-    console.log('check')
     const auth = JSON.parse(getCookie('auth'));
     const url = `${BASE_URL}/${auth.role}`;
 
@@ -52,13 +58,32 @@ const ApiProvider = ({children}) => {
     const response = await fetch(url, options).then((result) => result.json());
 
     sessionStorage.setItem('user', JSON.stringify(response));
+
+    return response;
+  }
+
+  const updateSupervisorData = async () => {
+    const auth = JSON.parse(getCookie('sup-auth'));
+    const url = `${BASE_URL}/supervisor`;
+
+    const options = {
+      method:'GET',
+      headers: new Headers({
+          'Authorization': 'Bearer '+ auth.token, 
+          'Content-Type': 'application/json',
+        }), 
+    }
+
+    const response = await fetch(url, options).then((result) => result.json());
+
+    sessionStorage.setItem('supervisor', JSON.stringify(response));
     setUser(response);
 
     return response;
   }
 
   const getKidsOfOrganisation = async ( role='supervisor' ) => {
-    const auth = JSON.parse(getCookie('auth'));
+    const auth = (role === 'supervisor') ? JSON.parse(getCookie('sup-auth')) : JSON.parse(getCookie('auth'));
     const url = `${BASE_URL}/${role}/kids`;
     
     const options = {
@@ -192,6 +217,30 @@ const ApiProvider = ({children}) => {
     return response;
   }
 
+  const editAuthSupervisor = async ( supervisorId, changes ) => {
+    console.log(supervisorId, changes)
+    const auth = JSON.parse(getCookie('auth'));
+    const url = `${BASE_URL}/organisation/supervisor/auth`;
+
+    const body = {
+      id: supervisorId,
+      changes,
+    }
+
+    const options = {
+      method:'PATCH',
+      body: JSON.stringify(body),
+      headers: new Headers({
+          'Authorization': 'Bearer '+ auth.token, 
+          'Content-Type': 'application/json',
+        }), 
+    }
+
+    const response = await fetch(url, options).then((result) => result.json());
+
+    return response;
+  }
+
   const deleteSupervisor = async ( supervisorId ) => {
     const auth = JSON.parse(getCookie('auth'));
     const url = `${BASE_URL}/organisation/supervisor`;
@@ -213,6 +262,8 @@ const ApiProvider = ({children}) => {
   return (
     <ApiContext.Provider value={{ 
       user,
+      colors,
+      
       setCookie,
       getCookie,
       eraseCookie,
@@ -226,7 +277,10 @@ const ApiProvider = ({children}) => {
       getSupervisorsOfOrganisation,
       newSupervisor,
       editSupervisor,
-      deleteSupervisor
+      editAuthSupervisor,
+      deleteSupervisor,
+
+      updateSupervisorData
      }}>
       {children}
     </ApiContext.Provider>

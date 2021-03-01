@@ -3,10 +3,10 @@ import { Redirect } from 'react-router-dom';
 import { useAuth, useApi } from '../../services';
 import { Link } from 'react-router-dom';
 import * as Routes from '../../routes';
-import { FaPlus, FaTrash, FaRegEye, FaEdit, FaSearch } from 'react-icons/fa'
+import { FaPlus, FaTrash, FaRegEye, FaEdit, FaSearch, FaKey } from 'react-icons/fa'
 import { logo } from '../../assets';
 
-import { Delete, AddSupervisor, EditSupervisor, ReadSupervisor } from '../../components';
+import { Delete, AddSupervisor, EditSupervisor, ReadSupervisor, PasswordSupervisor } from '../../components';
 
 import './organisation.scss'
 
@@ -19,6 +19,7 @@ const OrganisationCRUDsupervisorPage = () => {
 	const [ selectedSupervisors, setSelectedSupervisors ] = useState();
 
 	const [ supervisorToEdit, setSupervisorToEdit ] = useState(); 
+	const [ supervisorToChangePassword, setSupervisorToChangePassword ] = useState(); 
 	const [ supervisorToRead, setSupervisorToRead ] = useState(); 
 	const [ supervisorToDelete, setSupervisorToDelete ] = useState(); 
 	const [ addSupervisorIsVisible, setAddSupervisorIsVisible ] = useState(false); 
@@ -49,6 +50,11 @@ const OrganisationCRUDsupervisorPage = () => {
 					<td>
 						<FaEdit 
 							onClick={() => setSupervisorToEdit(supervisor)}
+						/>
+					</td>
+					<td>
+						<FaKey 
+							onClick={() => setSupervisorToChangePassword(supervisor)}
 						/>
 					</td>
 					<td>
@@ -107,6 +113,13 @@ const OrganisationCRUDsupervisorPage = () => {
 					onClose={() => setSupervisorToRead(undefined)}
 				/> 
 			}
+			{ 
+				supervisorToChangePassword  && <PasswordSupervisor
+					supervisor={supervisorToChangePassword}
+					onClose={() => setSupervisorToChangePassword(undefined)}
+					reload={() => setSupervisors()}
+				/> 
+			}
 			<div className="organisation-crud-supervisor__top">
 				<img src={ logo }></img>
 				<h1>Begeleider</h1>
@@ -115,23 +128,6 @@ const OrganisationCRUDsupervisorPage = () => {
 					<input type="text" placeholder="Zoek op naam.." onChange={(e) => onSearchChange(e.target.value)}></input>
 				</div>
 			</div>
-			<table className="organisation-crud-supervisor__table">
-				<tbody>
-					<tr>
-						<th>Gebruikersnaam</th>
-						<th>Voornaam</th>
-						<th>Achternaam</th>
-						<th>Bekijk</th>
-						<th>Bewerk</th>
-						<th>Wis</th>
-					</tr>
-					{
-						(selectedSupervisors)
-							? renderSupervisors()
-							: null
-					}
-				</tbody>
-			</table>
 			<div className="organisation-crud-supervisor__bottom">
 				 <div className="organisation-crud-supervisor__bottom-btn" onClick={() => setAddSupervisorIsVisible(true)}>
 					 <FaPlus />
@@ -141,6 +137,24 @@ const OrganisationCRUDsupervisorPage = () => {
 					 <p>Keer terug</p>
 				 </Link>
 			</div>
+			<table className="organisation-crud-supervisor__table">
+				<tbody>
+					<tr>
+						<th>Gebruikersnaam</th>
+						<th>Voornaam</th>
+						<th>Achternaam</th>
+						<th>Bekijk</th>
+						<th>Bewerk</th>
+						<th>Wachtwoord</th>
+						<th>Wis</th>
+					</tr>
+					{
+						(selectedSupervisors)
+							? renderSupervisors()
+							: null
+					}
+				</tbody>
+			</table>
 		</div>
 	);
 	
