@@ -1,20 +1,31 @@
 import { default as React, useState } from 'react';
-import { useApi } from '../../services';
+import { useApi, useAuth } from '../../services';
+import * as Routes from '../../routes';
+import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router'
 
 import './SupervisorSettingsPage.scss'
 
 import { Nav } from '../../components'
 
 const SupervisorSettingsPage = () => {
-	const { editKid } = useApi();
+	const { editKid, updateSelectedKidData } = useApi();
+	const history = useHistory();
 
-	const [ selectedSkintone, setSelectedSkintone ] = useState(JSON.parse(sessionStorage.getItem('selected-kid')).skin_color) // put skintone color here from DB, to have it checked
-	const [ selectedThemeColor, setSelectedThemeColor ] = useState(JSON.parse(sessionStorage.getItem('selected-kid')).theme_color) // put theme color here from DB, to have it checked
+	const kidObj = JSON.parse(sessionStorage.getItem('selected-kid'))
+	console.log(kidObj);
+	const [ selectedSkintone, setSelectedSkintone ] = useState((kidObj) ? kidObj.skin_color : '') // put skintone color here from DB, to have it checked
+	const [ selectedThemeColor, setSelectedThemeColor ] = useState((kidObj) ? kidObj.theme_color : '') // put theme color here from DB, to have it checked
 
-	const [ kid, setKid ] = useState(JSON.parse(sessionStorage.getItem('selected-kid')));
+	const [ kid, setKid ] = useState(kidObj);
 
 	return (
 		<div>
+			{
+				(kidObj === null)
+				? <Redirect to={'/'}/> 
+				: null
+			}
 			<Nav />
 			<div className="supervisor-settings">
 				<h1>Instellingen</h1>
@@ -23,15 +34,15 @@ const SupervisorSettingsPage = () => {
 						<h2>Algemeen</h2>
 						<div className="supervisor-settings__form-general-record">
 							<p>Voornaam</p>
-							<input type='text' id="first_name" defaultValue={kid.first_name} disabled></input>
+							<input type='text' id="first_name" defaultValue={(kid) ? kid.first_name: ''} disabled></input>
 						</div>
 						<div className="supervisor-settings__form-general-record">
 							<p>Familienaam</p>
-							<input type='text' id="first_name" defaultValue={kid.last_name} disabled></input>
+							<input type='text' id="first_name" defaultValue={(kid) ? kid.last_name : ''} disabled></input>
 						</div>
 						<div className="supervisor-settings__form-general-record">
 							<p>Geboortedatum</p>
-							<input type='date' id="first_name" defaultValue={kid.birth_date} disabled></input>
+							<input type='date' id="first_name" defaultValue={(kid) ? kid.birth_date: ''} disabled></input>
 						</div>
 					</div>
 					<div className="supervisor-settings__form-personal">
@@ -85,6 +96,11 @@ const SupervisorSettingsPage = () => {
 							theme_color: selectedThemeColor,
 							skin_color: selectedSkintone,
 						});
+						updateSelectedKidData(kidObj._id)
+							.then(() => {
+								history.go(0)
+							});
+						
 					}}></input>
 				</form>
 

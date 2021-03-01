@@ -10,7 +10,7 @@ import './nav.scss'
 
 
 const Nav = ({}) => {
-	const { getLoggedInRole, getIsSupervisorLoggedIn } = useAuth();
+	const { getLoggedInRole, getIsSupervisorLoggedIn, logoutSupervisor } = useAuth();
 	const { eraseCookie,colors } = useApi();
   const [showNav, setShowNav] = useState(false);
   const onClick = () => setShowNav(!showNav);
@@ -45,7 +45,7 @@ const Nav = ({}) => {
 			: null
     }
       { showNav ? 
-          <div className="nav-block" style={{backgroundColor: colors[kid.theme_color]}}>
+          <div className="nav-block" style={{backgroundColor: colors[(kid) ? kid.theme_color : 'color-01']}}>
             <div className="nav-block__credentials">
               <div className="nav-block__credentials-supervisor">
                 <div className="nav-block__credentials-supervisor-title">
@@ -58,7 +58,7 @@ const Nav = ({}) => {
                     <h2>{(supervisor) ? supervisor.first_name: 'Begeleider naam'} </h2>
                     <p>{(supervisor) ? supervisor.auth.username: 'Gebruikersnaam'}</p>
                   </div>
-                  <Link to={Routes.LOGIN_SECONDARY}>
+                  <Link to={Routes.LOGIN_SECONDARY} onClick={logoutSupervisor}>
                     <HiOutlineLogout />
                   </Link>
                 </div>
@@ -71,7 +71,7 @@ const Nav = ({}) => {
                     <FaUserAlt />
                     <div className="nav-block__credentials-kid-info-wrapper">
                     <h2>{(kid) ? kid.first_name: 'Kind naam'} </h2>
-                    <p>{(kid) ? kid.auth.username: 'Gebruikersnaam'}</p>
+                    <p>{(kid && kid.auth) ? kid.auth.username: 'Gebruikersnaam'}</p>
                     </div>
                     <Link to={Routes.SUPERVISOR_KID} onClick={deselectKid}>
                       <FaExchangeAlt />
@@ -116,7 +116,7 @@ const Nav = ({}) => {
             <div className="nav-block__click-on-me" onClick={onClick}></div>
           </div>
         : 
-          <div className="nav-none" style={{backgroundColor: colors[kid.theme_color]}} onClick={onClick}>
+          <div className="nav-none" style={{backgroundColor: colors[(kid) ? kid.theme_color : 'color-01']}} onClick={onClick}>
             <FaBars size={25} />
             <div className="nav-none__wrapper">
               <FaUserAlt />

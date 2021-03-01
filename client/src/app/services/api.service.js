@@ -82,6 +82,26 @@ const ApiProvider = ({children}) => {
     return response;
   }
 
+  const updateSelectedKidData = async (id) => {
+    const auth = JSON.parse(getCookie('sup-auth'));
+    const url = `${BASE_URL}/supervisor/kid/${id || JSON.parse(sessionStorage.getItem('selected-kid'))._id}`;
+
+    const options = {
+      method:'GET',
+      headers: new Headers({
+          'Authorization': 'Bearer '+ auth.token, 
+          'Content-Type': 'application/json',
+        }), 
+    }
+
+    const response = await fetch(url, options).then((result) => result.json());
+
+    sessionStorage.setItem('selected-kid', JSON.stringify(response.kid));
+    setUser(response);
+
+    return response;
+  }
+
   const getKidsOfOrganisation = async ( role='supervisor' ) => {
     const auth = (role === 'supervisor') ? JSON.parse(getCookie('sup-auth')) : JSON.parse(getCookie('auth'));
     const url = `${BASE_URL}/${role}/kids`;
@@ -268,6 +288,7 @@ const ApiProvider = ({children}) => {
       getCookie,
       eraseCookie,
       updateUserData,
+      updateSelectedKidData,
 
       getKidsOfOrganisation,
       editKid,

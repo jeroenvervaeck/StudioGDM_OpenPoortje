@@ -11,7 +11,7 @@ import './SupervisorKidsPage.scss'
 import { Kid } from '../../components'
 
 const SupervisorKidsPage = () => {
-	const { getKidsOfOrganisation } = useApi();
+	const { getKidsOfOrganisation, updateSelectedKidData } = useApi();
 	const { getLoggedInRole, getIsSupervisorLoggedIn } = useAuth();
 	const history = useHistory(); 
 

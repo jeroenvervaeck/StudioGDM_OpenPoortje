@@ -74,12 +74,19 @@ const AuthProvider = ({ children }) => {
     return JSON.parse(sessionStorage.getItem('user'));
   }
 
+  const logoutSupervisor = () => {
+    eraseCookie('sup-auth');
+    sessionStorage.removeItem('supervisor')
+    sessionStorage.removeItem('selected-kid')
+  }
+
   return (
     <AuthContext.Provider value={{ 
       getToken,
       getLoggedInRole,
       getUserData,
-      getIsSupervisorLoggedIn
+      getIsSupervisorLoggedIn,
+      logoutSupervisor
     }}>
       {children}
     </AuthContext.Provider>
