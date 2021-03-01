@@ -1,7 +1,6 @@
 import { default as React, useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import { useAuth, useApi } from '../../services';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import * as Routes from '../../routes';
 import { FaPlus, FaTrash, FaRegEye, FaEdit, FaSearch } from 'react-icons/fa'
 import { logo } from '../../assets';

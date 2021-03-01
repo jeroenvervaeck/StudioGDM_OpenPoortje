@@ -1,5 +1,7 @@
 import { default as React, useEffect, useState } from 'react';
-import { useApi } from '../../services'; 
+import { useApi, useAuth } from '../../services'; 
+import { Link, Redirect } from 'react-router-dom';
+import * as Routes from '../../routes';
 
 import { FaSearch, FaWrench, FaSortAlphaDown, FaSortNumericDown } from 'react-icons/fa';
 
@@ -9,27 +11,47 @@ import { Kid } from '../../components'
 
 const SupervisorKidsPage = () => {
 	const { getKidsOfOrganisation } = useApi();
-	const [ kids, setKids ] = useState();
+	const { getLoggedInRole } = useAuth();
+
+	const [ children, setChildren ] = useState();
+	const [ selectedChildren, setSelectedChildren ] = useState();
 
 	useEffect(() => {
 		const fetchKids = async () => {
 			const kidsResponse = await getKidsOfOrganisation();
-			setKids(kidsResponse.kids)
+			setChildren(kidsResponse.kids)
+			setSelectedChildren(kidsResponse.kids)
 			console.log(kidsResponse);
 		}
 
-		if (!kids || !kids.length) fetchKids() ;
+		if (!children || !children.length) fetchKids() ;
 	}, []);
 
+	const onSearchChange = ( searchTerm ) => {
+		if (searchTerm === '') setSelectedChildren(children);
+		const results = children.filter((child) => 
+			child.first_name.toLowerCase().includes(searchTerm.toLowerCase()) 
+			|| 
+			child.last_name.toLowerCase().includes(searchTerm.toLowerCase())
+			||
+			child.auth.username.toLowerCase().includes(searchTerm.toLowerCase())
+		);
+		setSelectedChildren(results);
+	}
 
 	return (
 		<div className="supervisor-kids">
+		{
+			(getLoggedInRole() !== 'organisation') 
+			? <Redirect to={Routes.LOGIN_MAIN}/> 
+			: null
+		}
 			<h1>Selecteer een kind</h1>
 
 			<form className="supervisor-kids__filter">
 				<div className="supervisor-kids__filter-search">
 					<FaSearch />
-					<input type="text" placeholder="Zoek op naam.."></input>
+					<input type="text" placeholder="Zoek op naam.." onChange={(e) => onSearchChange(e.target.value)}></input>
 				</div>
 				<div className="supervisor-kids__filter-icons">
 					<FaWrench />
@@ -40,8 +62,8 @@ const SupervisorKidsPage = () => {
 
 			<div className="supervisor-kids__content">
 				{
-					(kids && kids.length)
-					? kids.map((kid, index) => 
+					(selectedChildren && selectedChildren.length)
+					? selectedChildren.map((kid, index) => 
 						<Kid 
 							key={'kid-'+index}
 							firstname={kid.first_name} 

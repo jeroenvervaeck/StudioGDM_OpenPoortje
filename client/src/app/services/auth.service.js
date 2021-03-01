@@ -55,6 +55,7 @@ const AuthProvider = ({ children }) => {
     const auth = JSON.parse(getCookie('auth'));
     if (auth !== null) {
       checkForUserUpdate();
+      console.log(auth.role)
       return auth.role;
     }
     return '';
