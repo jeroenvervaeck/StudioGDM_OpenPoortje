@@ -11,7 +11,8 @@
 	z-index: 1000;
 
 	&-none {
-		width: 50px;
+		width: 6vw;
+		max-width: 100px;
 		height: 100%;
 		display: flex;
 		flex-direction: column;

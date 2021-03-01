@@ -217,6 +217,30 @@ const ApiProvider = ({children}) => {
     return response;
   }
 
+  const editAuthSupervisor = async ( supervisorId, changes ) => {
+    console.log(supervisorId, changes)
+    const auth = JSON.parse(getCookie('auth'));
+    const url = `${BASE_URL}/organisation/supervisor/auth`;
+
+    const body = {
+      id: supervisorId,
+      changes,
+    }
+
+    const options = {
+      method:'PATCH',
+      body: JSON.stringify(body),
+      headers: new Headers({
+          'Authorization': 'Bearer '+ auth.token, 
+          'Content-Type': 'application/json',
+        }), 
+    }
+
+    const response = await fetch(url, options).then((result) => result.json());
+
+    return response;
+  }
+
   const deleteSupervisor = async ( supervisorId ) => {
     const auth = JSON.parse(getCookie('auth'));
     const url = `${BASE_URL}/organisation/supervisor`;
@@ -253,6 +277,7 @@ const ApiProvider = ({children}) => {
       getSupervisorsOfOrganisation,
       newSupervisor,
       editSupervisor,
+      editAuthSupervisor,
       deleteSupervisor,
 
       updateSupervisorData

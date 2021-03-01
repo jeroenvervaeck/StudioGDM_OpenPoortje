@@ -10,6 +10,7 @@ import {default as EditChild} from './edit/EditChild';
 import {default as EditSupervisor} from './edit/EditSupervisor';
 import {default as ReadChild} from './read/ReadChild';
 import {default as ReadSupervisor} from './read/ReadSupervisor';
+import {default as PasswordSupervisor} from './password/PasswordSupervisor';
 
 export {
   Kid,
@@ -24,4 +25,5 @@ export {
   EditSupervisor,
   ReadChild,
   ReadSupervisor,
+  PasswordSupervisor,
 }

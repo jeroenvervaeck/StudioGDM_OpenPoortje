@@ -6,7 +6,7 @@ import * as Routes from '../../routes';
 
 import './kid.scss'
 
-const Kid = ({firstname, lastname, birthdate, color}) => {
+const Kid = ({firstname, lastname, username, birthdate, color}) => {
 	const { colors } = useApi();
 	const history = useHistory(); 
 
@@ -23,12 +23,11 @@ const Kid = ({firstname, lastname, birthdate, color}) => {
 	return (
 		<div className="kid" onClick={selectKid}>
 			{/* <img className="kid__profilepicture"></img> */}
-			<FaUserAlt className="kid__profilepicture" style={{border: '2px solid '+ colors[color] || 'black'}}/>
+			<FaUserAlt className="kid__profilepicture" style={{border: '4px solid '+ colors[color] || 'black'}}/>
 			<div className="kid__wrapper">
-				<div className="kid__wrapper-info">
-					<h1>{firstname} {lastname}</h1>
-					<p>age {calculateAge(new Date(birthdate), new Date())}</p>
-				</div>
+				<h1>{firstname} {lastname}</h1>
+				<p>{username}</p>
+				<p>{calculateAge(new Date(birthdate), new Date()) } jaar</p>
 				{/* <p className="kid__wrapper-modified">modified at</p> */}
 			</div>
 		</div>

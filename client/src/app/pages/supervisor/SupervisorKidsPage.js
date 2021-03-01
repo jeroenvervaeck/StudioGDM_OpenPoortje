@@ -68,6 +68,7 @@ const SupervisorKidsPage = () => {
 							key={'kid-'+index}
 							firstname={kid.first_name} 
 							lastname={kid.last_name} 
+							username={kid.auth.username}
 							color={kid.theme_color}
 							birthdate={kid.birth_date}
 						/>

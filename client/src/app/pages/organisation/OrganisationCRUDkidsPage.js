@@ -2,7 +2,7 @@ import { default as React, useEffect, useState } from 'react';
 import { useAuth, useApi } from '../../services';
 import { Link, Redirect } from 'react-router-dom';
 import * as Routes from '../../routes';
-import { FaPlus, FaTrash, FaRegEye, FaEdit, FaSearch } from 'react-icons/fa'
+import { FaPlus, FaTrash, FaRegEye, FaEdit, FaSearch, FaKey } from 'react-icons/fa'
 import { logo } from '../../assets';
 
 import { Delete, AddChild, EditChild, ReadChild } from '../../components';
@@ -44,6 +44,11 @@ const OrganisationCRUDkidsPage = () => {
 					</td>
 					<td>
 						<FaEdit 
+							onClick={() => setChildToEdit(kid)}
+						/>
+					</td>
+					<td>
+						<FaKey 
 							onClick={() => setChildToEdit(kid)}
 						/>
 					</td>
@@ -112,23 +117,6 @@ const OrganisationCRUDkidsPage = () => {
 					<input type="text" placeholder="Zoek op naam.." onChange={(e) => onSearchChange(e.target.value)}></input>
 				</div>
 			 </div>
-			 <table className="organisation-crud-kids__table">
-				<tbody>
-					<tr>
-						<th>Gebruikersnaam</th>
-						<th>Voornaam</th>
-						<th>Achternaam</th>
-						<th>Bekijk</th>
-						<th>Bewerk</th>
-						<th>Wis</th>
-					</tr>
-					{
-						(selectedChildren) 
-						? renderChildren()
-						: null
-					}
-				</tbody>
-			 </table>
 			 <div className="organisation-crud-kids__bottom">
 				 <div className="organisation-crud-kids__bottom-btn" onClick={() => setAddChildIsVisible(true)}>
 					 <FaPlus />
@@ -138,6 +126,24 @@ const OrganisationCRUDkidsPage = () => {
 					 <p>Keer terug</p>
 				 </Link>
 			 </div>
+			 <table className="organisation-crud-kids__table">
+				<tbody>
+					<tr>
+						<th>Gebruikersnaam</th>
+						<th>Voornaam</th>
+						<th>Achternaam</th>
+						<th>Bekijk</th>
+						<th>Bewerk</th>
+						<th>Wachtwoord</th>
+						<th>Wis</th>
+					</tr>
+					{
+						(selectedChildren) 
+						? renderChildren()
+						: null
+					}
+				</tbody>
+			 </table>
 		</div>
 	);
 	
