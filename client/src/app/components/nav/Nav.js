@@ -15,7 +15,6 @@ const Nav = ({}) => {
     <div className="nav">
       { showNav ? 
           <div className="nav-block">
-            <div className="nav-block__click-on-me" onClick={onClick}></div>
             <div className="nav-block__credentials">
               <div className="nav-block__credentials-supervisor">
                 <div className="nav-block__credentials-supervisor-title">
@@ -83,6 +82,7 @@ const Nav = ({}) => {
                 </Link>
               </div>
             </div>
+            <div className="nav-block__click-on-me" onClick={onClick}></div>
           </div>
         : 
           <div className="nav-none" onClick={onClick}>
