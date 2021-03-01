@@ -1,0 +1,31 @@
+@import '../../_sass/abstracts/index';
+
+#canvas {
+    border: solid red 1px;
+}
+
+.draw-container{
+    margin-left: 50px;
+}
+
+.colorPicker{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+#red{
+    background-color: red;
+}
+
+#blue{
+    background-color: blue;
+}
+
+#black{
+    background-color: black;
+}
+
+.activeColor{
+    border: green solid 5px;
+}

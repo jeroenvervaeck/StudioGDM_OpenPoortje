@@ -1,0 +1,81 @@
+@import '../../_sass/abstracts/index';
+
+.mountainPoint{
+	background-color: red;
+	border-radius: 20px;
+	width: 20px;
+
+}
+
+.mountainPoint{
+	height: 20px;
+}
+
+.textBox{
+	background-color: white;
+	width: 300px;
+	position: relative;
+	padding: 20px;
+	top: -170px;
+	left: -150px;
+	z-index: 2;
+	border-radius: 10px;
+	box-shadow: 0px 2px 19px 2px rgba(0,0,0,0.51);
+	-webkit-box-shadow: 0px 2px 19px 2px rgba(0,0,0,0.51);
+	-moz-box-shadow: 0px 2px 19px 2px rgba(0,0,0,0.51);
+}
+
+.textBox:after {
+	content: " ";
+	position: absolute;
+	right: 165px;
+	bottom: -15px;
+	border-top: 15px solid white;
+	border-right: 15px solid transparent;
+	border-left: 15px solid transparent;
+	border-bottom: none;
+  }
+
+.textBox h1{
+	color: #000;
+	font-size: 1.8em;
+}
+
+.textBox .cross{
+	position: relative;
+	top: -50px;
+	float: right;
+	cursor:pointer;
+}
+
+.vlag{
+	width: 50px;
+	position: relative;
+	top: -40px;
+	left: 9px;
+}
+
+.bergPad{
+	background-image: url("BERGBG.svg");
+}
+
+.myButton {
+	background-color:#93B993;
+	border-radius:28px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	padding:15px 0px;
+	width: 200px;
+	text-align: center;
+	margin-left: 18%;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.myButton:hover {
+	background-color:#5cbf2a;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}

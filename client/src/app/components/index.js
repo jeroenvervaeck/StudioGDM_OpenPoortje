@@ -25,3 +25,10 @@ export {
   ReadChild,
   ReadSupervisor,
 }
+import {default as Board} from './stickers/Board';
+import {default as MountainContainer} from './mountain/MountainContainer';
+
+export {
+  Board,
+  MountainContainer,
+}

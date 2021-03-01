@@ -17,3 +17,14 @@ export const SUPERVISOR_SETTINGS = '/supervisor/settings';
 export const SUPERVISOR_MOUNTAIN = '/supervisor/fiche/mountain';
 export const SUPERVISOR_DIALOG = '/supervisor/fiche/dialog';
 export const SUPERVISOR_SAVE_FICHE = '/supervisor/fiche/save';
+export const SUPERVISOR_TEST = '/supervisor/fiche/test';
+export const SUPERVISOR_EIGENSTICKER = '/supervisor/fiche/eigensticker';
+export const SUPERVISOR_BERGGESPREK = '/supervisor/fiche/bergGesprek';
+
+
+// Token
+export const TOKEN_SUPERVISOR = '/token/supervisor';
+export const TOKEN_KID = '/token/kid';
+export const TOKEN_ORGANISATION = '/token/organisation';
+export const TOKEN_ADMIN = '/token/admin';
+

@@ -15,6 +15,8 @@ import { default as SupervisorSettingsPage } from './supervisor/SupervisorSettin
 import { default as SupervisorMountainFiche } from './fiches/SupervisorMountainFiche';
 import { default as SupervisorDialogFiche } from './fiches/SupervisorDialogFiche';
 import { default as SaveFiche } from './fiches/SaveFiche';
+import { default as SupervisorTestFiche } from './fiches/SupervisorTestFiche';
+import { default as SupervisorEigenSticker } from './fiches/SupervisorEigenSticker';
 
 export {
 	// prepages
@@ -34,4 +36,6 @@ export {
 	SupervisorMountainFiche,
 	SupervisorDialogFiche,
 	SaveFiche,
+	SupervisorTestFiche,
+	SupervisorEigenSticker
 }
