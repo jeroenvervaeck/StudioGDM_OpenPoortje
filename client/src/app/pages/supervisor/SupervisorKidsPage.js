@@ -15,10 +15,12 @@ const SupervisorKidsPage = () => {
 		const fetchKids = async () => {
 			const kidsResponse = await getKidsOfOrganisation();
 			setKids(kidsResponse.kids)
+			console.log(kidsResponse);
 		}
 
 		if (!kids || !kids.length) fetchKids() ;
 	}, []);
+
 
 	return (
 		<div className="supervisor-kids">
@@ -45,6 +47,7 @@ const SupervisorKidsPage = () => {
 							firstname={kid.first_name} 
 							lastname={kid.last_name} 
 							color={kid.theme_color}
+							birthdate={kid.birth_date}
 						/>
 					)
 					: <p>Hier zou een leuke loading animation moeten komen...</p>

@@ -1,29 +1,37 @@
 import { default as React, useState } from 'react';
 import { useAuth } from '../services';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import * as Routes from '../routes';
  
 import { FaUserAlt, FaLock } from 'react-icons/fa';
 
 import './LoginPage.scss'
 
-const LoginSecondaryPage = () => {
-	const [selected, setSelected] = useState('kid')
-	
-	const [ authMode, setAuthMode ] = useState('kid');
-	const { getToken } = useAuth();
+const LoginSecondaryPage = () => {	
+	const { getToken, getLoggedInRole, getIsSupervisorLoggedIn } = useAuth();
 
 	const submit = async (e) => {
 		e.preventDefault();
 		const username = document.getElementById('username').value;
 		const password = document.getElementById('password').value;
 
-		const response = await getToken(authMode, username, password);
-		console.log(response);
+		const response = await getToken('supervisor', username, password);
+		window.location.reload();
 	}
 
 	return (
 		<div className="login">
+		{
+			(getLoggedInRole() !== 'organisation') 
+			? <Redirect to={Routes.LOGIN_MAIN}/> 
+			: null
+		}
+
+		{
+			(getIsSupervisorLoggedIn()) 
+			? <Redirect to={Routes.SUPERVISOR_KID}/> 
+			: null
+		}
 
 			<Link className="login__nav" to={Routes.ORGANISATION_DASHBOARD}>
 				<p>Beheer Open Poortje</p>

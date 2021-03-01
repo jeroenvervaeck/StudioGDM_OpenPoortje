@@ -6,7 +6,7 @@ const AuthContext = createContext();
 const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
-  const { setCookie, getCookie, eraseCookie, updateUserData } = useApi();
+  const { setCookie, getCookie, eraseCookie, updateUserData, updateSupervisorData } = useApi();
 
   const BASE_URL = `${apiConfig.baseURL || "http://localhost:8080"}`;
 
@@ -28,9 +28,17 @@ const AuthProvider = ({ children }) => {
 
     if (response.message) return {error: "Inloggegevens zijn onjuist!"}
 
-    setCookie('auth', JSON.stringify({token: response.token, role}), 30);
+    if(role === 'organisation' || role === 'kid') {
+      setCookie('auth', JSON.stringify({token: response.token, role}), 30);
+      await updateUserData();
+    } else if (role === 'supervisor') {
+      setCookie('sup-auth', JSON.stringify({token: response.token, role}), 1);
+      // remove organisation login data
+      // eraseCookie('auth');
+      // sessionStorage.removeItem('user');
 
-    await updateUserData();
+    }
+
 
     return response;
   }
@@ -39,11 +47,24 @@ const AuthProvider = ({ children }) => {
     if (!sessionStorage.getItem('user')) await updateUserData();
   }
 
+  const checkSupervisorForUpdate = async () => {
+    if (!sessionStorage.getItem('supervisor')) await updateSupervisorData();
+  }
+
   const getLoggedInRole = () => {
     const auth = JSON.parse(getCookie('auth'));
     if (auth !== null) {
       checkForUserUpdate();
       return auth.role;
+    }
+    return '';
+  }
+
+  const getIsSupervisorLoggedIn= () => {
+    const auth = JSON.parse(getCookie('sup-auth'));
+    if (auth !== null) {
+      checkSupervisorForUpdate();
+      return true;
     }
     return '';
   }
@@ -56,7 +77,8 @@ const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={{ 
       getToken,
       getLoggedInRole,
-      getUserData
+      getUserData,
+      getIsSupervisorLoggedIn
     }}>
       {children}
     </AuthContext.Provider>
