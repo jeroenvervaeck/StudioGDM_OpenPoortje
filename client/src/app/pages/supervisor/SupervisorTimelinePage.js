@@ -14,25 +14,21 @@ const SupervisorTimelinePage = () => {
 				<div className="supervisor-timeline__month">
 					<h2>Month - Year</h2>
 					<div className="supervisor-timeline__month-wrapper">
-						<div className="supervisor-timeline__month-wrapper-element" style={{ backgroundImage: "url(" + fiche + ")" }}>
-							<h1>Ervaringsdialoog</h1>
-							<p>Ingevuld op 12/12/2021</p>
-							<p>Begeleider: jeroen verver</p>
+						<div className="supervisor-timeline__month-wrapper-element">
+							<img src={fiche}></img>
+							<div className="supervisor-timeline__month-wrapper-element-label">
+								<h1>Ervaringsdialoog</h1>
+								<p>Ingevuld op 12/12/2021</p>
+								<p>Begeleider: jeroen verver</p>
+							</div>
 						</div>
-						<div className="supervisor-timeline__month-wrapper-element" style={{ backgroundImage: "url(" + fiche + ")" }}>
-							<h1>Ervaringsdialoog</h1>
-							<p>Ingevuld op 12/12/2021</p>
-							<p>Begeleider: jeroen verver</p>
-						</div>
-						<div className="supervisor-timeline__month-wrapper-element" style={{ backgroundImage: "url(" + fiche + ")" }}>
-							<h1>Ervaringsdialoog</h1>
-							<p>Ingevuld op 12/12/2021</p>
-							<p>Begeleider: jeroen verver</p>
-						</div>
-						<div className="supervisor-timeline__month-wrapper-element" style={{ backgroundImage: "url(" + fiche + ")" }}>
-							<h1>Ervaringsdialoog</h1>
-							<p>Ingevuld op 12/12/2021</p>
-							<p>Begeleider: jeroen verver</p>
+						<div className="supervisor-timeline__month-wrapper-element">
+							<img src={fiche}></img>
+							<div className="supervisor-timeline__month-wrapper-element-label">
+								<h1>Ervaringsdialoog</h1>
+								<p>Ingevuld op 12/12/2021</p>
+								<p>Begeleider: jeroen verver</p>
+							</div>
 						</div>
 					</div>
 				</div>
