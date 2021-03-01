@@ -46,14 +46,14 @@ function App() {
           <RouteWithLayout exact path={Routes.SUPERVISOR_TIMELINE} component={Pages.SupervisorTimelinePage} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_SETTINGS} component={Pages.SupervisorSettingsPage} layout={PageLayout} />
           // fiches
-          <RouteWithLayout exact path={Routes.SUPERVISOR_BERGGESPREK} component={Pages.SupervisorMountainFiche} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_MOUNTAIN} component={Pages.SupervisorMountainFiche} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_DIALOG} component={Pages.SupervisorDialogFiche} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_SAVE_FICHE} component={Pages.SaveFiche} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_KID} component={SupervisorKidsPage} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_FICHE} component={SupervisorFichePage} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_TIMELINE} component={SupervisorTimelinePage} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_SETTINGS} component={SupervisorSettingsPage} layout={PageLayout} />
-          <RouteWithLayout exact path={Routes.SUPERVISOR_BERGGESPREK} component={SupervisorMountainFiche} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_BERGGESPREK} component={Pages.SupervisorBergGesprek} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_DIALOG} component={SupervisorDialogFiche} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_TEST} component={SupervisorTestFiche} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_EIGENSTICKER} component={SupervisorEigenSticker} layout={PageLayout} />

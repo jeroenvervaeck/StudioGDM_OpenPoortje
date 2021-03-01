@@ -82,7 +82,7 @@ const Nav = ({}) => {
             <div className="nav-block__routes">
               <div className="nav-block__routes-main">
                 <div className="nav-block__routes-main-wrapper">
-                  <Link to={Routes.SUPERVISOR_BERGGESPREK} className="nav-block__routes-main-wrapper-element">
+                  <Link to={Routes.SUPERVISOR_MOUNTAIN} className="nav-block__routes-main-wrapper-element">
                     <FaMountain size={20} />
                     <p>Berglijn</p>
                   </Link>
