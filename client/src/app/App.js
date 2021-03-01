@@ -11,6 +11,19 @@ import { PageLayout } from './layouts';
 
 import * as Pages from './pages';
 
+import { 
+  LoginPage,
+  SupervisorKidsPage,
+  SupervisorFichePage,
+  SupervisorTimelinePage,
+  SupervisorSettingsPage,
+  SupervisorMountainFiche,
+  SupervisorDialogFiche,
+  SupervisorTestFiche,
+  SupervisorEigenSticker
+} from './pages';
+
+
 
 function App() {
   return (
@@ -36,6 +49,14 @@ function App() {
           <RouteWithLayout exact path={Routes.Begeleidingslijn} component={Pages.SupervisorMountainFiche} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.Ervaringsdialoog} component={Pages.SupervisorDialogFiche} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_SAVE_FICHE} component={Pages.SaveFiche} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_KID} component={SupervisorKidsPage} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_FICHE} component={SupervisorFichePage} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_TIMELINE} component={SupervisorTimelinePage} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_SETTINGS} component={SupervisorSettingsPage} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_MOUNTAIN} component={SupervisorMountainFiche} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_DIALOG} component={SupervisorDialogFiche} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_TEST} component={SupervisorTestFiche} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_EIGENSTICKER} component={SupervisorEigenSticker} layout={PageLayout} />
         </Switch>
       </Router>
       </AuthProvider>

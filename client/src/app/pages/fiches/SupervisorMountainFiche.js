@@ -1,19 +1,34 @@
-import { default as React } from 'react';
 
 import './fiches.scss'
+import React, { Component } from 'react';
+import Draggable, { ControlPosition } from 'react-draggable'; // The default
+import './SupervisorMountainFiche.scss';
+import { Nav } from '../../components';
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { MountainContainer } from '../../components'
 
-import { Nav } from '../../components'
+//const Draggable = ReactDraggable;
 
-const SupervisorMountainFiche = () => {
-	return (
+class SupervisorMountainFiche extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { position: { x:0, y:0 }}
+  }
+
+  render() {
+
+	return ( 
 		<div>
 			<Nav />
-			<div className="supervisor-mountain">
-				Mountain fiche
+			<div>
+      		<DndProvider backend={HTML5Backend}>
+				<MountainContainer />
+			</DndProvider>
 			</div>
-		</div>
-	);
-	
-};
+		</div>  
+	)
+  }
+}
 
-export default SupervisorMountainFiche;
+export default SupervisorMountainFiche

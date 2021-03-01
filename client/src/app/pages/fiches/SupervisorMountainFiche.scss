@@ -1,0 +1,20 @@
+body { 
+    
+    padding: 0;
+    margin: 0;
+  }
+  
+  .handle {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #2662c1;
+    color: #fff;
+    cursor: move;
+    text-align: center;
+  }
+  
+  .handle:not(.react-draggable-dragging) {
+    -webkit-transition: -webkit-transform 0.5s ease-out; /* Safari */
+    transition: transform 0.5s ease-out;
+  }
