@@ -44,10 +44,14 @@ const LoginMainPage = (props) => {
 						<input type="password" id="password" placeholder="Wachtwoord"></input>
 					</div>
 					<div className="login__form-credenials-type">
-						<input type="radio" id="kid" name="authMode" value="kid" defaultChecked={true} onClick={() => setAuthMode('kid')}></input>
-						<label htmlFor="kid">Kind</label><br></br>
-						<input type="radio" id="supervisor" name="authMode" value="supervisor" onClick={() => setAuthMode('organisation')}></input>
-						<label htmlFor="supervisor">Organisatie</label><br></br>
+						<div className="login__form-credenials-type-wrapper">
+							<input type="radio" id="kid" name="authMode" value="kid" defaultChecked={true} onClick={() => setAuthMode('kid')}></input>
+							<label htmlFor="kid">Kind</label><br></br>
+						</div>
+						<div className="login__form-credenials-type-wrapper">
+							<input type="radio" id="supervisor" name="authMode" value="supervisor" onClick={() => setAuthMode('organisation')}></input>
+							<label htmlFor="supervisor">Organisatie</label><br></br>
+						</div>
 					</div>
 				</div>
 
