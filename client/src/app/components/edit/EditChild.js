@@ -5,7 +5,7 @@ import { FaEdit } from 'react-icons/fa';
 import './edit.scss'
 
 const EditChild = ({kid, onClose, reload}) => {
-	const { editKid } = useApi();
+  const { editKid } = useApi();
 
   const [ selectedSkintone, setSelectedSkintone ] = useState(kid.skin_color) // put skintone color here from DB, to have it checked
   const [ selectedThemeColor, setSelectedThemeColor ] = useState(kid.theme_color) // put theme color here from DB, to have it checked
@@ -13,7 +13,7 @@ const EditChild = ({kid, onClose, reload}) => {
   return (
     <form className="edit-child">
 		<FaEdit />
-		<h1>Kind "name" bewerken</h1>
+		<h1>{kid.first_name + ' ' + kid.last_name} bewerken</h1>
 		<p>U bewerkt een bestaande record in de database van kinderen.</p>
 		<div className="edit-child__input">
 			<p>Voornaam:</p>

@@ -14,11 +14,11 @@ const PasswordSupervisor = ({supervisor, onClose, reload}) => {
 		<p>U staat op het punt een nieuw wachtwoord te te wijzen</p>
 		<div className="pw-supervisor__input">
 			<p>Nieuw wachtwoord:</p>
-			<input type='text' id="new_pw" defaultValue="wachtwoord"></input>
+			<input type='password' id="new_pw" defaultValue=""></input>
 		</div>
 		<div className="pw-supervisor__input">
 			<p>Verifieer:</p>
-			<input type='text' id="verify_pw" defaultValue="wachtwoord"></input>
+			<input type='password' id="verify_pw" defaultValue=""></input>
 		</div>
 		<div className="pw-supervisor__buttons">
 			<p onClick= { onClose }>Annuleren</p>

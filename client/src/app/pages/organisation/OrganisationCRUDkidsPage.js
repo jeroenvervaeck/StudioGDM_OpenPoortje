@@ -5,7 +5,7 @@ import * as Routes from '../../routes';
 import { FaPlus, FaTrash, FaRegEye, FaEdit, FaSearch, FaKey } from 'react-icons/fa'
 import { logo } from '../../assets';
 
-import { Delete, AddChild, EditChild, ReadChild } from '../../components';
+import { Delete, AddChild, EditChild, ReadChild, PasswordChild } from '../../components';
 
 import './organisation.scss'
 
@@ -17,6 +17,7 @@ const OrganisationCRUDkidsPage = () => {
 	const [ selectedChildren, setSelectedChildren ] = useState();
 
 	const [ childToEdit, setChildToEdit ] = useState(); 
+	const [ childToChangePassword, setChildToChangePassword ] = useState(); 
 	const [ childToRead, setChildToRead ] = useState(); 
 	const [ childToDelete, setChildToDelete ] = useState(); 
 	const [ addChildIsVisible, setAddChildIsVisible ] = useState(false); 
@@ -49,7 +50,7 @@ const OrganisationCRUDkidsPage = () => {
 					</td>
 					<td>
 						<FaKey 
-							onClick={() => setChildToEdit(kid)}
+							onClick={() => setChildToChangePassword(kid)}
 						/>
 					</td>
 					<td>
@@ -108,7 +109,13 @@ const OrganisationCRUDkidsPage = () => {
 					onClose={() => setChildToRead(undefined)}
 				/> 
 			}
-			
+			{
+				childToChangePassword && <PasswordChild 
+					kid={childToChangePassword}
+					onClose={() => setChildToChangePassword(undefined)}
+					reload={() => setChildren()}
+				/>
+			}
 			 <div className="organisation-crud-kids__top">
 				<img src={ logo }></img>
 				<h1>Kinderen</h1>
