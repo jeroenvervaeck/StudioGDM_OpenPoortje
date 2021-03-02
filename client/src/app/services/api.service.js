@@ -279,6 +279,49 @@ const ApiProvider = ({children}) => {
     return response;
   }
 
+  
+  const getFicheTypes = async () => {
+    const auth = JSON.parse(getCookie('sup-auth'));
+    const url = `${BASE_URL}/supervisor/fichetypes`;
+
+    const options = {
+      method:'GET',
+      headers: new Headers({
+          'Authorization': 'Bearer '+ auth.token, 
+          'Content-Type': 'application/json',
+        }), 
+    }
+
+    const response = await fetch(url, options).then((result) => result.json());
+
+    return response;
+  }
+
+  const saveMountainFiche = async ( question1, question2, positionById ) => {
+    const auth = JSON.parse(getCookie('sup-auth'));
+    const url = `${BASE_URL}/kid/fiche`;
+
+    const body = {
+      question1,
+      question2,
+      positionById,
+    }
+
+    const options = {
+      method:'POST',
+      body,
+      headers: new Headers({
+          'Authorization': 'Bearer '+ auth.token, 
+          'Content-Type': 'application/json',
+        }), 
+    }
+
+    const response = await fetch(url, options).then((result) => result.json());
+
+    return response;
+  }
+
+
   return (
     <ApiContext.Provider value={{ 
       user,
@@ -289,6 +332,7 @@ const ApiProvider = ({children}) => {
       eraseCookie,
       updateUserData,
       updateSelectedKidData,
+      updateSupervisorData,
 
       getKidsOfOrganisation,
       editKid,
@@ -301,7 +345,9 @@ const ApiProvider = ({children}) => {
       editAuthSupervisor,
       deleteSupervisor,
 
-      updateSupervisorData
+      // fiches
+      getFicheTypes,
+      saveMountainFiche,
      }}>
       {children}
     </ApiContext.Provider>

@@ -42,7 +42,7 @@ const SupervisorSettingsPage = () => {
 						</div>
 						<div className="supervisor-settings__form-general-record">
 							<p>Geboortedatum</p>
-							<input type='date' id="first_name" defaultValue={(kid) ? kid.birth_date: ''} disabled></input>
+							<input type='date' id="first_name" defaultValue={(kid) ? new Date(kid.birth_date): ''} disabled></input>
 						</div>
 					</div>
 					<div className="supervisor-settings__form-personal">
