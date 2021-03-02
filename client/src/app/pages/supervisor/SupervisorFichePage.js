@@ -21,7 +21,7 @@ const SupervisorFichePage = () => {
 				</form>
 
 				<div className="supervisor-fiche__content">
-					<Fiches catogerie="CKG" color="#EF4742" fiches={['Begeleidingslijn', 'Ervaringsdialoog']} />
+					<Fiches catogerie="CKG" color="#EF4742" fiches={['Ervaringsdialoog']} />
 					<Fiches catogerie="Ik" color="#FAAB4B" fiches={['Hart']} />
 					<Fiches catogerie="Rechten" color="#01AEB1" fiches={['Zakgeld']} />
 				</div>

@@ -120,28 +120,28 @@ class SupervisorEigenSticker extends Component {
     render() { 
         return ( 
             <div>
-				<Nav />
-				<div class="draw-container">
-                    <div>
-                        <canvas id="canvas" width="500" height="500"></canvas>
-                    </div>
-                    <div>
-                        <div id="blue" class="colorPicker" onClick={() => pickColor("blue")}></div>
-                        <div id="red" class="colorPicker" onClick={() => pickColor("red")}></div>
-                        <div id="black" class="colorPicker activeColor" onClick={() => pickColor("black")}></div>
-                        <div class="colorPicker"></div>
-                    </div>
-                    <div>
-                        <button id="save" type="button">save</button>
-                        <input
-                        type="file"
-                        id="load"
-                        name="avatar"
-                        accept="image/png"
-                        ></input>
-                    </div>
-                </div>
-			</div>
+      				<Nav />
+      				<div class="draw-container">
+                          <div>
+                              <canvas id="canvas" width="500" height="500"></canvas>
+                          </div>
+                          <div>
+                              <div id="blue" class="colorPicker" onClick={() => pickColor("blue")}></div>
+                              <div id="red" class="colorPicker" onClick={() => pickColor("red")}></div>
+                              <div id="black" class="colorPicker activeColor" onClick={() => pickColor("black")}></div>
+                              <div class="colorPicker"></div>
+                          </div>
+                          <div>
+                              <button id="save" type="button">save</button>
+                              <input
+                              type="file"
+                              id="load"
+                              name="avatar"
+                              accept="image/png"
+                              ></input>
+                          </div>
+               </div>
+      			</div>
         );
     }
 }
