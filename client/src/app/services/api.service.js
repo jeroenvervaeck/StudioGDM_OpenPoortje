@@ -268,7 +268,7 @@ const ApiProvider = ({children}) => {
 
     const body = {
       id: supervisorId,
-      changes,
+      authUpdate: changes,
     }
 
     const options = {

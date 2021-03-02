@@ -14,11 +14,11 @@ const PasswordChild = ({kid, onClose, reload}) => {
 		<p>U staat op het punt een nieuw wachtwoord toe te wijzen</p>
 		<div className="pw-child__input">
 			<p>Nieuw wachtwoord:</p>
-			<input type='text' id="new_pw" defaultValue=""></input>
+			<input type='password' id="new_pw" defaultValue=""></input>
 		</div>
 		<div className="pw-child__input">
 			<p>Verifieer:</p>
-			<input type='text' id="verify_pw" defaultValue=""></input>
+			<input type='password' id="verify_pw" defaultValue=""></input>
 		</div>
 		<div className="pw-child__buttons">
 			<p onClick= { onClose }>Annuleren</p>
