@@ -36,15 +36,10 @@ const SupervisorFichePage = () => {
 				</form>
 
 				<div className="supervisor-fiche__content">
-<<<<<<< HEAD
 					<Fiches catogerie="CKG" color="#EF4742" fiches={(ficheTypes) ? ficheTypes.filter((type) => type.category === 'CKG').map((type) => type.name) : []} />
 					<Fiches catogerie="Ik" color="#FAAB4B" fiches={(ficheTypes) ? ficheTypes.filter((type) => type.category === 'Ik').map((type) => type.name) : []} />
 					<Fiches catogerie="Rechten" color="#01AEB1" fiches={(ficheTypes) ? ficheTypes.filter((type) => type.category === 'Rechten').map((type) => type.name) : []} />
-=======
-					<Fiches catogerie="CKG" color="#EF4742" fiches={['Ervaringsdialoog']} />
-					<Fiches catogerie="Ik" color="#FAAB4B" fiches={['Hart']} />
-					<Fiches catogerie="Rechten" color="#01AEB1" fiches={['Zakgeld']} />
->>>>>>> 030da1fc54a708f9cfc91f5b8c0a68eaf6b5bd6d
+
 				</div>
 				
 			</div>
