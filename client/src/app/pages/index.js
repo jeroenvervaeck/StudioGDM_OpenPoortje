@@ -17,6 +17,7 @@ import { default as SupervisorDialogFiche } from './fiches/SupervisorDialogFiche
 import { default as SaveFiche } from './fiches/SaveFiche';
 import { default as SupervisorTestFiche } from './fiches/SupervisorTestFiche';
 import { default as SupervisorEigenSticker } from './fiches/SupervisorEigenSticker';
+import { default as SupervisorBergGesprek } from './fiches/SupervisorBergGesprek';
 
 export {
 	// prepages
@@ -37,5 +38,6 @@ export {
 	SupervisorDialogFiche,
 	SaveFiche,
 	SupervisorTestFiche,
-	SupervisorEigenSticker
+	SupervisorEigenSticker,
+	SupervisorBergGesprek
 }
