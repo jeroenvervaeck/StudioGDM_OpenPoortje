@@ -52,7 +52,7 @@ body {
   min-width: 100%;
   padding-bottom: 200px!important;
   padding-top: 100px!important;
-  background-color: var(--color-dark)!important;
+  /* background-color: var(--color-dark)!important; */
   overflow: hidden;
 }
 .d-contents{

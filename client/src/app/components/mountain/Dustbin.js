@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDrop } from 'react-dnd';
 import { ItemTypes } from './ItemTypes';
+import { Link, Redirect } from 'react-router-dom';
 import * as Routes from '../../routes';
 import vlag from './Vlag.png';
 import cross from './Cross.png';
@@ -67,6 +68,8 @@ export const Dustbin = ({ id , handler , position , children }) => {
     {hasDropped && <span id={'span-'+id}>
         <img src="pic_trulli.jpg" alt="Italian Trulli"></img>            
     </span>}
+
+    <a href={Routes.SUPERVISOR_BERGGESPREK} class="myButton">Nieuw gesprek</a>
     */
 
     const imageClick = (id) => {
@@ -83,7 +86,9 @@ export const Dustbin = ({ id , handler , position , children }) => {
             <div className="textBox">
                 <h1>Gesprek {id}</h1>
                 <img src={cross} alt="Close Pop-up" className="cross" onClick={() => imageClick(id)}></img>
-                <a href={Routes.SUPERVISOR_MOUNTAIN} class="myButton">Nieuw gesprek</a>
+                <Link to={{ pathname: Routes.SUPERVISOR_BERGGESPREK , state: id }} className="myButton">
+                    <p>Nieuw gesprek</p>
+                  </Link>
             </div>            
         </span>}
 			

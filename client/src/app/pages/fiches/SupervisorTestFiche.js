@@ -21,7 +21,7 @@ class SupervisorTestFiche extends Component {
     render() { 
         return ( 
             <div>
-				<Nav />
+				{/* <Nav /> */}
 				<div>
 				<Board clearTrigger={this.state}/>
 				</div>
