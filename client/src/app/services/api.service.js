@@ -159,6 +159,30 @@ const ApiProvider = ({children}) => {
     return response;
   }
 
+  const editAuthKid = async ( kidId, changes ) => {
+    console.log(kidId, changes)
+    const auth = JSON.parse(getCookie('auth'));
+    const url = `${BASE_URL}/organisation/kid/auth`;
+
+    const body = {
+      id: kidId,
+      authUpdate: changes,
+    }
+
+    const options = {
+      method:'PATCH',
+      body: JSON.stringify(body),
+      headers: new Headers({
+          'Authorization': 'Bearer '+ auth.token, 
+          'Content-Type': 'application/json',
+        }), 
+    }
+
+    const response = await fetch(url, options).then((result) => result.json());
+
+    return response;
+  }
+
   const newKid = async ( kid ) => {
     const auth = JSON.parse(getCookie('auth'));
     const url = `${BASE_URL}/organisation/kid`;
@@ -292,6 +316,7 @@ const ApiProvider = ({children}) => {
 
       getKidsOfOrganisation,
       editKid,
+      editAuthKid,
       newKid,
       deleteKid,
 

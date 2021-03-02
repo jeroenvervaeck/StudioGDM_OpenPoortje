@@ -10,7 +10,7 @@ const EditSupervisor = ({supervisor, onClose, reload}) => {
   return (
     <form className="edit-supervisor">
 		<FaEdit />
-		<h1>Begeleider "name" bewerken</h1>
+		<h1>{supervisor.first_name + ' ' + supervisor.last_name} bewerken</h1>
 		<p>U bewerkt een bestaande record in de database van begeleiders.</p>
 		<div className="edit-supervisor__input">
 			<p>Voornaam:</p>
