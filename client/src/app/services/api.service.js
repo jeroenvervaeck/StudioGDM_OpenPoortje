@@ -95,6 +95,7 @@ const ApiProvider = ({children}) => {
     }
 
     const response = await fetch(url, options).then((result) => result.json());
+    console.log(response);
 
     sessionStorage.setItem('selected-kid', JSON.stringify(response.kid));
     setUser(response);
@@ -321,19 +322,26 @@ const ApiProvider = ({children}) => {
     return response;
   }
 
-  const saveMountainFiche = async ( question1, question2, positionById ) => {
+  const saveMountainFiche = async ( question1, question2, positionById, kidId ) => {
     const auth = JSON.parse(getCookie('sup-auth'));
     const url = `${BASE_URL}/kid/fiche`;
 
     const body = {
-      question1,
-      question2,
-      positionById,
+      kidId: kidId,
+      fiche: {
+        fiche_type: "601a996b352c1d313cd7bca2",
+        picture_name: "",
+        fiche_data:{
+          vraag1: question1,
+          vraag2: question2,
+          positionById: positionById
+        }
+      }
     }
 
     const options = {
       method:'POST',
-      body,
+      body:JSON.stringify(body),
       headers: new Headers({
           'Authorization': 'Bearer '+ auth.token, 
           'Content-Type': 'application/json',

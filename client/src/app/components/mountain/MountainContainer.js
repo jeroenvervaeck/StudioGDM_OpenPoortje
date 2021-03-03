@@ -9,7 +9,7 @@ class MountainContainer extends Component {
 	constructor(props) {
 	  super(props)
 	  this.state = { 
-		leftPos: 60,
+		leftPos: 200,
 		rightPos:-120, 
 		PointPos : [
 			[580, 466],
