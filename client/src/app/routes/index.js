@@ -11,6 +11,7 @@ export const SUPERVISOR_KID = '/supervisor/kids';
 export const SUPERVISOR_DASHBOARD = '/supervisor/dashboard';
 export const SUPERVISOR_FICHE = '/supervisor/fiche';
 export const SUPERVISOR_TIMELINE = '/supervisor/timeline';
+export const SUPERVISOR_INFO = '/supervisor/info';
 export const SUPERVISOR_SETTINGS = '/supervisor/settings';
 
 // fiches

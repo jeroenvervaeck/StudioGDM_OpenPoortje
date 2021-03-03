@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {FaPencilAlt} from 'react-icons/fa'
+import {FaEye, FaPencilAlt} from 'react-icons/fa'
 import {FaTrash} from 'react-icons/fa'
 import {FaSave} from 'react-icons/fa'
 import {RiCloseLine} from 'react-icons/ri'
@@ -183,7 +183,7 @@ class Note extends Component {
                         className="btn btn-outline-info">
                         <span className="react-icon" role="img"
                             aria-label="Edit note">
-                                <FaPencilAlt/></span>
+                                <FaEye/></span>
                     </button>
                 </div>
                 </div>

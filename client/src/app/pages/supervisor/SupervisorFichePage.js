@@ -28,12 +28,14 @@ const SupervisorFichePage = () => {
 			<div className="supervisor-fiche">
 				<h1>Selecteer een fiche</h1>
 
-				<form className="supervisor-fiche__filter">
+{/*
+ 				<form className="supervisor-fiche__filter">
 					<div className="supervisor-fiche__filter-search">
 						<FaSearch />
 						<input type="text" placeholder="Zoek op naam.."></input>
 					</div>
-				</form>
+				</form> 
+*/}
 
 				<div className="supervisor-fiche__content">
 					<Fiches catogerie="CKG" color="#EF4742" fiches={(ficheTypes) ? ficheTypes.filter((type) => type.category === 'CKG').map((type) => type.name) : []} />
