@@ -7,32 +7,38 @@
 		text-align: center;
 		font-size: 38px;
 		color: $color-text;
-		padding-top: 25px;
+		padding: 25px 0;
 	}
 	&__main {
-		padding-left: 120px;
-		padding-right: 80px;
+		padding-left: 10vw;
+		padding-right: 5vw;
 		&-card {
-
+			margin-top: 20px;
+			box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.10);
 			&-display {
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
 				padding: 20px 28px;
-				background-color: $color-01;
 
 				h1 {
 					margin: 0;
 					padding: 0;
 					color: $color-white;
+					font-size: 24px;
 				}
 				svg {
 					margin: 0;
 					color: $color-white;
+					font-size: 32px;
 				}
 			}
 			&-text {
-
+				background-color: $color-white;
+				color: $color-text;
+				padding: 20px 28px;
+				margin: 0;
+				border: $color-gray solid 1px;
 			}
 		}
 	}
