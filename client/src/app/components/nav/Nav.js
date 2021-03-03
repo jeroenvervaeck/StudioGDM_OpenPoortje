@@ -1,4 +1,4 @@
-import { default as React, useState } from 'react';
+import { default as React, useEffect, useState } from 'react';
 import { FaBars, FaUserAlt, FaTimes, FaExchangeAlt, FaMountain, FaComments, FaFolder, FaBookmark, FaWrench, FaHome, FaInfo, FaBlog } from 'react-icons/fa';
 import { HiOutlineLogout } from 'react-icons/hi';
 import { useApi, useAuth } from '../../services'; 
@@ -9,14 +9,27 @@ import { useHistory } from 'react-router-dom'
 import './nav.scss'
 
 
+import profile_01 from '../../assets/profileGifs/profile_01.gif'
+import profile_02 from '../../assets/profileGifs/profile_02.gif'
+import profile_03 from '../../assets/profileGifs/profile_03.gif'
+import profile_04 from '../../assets/profileGifs/profile_04.gif'
+
+
 const Nav = ({}) => {
 	const { getLoggedInRole, getIsSupervisorLoggedIn, logoutSupervisor } = useAuth();
 	const { eraseCookie,colors } = useApi();
   const [showNav, setShowNav] = useState(false);
   const onClick = () => setShowNav(!showNav);
 
+	const profiles = [profile_01, profile_02, profile_03, profile_04];
+	let profileGif;
+
   const [ supervisor, setSupervisor ] = useState(JSON.parse(sessionStorage.getItem('supervisor')).supervisor);
   const [ kid, setKid ] = useState(JSON.parse(sessionStorage.getItem('selected-kid')));
+
+  useEffect(() => {
+    profileGif = profiles[+kid.skin_color.replace('skin-', '')-1];
+  }, [kid]);
 
   const logOutSupervisor = () => {
     sessionStorage.removeItem('supervisor');
@@ -68,7 +81,8 @@ const Nav = ({}) => {
                     <h1>Kind</h1>
                   </div>
                   <div className="nav-block__credentials-kid-info">
-                    <FaUserAlt />
+                    {/* <FaUserAlt /> */}
+                    {/* <img className="nav-block__credentials-kid-info-profile" src={(kid) ? profileGif : '.......'}/> */}
                     <div className="nav-block__credentials-kid-info-wrapper">
                     <h2>{(kid) ? kid.first_name: 'Kind naam'} </h2>
                     <p>{(kid && kid.auth) ? kid.auth.username: 'Gebruikersnaam'}</p>

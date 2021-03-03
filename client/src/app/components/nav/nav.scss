@@ -144,11 +144,14 @@
 					justify-content: space-between;
 					align-items: center;
 					// kid profilepic
-					svg:nth-child(1) {
-						font-size: 28px;
-						border: solid 2px $color-white;
-						background-color: $color-gray;
-						padding: 5px;
+					&-image {
+
+						width: 50px;
+						height: 50px;
+						// font-size: 28px;
+						// border: solid 2px $color-white;
+						// background-color: $color-gray;
+						// padding: 5px;
 					}
 					&-wrapper {
 						display: flex;

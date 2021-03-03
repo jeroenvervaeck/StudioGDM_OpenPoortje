@@ -7,10 +7,12 @@ import ReactDOM from 'react-dom';
 import Draggable from 'react-draggable';
 import { Link } from "react-router-dom";
 import * as Routes from '../../routes';
+import { RiScreenshot2Fill } from 'react-icons/ri';
 
 import * as Screenshot from 'html2canvas';
 
 import './stickers.css'
+import './stickers.scss'
 
 const images = [
     {
@@ -189,22 +191,24 @@ class Board extends Component {
     render() { 
         return (
             <div id="board">
-                <button value="Screenshot" onClick={() => {
-                    Screenshot(document.querySelector("#board")).then((canvas) => {
-                        const img = canvas.toDataURL("image/png");
-                        // download png
-                        const element = document.createElement('a');
-                        element.setAttribute('href', img);
-                        element.setAttribute('download', 'file.png');
+                <RiScreenshot2Fill className="screenshot"
+                    onClick={() => {
+                        Screenshot(document.querySelector("#board")).then((canvas) => {
+                            const img = canvas.toDataURL("image/png");
+                            // download png
+                            const element = document.createElement('a');
+                            element.setAttribute('href', img);
+                            element.setAttribute('download', 'file.png');
 
-                        element.style.display = 'none';
-                        document.body.appendChild(element);
+                            element.style.display = 'none';
+                            document.body.appendChild(element);
 
-                        element.click();
+                            element.click();
 
-                        document.body.removeChild(element);
-                    });
-                }}/>
+                            document.body.removeChild(element);
+                        });
+                    }}
+                />
                 {(this.state.notes) ? this.state.notes.map(this.render_each_note) : null}
                 {(this.state.stickers) ? this.state.stickers.map(this.render_each_sticker) : null}
                 

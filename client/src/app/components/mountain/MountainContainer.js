@@ -42,7 +42,7 @@ class MountainContainer extends Component {
 	  return ( 
 		<div>
 			
-		<div style={{ overflow: 'hidden', clear: 'both', marginLeft: '200px' }}>
+		<div style={{ overflow: 'hidden', clear: 'both', marginLeft: '600px' }}>
 		<MountainPath />
 		<Dustbin id={0} position={this.state.PointPos[0]} handler = {this.handler}></Dustbin>
 		<Dustbin id={1} position={this.state.PointPos[1]} handler = {this.handler}></Dustbin>

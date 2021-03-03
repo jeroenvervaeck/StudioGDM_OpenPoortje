@@ -91,13 +91,13 @@ class Note extends Component {
                         className="btn btn-outline-info">
                         <span className="react-icon" role="img"
                             aria-label="Edit note">
-                                <FaPencilAlt/></span>&nbsp;Edit note
+                                <FaPencilAlt/></span>
                     </button>
                     <button onClick={this.deleteNote}
                         className="btn btn-outline-danger">
                         <span className="react-icon" role="img"
                             aria-label="Delete note">
-                                <FaTrash /></span>&nbsp;Delete note
+                                <FaTrash /></span>
                     </button>
                 </div>
             </div>
@@ -152,12 +152,12 @@ class Note extends Component {
                         className="btn btn-outline-danger">
                         <span className="react-icon" role="img"
                             aria-label="Cancel editing">
-                            <RiCloseLine /></span>&nbsp;Cancel
+                            <RiCloseLine /></span>
                     </button>
                     <button type="submit" className="btn btn-outline-primary">
                         <span className="react-icon" role="img"
                             aria-label="Save edits">
-                            <FaSave /></span>&nbsp;Save
+                            <FaSave /></span>
                     </button>
                 </div>
 
@@ -183,7 +183,7 @@ class Note extends Component {
                         className="btn btn-outline-info">
                         <span className="react-icon" role="img"
                             aria-label="Edit note">
-                                <FaPencilAlt/></span>&nbsp;Edit note
+                                <FaPencilAlt/></span>
                     </button>
                 </div>
                 </div>

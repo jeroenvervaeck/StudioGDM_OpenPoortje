@@ -1,12 +1,10 @@
-:root{
+/* :root{
   --color-note: #fff9c3;
   --color-light: #f5f5f5;
   --color-shadow: #222222bb;
   --color-dark: #222222;
 }
-html{
-  overflow-x: hidden;
-}
+
 
 body {
   margin: 0;
@@ -15,9 +13,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+} */
 
-.noteContainer{
+/* .noteContainer{
   margin: 20px;
   min-width: 15%;
   width: max-content;
@@ -46,16 +44,17 @@ body {
 .form-control, .form-control:focus{
   border: 1px solid var(--color-shadow);
   background: none;
-}
-#board{
+} */
+
+/* #board{
   min-height: 100vh;
   min-width: 100%;
   padding-bottom: 200px!important;
   padding-top: 100px!important;
-  /* background-color: var(--color-dark)!important; */
   overflow: hidden;
-}
-.d-contents{
+} */
+
+/* .d-contents{
   display: contents!important;
 }
 .card-body, .modal-body{
@@ -65,43 +64,42 @@ body {
 .modal-body textarea{
   flex: -webkit-available;
   flex: -moz-available;
-}
+} */
 
-#add-sticker-btn{
+/* #add-sticker-btn{
   background-color: aqua;
-}
+} */
 
-#add-note-btn > svg{
+/* #add-note-btn > svg{
   min-width: 80%;
   height: auto;
   margin: auto;
-}
-
-#noteModal{
+} */
+/* #noteModal{
   background-color: var(--color-shadow);
   height: 80vh;
-}
-#noteModal .note{
+} */
+/* #noteModal .note{
   min-height: 80vh;
   margin: auto;
-}
-.react-icon{
+} */
+/* .react-icon{
   vertical-align: sub;
-}
+} */
 
-#noteModal .modal-body{
+/* #noteModal .modal-body{
 max-height: 80vh;
-}
-#noteModal .modal-body p{
+} */
+/* #noteModal .modal-body p{
   overflow-y: auto;
   white-space: pre-line;
 }
 #noteModal .modal-dialog{
   width: 100%;
   margin: 0;
-}
+} */
 
-html, .note-sb{
+/* html, .note-sb{
   scrollbar-width: thin;
   scrollbar-color: var(--color-note) var(--color-shadow);
 }
@@ -110,7 +108,7 @@ html, .note-sb{
 }
 #aboutModal p{
   font-size: 1.2rem;
-}
+} */
 
 /* The Modal (background) */
 .popup {
@@ -150,29 +148,29 @@ html, .note-sb{
   margin-top: 20px;
 }
 
-.buttons{
+/* .buttons{
   position: fixed;
   top: 2px;
   left: 20;
-}
+} */
 
 /* The Close Button */
-.close {
+/* .close {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
-}
+} */
 
-.close:hover,
+/* .close:hover,
 .close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
-}
+} */
 
 
-@media screen and (min-width: 576px) {
+/* @media screen and (min-width: 576px) {
 
 }
 
@@ -197,20 +195,20 @@ html, .note-sb{
   .custom-col{
     max-width: 16.66%!important;
   }
-}
+} */
 
-@keyframes wiggle {
+/* @keyframes wiggle {
   0% { transform: translateX(0px); }
  97% { transform: translateX(0px); }
  98% { transform: translateX(5px); }
  99% { transform: translateX(-5px); }
 100% { transform: translateX(0px); }
-}
+} */
 
-#add-note-btn {
+/* #add-note-btn {
 animation: wiggle 10s infinite;
 }
 
 #add-note-btn:hover {
 animation: none;
-}
+} */

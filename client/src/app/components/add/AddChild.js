@@ -35,20 +35,20 @@ const AddChild = ({ onClose, reload }) => {
 			<p>Huidskleur:</p>
 			<div className="add-child__input-skintone-wrapper">
 				<label>
-					<input type="radio" id="brown" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
-					<div className="checkmark">{ selectedSkintone === ('brown') ? '✗' : '' }</div>
+					<input type="radio" id="skin-01" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
+					<div className="checkmark">{ selectedSkintone === ('skin-01') ? '✗' : '' }</div>
 				</label>
 				<label>
-					<input type="radio" id="orange" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
-					<div className="checkmark">{ selectedSkintone === ('orange') ? '✗' : '' }</div>
+					<input type="radio" id="skin-02" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
+					<div className="checkmark">{ selectedSkintone === ('skin-02') ? '✗' : '' }</div>
 				</label>
 				<label>
-					<input type="radio" id="pink" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
-					<div className="checkmark">{ selectedSkintone === ('pink') ? '✗' : '' }</div>
+					<input type="radio" id="skin-03" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
+					<div className="checkmark">{ selectedSkintone === ('skin-03') ? '✗' : '' }</div>
 				</label>
 				<label>
-					<input type="radio" id="pale" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
-					<div className="checkmark">{ selectedSkintone === ('pale') ? '✗' : '' }</div>
+					<input type="radio" id="skin-04" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
+					<div className="checkmark">{ selectedSkintone === ('skin-04') ? '✗' : '' }</div>
 				</label>
 			</div>
 		</div>

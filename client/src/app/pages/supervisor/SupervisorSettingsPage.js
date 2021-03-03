@@ -52,19 +52,19 @@ const SupervisorSettingsPage = () => {
 							<div className="supervisor-settings__form-personal-skintone-wrapper">
 								<label>
 									<input type="radio" id="brown" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
-									<div className="checkmark">{ selectedSkintone === ('brown') ? '✗' : '' }</div>
+									<div className="checkmark">{ selectedSkintone === ('skin-01') ? '✗' : '' }</div>
 								</label>
 								<label>
 									<input type="radio" id="orange" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
-									<div className="checkmark">{ selectedSkintone === ('orange') ? '✗' : '' }</div>
+									<div className="checkmark">{ selectedSkintone === ('skin-02') ? '✗' : '' }</div>
 								</label>
 								<label>
 									<input type="radio" id="pink" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
-									<div className="checkmark">{ selectedSkintone === ('pink') ? '✗' : '' }</div>
+									<div className="checkmark">{ selectedSkintone === ('skin-03') ? '✗' : '' }</div>
 								</label>
 								<label>
 									<input type="radio" id="pale" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
-									<div className="checkmark">{ selectedSkintone === ('pale') ? '✗' : '' }</div>
+									<div className="checkmark">{ selectedSkintone === ('skin-04') ? '✗' : '' }</div>
 								</label>
 							</div>
 						</div>

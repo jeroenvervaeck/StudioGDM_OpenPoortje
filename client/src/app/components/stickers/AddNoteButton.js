@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {FaPlus} from 'react-icons/fa'
+import { fontSolid } from '../../assets'
 
 class AddNoteButton extends Component {
     constructor(props) {
@@ -14,8 +14,8 @@ class AddNoteButton extends Component {
 
     render() { 
         return ( 
-            <div onClick={this.addNote} id="add-note-btn" role="button"
-                className="btn btn-success"><FaPlus />
+            <div onClick={this.addNote} id="add-note-btn" role="button" className="btn btn-success">
+                <img src={fontSolid}></img>
             </div>
         )
     }

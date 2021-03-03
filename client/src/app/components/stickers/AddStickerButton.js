@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {FaPlus} from 'react-icons/fa'
+import { FaSmileBeam } from 'react-icons/fa'
 
 class AddStickerButton extends Component {
     constructor(props) {
@@ -30,8 +30,8 @@ class AddStickerButton extends Component {
 
     render() { 
         return ( 
-            <div onClick={this.addSticker} id="add-sticker-btn" role="button"
-                className="btn btn-success"><FaPlus />
+            <div onClick={this.addSticker} id="add-sticker-btn" role="button" className="btn btn-success">
+                <FaSmileBeam />
             </div>
         )
     }

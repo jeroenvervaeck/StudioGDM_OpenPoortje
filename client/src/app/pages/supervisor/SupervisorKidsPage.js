@@ -78,6 +78,7 @@ const SupervisorKidsPage = () => {
 							username={kid.auth.username}
 							color={kid.theme_color}
 							birthdate={kid.birth_date}
+							skinTone={kid.skin_color}
 							onSelect={() => {
 								sessionStorage.setItem('selected-kid', JSON.stringify(kid));
 								history.push(Routes.SUPERVISOR_DASHBOARD);
