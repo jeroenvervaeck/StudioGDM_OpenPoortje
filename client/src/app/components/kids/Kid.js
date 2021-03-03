@@ -3,6 +3,7 @@ import { FaUserAlt } from 'react-icons/fa';
 import { useApi } from '../../services'; 
 
 import './kid.scss'
+import profileCauc from '../../assets/profileGifs/profile-cauc.gif'
 
 const Kid = ({firstname, lastname, username, birthdate, color, onSelect}) => {
 
@@ -18,7 +19,8 @@ const Kid = ({firstname, lastname, username, birthdate, color, onSelect}) => {
 	return (
 		<div className="kid" onClick={onSelect}>
 			{/* <img className="kid__profilepicture"></img> */}
-			<FaUserAlt className="kid__profilepicture" style={{border: '4px solid '+ colors[color] || 'black'}}/>
+			<img src={profileCauc} className="kid__profilepicture"/>
+			{/* <FaUserAlt className="kid__profilepicture" style={{border: '4px solid '+ colors[color] || 'black'}}/> */}
 			<div className="kid__wrapper">
 				<h1>{firstname} {lastname}</h1>
 				<p>{username}</p>
