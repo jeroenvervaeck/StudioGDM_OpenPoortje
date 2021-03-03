@@ -14,6 +14,7 @@ import {default as PasswordChild} from './password/PasswordChild';
 import {default as PasswordSupervisor} from './password/PasswordSupervisor';
 import {default as Board} from './stickers/Board';
 import {default as MountainContainer} from './mountain/MountainContainer';
+import {default as MountainGesprek} from './mountainGesprek/MountainGesprek';
 
 export {
   Kid,
@@ -32,4 +33,5 @@ export {
   PasswordSupervisor,
   Board,
   MountainContainer,
+  MountainGesprek,
 }
