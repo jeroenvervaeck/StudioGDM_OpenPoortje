@@ -1,0 +1,26 @@
+.fiche-ui {
+    .fiche-ui__note-popup {
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0,0,0, 0.8);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        textarea {
+            background-color: transparent;
+            color: white;
+            width: 300px;
+        }
+
+        &-bttn-container {
+            width: 200px;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

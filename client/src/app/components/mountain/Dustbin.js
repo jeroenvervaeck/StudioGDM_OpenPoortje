@@ -16,9 +16,28 @@ function getStyle(backgroundColor , x , y) {
         fontSize: '1rem',
     };
 }
+/*
+function getKidFiches(){
+    
+    const kidObj = JSON.parse(sessionStorage.getItem('selected-kid'));
+    const fiches = kidObj.fiches;
 
+    fiches.forEach(fiche => {
+        if ('positionById' in fiche.fiche_data) {
+            console.log(fiche.fiche_data);
+        }
+       
+    });
+
+}
+
+getKidFiches();
+*/
 export const Dustbin = ({ id , handler , position , children }) => {
     const [hasDropped, setHasDropped] = useState(false);
+    var noFlag = true;
+    const [point, setPoint] = useState({ id: id, question1: "", question2: "" });
+    
     const [{ isOver, isOverCurrent }, drop] = useDrop({
         accept: ItemTypes.BOX,
         drop(item, monitor) {
@@ -77,10 +96,35 @@ export const Dustbin = ({ id , handler , position , children }) => {
     setHasDropped(false);
     } 
 
-    console.log(hasDropped);
+    function getKidFiches(){
+    
+        const kidObj = JSON.parse(sessionStorage.getItem('selected-kid'));
+        const fiches = kidObj.fiches;
+    
+        fiches.forEach(fiche => {
+            if ('positionById' in fiche.fiche_data && fiche.fiche_data.positionById == id) {
+                console.log(id);
+                //document.getElementById("vlag-"+id).style.display = "block";
+                var vlag = document.getElementById("vlag-"+id);
+                if (vlag != null) {
+                    vlag.style.display = "block";
+                }
+                console.log(vlag);
+                noFlag = false;
+
+            }
+           
+        });
+    
+    }
+
+    getKidFiches();
+    
     return (
 
         <div id={id} ref={drop} className='mountainPoint' style={getStyle(backgroundColor , x , y)}>
+        
+        <img id={"vlag-"+id} src={vlag} alt="vlag" className="vlag"></img>
 
         {hasDropped && <span id={'span-'+id}>
             <div className="textBox">
@@ -93,5 +137,6 @@ export const Dustbin = ({ id , handler , position , children }) => {
         </span>}
 			
         </div>
+        
     );
 };
