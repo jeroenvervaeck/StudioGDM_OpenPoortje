@@ -1,5 +1,9 @@
 @import '../../_sass/abstracts/variables';
 
+#board {
+	height: 100vh;
+}
+
 .box{
 	width: 320px;
 }
@@ -60,6 +64,7 @@
 	padding: 8px;
 	font-family: Courier;
 	width: 300px;
+	position: absolute;
 
 	.card-title,.modal-title {
 		font-size: 24px;
