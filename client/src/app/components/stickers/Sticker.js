@@ -7,7 +7,7 @@ class Sticker extends Component {
     
     renderDefaultSticker() { 
         return ( 
-            <div className="sticker">
+            <div className="sticker" >
                 <img draggable="false"  width="100" height="100" src={this.props.src} alt={this.props.id}/>
             </div>
          )

@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, setState } from 'react';
 import { useDrop } from 'react-dnd';
 import { ItemTypes } from './ItemTypes';
 import { Link, Redirect } from 'react-router-dom';
 import * as Routes from '../../routes';
 import vlag from './Vlag.png';
 import cross from './Cross.png';
+import like from './Like.png';
+import dislike from './Dislike.png';
+import { useApi, useAuth } from '../../services';
+
 function getStyle(backgroundColor , x , y) {
     return {
         
@@ -35,8 +39,11 @@ getKidFiches();
 */
 export const Dustbin = ({ id , handler , position , children }) => {
     const [hasDropped, setHasDropped] = useState(false);
-    var noFlag = true;
-    const [point, setPoint] = useState({ id: id, question1: "", question2: "" });
+    const [hasFlag, setHasFlag] = useState(false);
+    const [shortDescription, setShortDescription] = useState("");
+    const { updateMountainFiche, updateSelectedKidData } = useApi();
+	const kidObj = JSON.parse(sessionStorage.getItem('selected-kid'))
+    
     
     const [{ isOver, isOverCurrent }, drop] = useDrop({
         accept: ItemTypes.BOX,
@@ -49,10 +56,15 @@ export const Dustbin = ({ id , handler , position , children }) => {
             //console.log(didDrop);
             handler(left,top)
             if (boxId > 0) {
+                const currentDustbin = document.getElementById(boxId);
                 const previousDustbin = document.getElementById(boxId-1);
-                //console.log(previousDustbin);
+                const currentFlag = currentDustbin.querySelector('.vlag');
+                const previousFlag = previousDustbin.querySelector('.vlag');
+                const currentStyle = getComputedStyle(currentFlag);
+                const previousStyle = getComputedStyle(previousFlag);
+                console.log(currentStyle.display);
 
-                if( previousDustbin.getElementsByTagName('span').length > 0) {
+                if( currentStyle.display == "none" && previousStyle.display == "block") {
                     console.log("er is een span");
                     setHasDropped(true);
                 }else{
@@ -60,7 +72,7 @@ export const Dustbin = ({ id , handler , position , children }) => {
                     return
                 }
             }else{
-                setHasDropped(true);
+                setHasDropped(false);
                 //prevDropped = true;
             }
             //setHasDropped(true);
@@ -91,40 +103,91 @@ export const Dustbin = ({ id , handler , position , children }) => {
     <a href={Routes.SUPERVISOR_BERGGESPREK} class="myButton">Nieuw gesprek</a>
     */
 
+   const showFiche = (id) => {
+    console.log(id);
+    const kidObj = JSON.parse(sessionStorage.getItem('selected-kid'));
+    const fiches = kidObj.fiches;
+    var vraag1 = "";
+    var vraag2 = "";
+    console.log(fiches);
+
+    fiches.forEach(fiche => {
+        if (fiche.fiche_data.positionById == id) {
+            vraag1 = fiche.fiche_data.vraag1;
+            vraag2 = fiche.fiche_data.vraag2;
+        }
+       
+    });
+    console.log(vraag1);
+    setHasFlag(true);
+    setShortDescription(vraag1);
+    
+    var mountainPoint = document.getElementById(id);
+    //mountainPoint.getElementsByClassName("textBox").innerHTML= inhoud;
+    //console.log(textbox);
+    
+    
+    } 
+
     const imageClick = (id) => {
     console.log('Click');
     setHasDropped(false);
+    } 
+
+    const opinionBtnCall = (id , value) => {
+        console.log(kidObj);
+        var kidId = kidObj._id; 
+        var positionById = id.id;
+        var opinion_convo = value;
+        updateMountainFiche(positionById, kidId, opinion_convo)
+			.then(() => {
+				updateSelectedKidData();
+			});
     } 
 
     function getKidFiches(){
     
         const kidObj = JSON.parse(sessionStorage.getItem('selected-kid'));
         const fiches = kidObj.fiches;
+
+        console.log(fiches);
     
         fiches.forEach(fiche => {
             if ('positionById' in fiche.fiche_data && fiche.fiche_data.positionById == id) {
-                console.log(id);
                 //document.getElementById("vlag-"+id).style.display = "block";
                 var vlag = document.getElementById("vlag-"+id);
                 if (vlag != null) {
                     vlag.style.display = "block";
                 }
-                console.log(vlag);
-                noFlag = false;
-
             }
            
         });
     
     }
 
-    getKidFiches();
-    
+    useEffect(() => {
+        getKidFiches();
+      }, []); // <-- empty array means 'run once'
+
+    console.log(hasFlag);
     return (
 
         <div id={id} ref={drop} className='mountainPoint' style={getStyle(backgroundColor , x , y)}>
         
-        <img id={"vlag-"+id} src={vlag} alt="vlag" className="vlag"></img>
+        <img id={"vlag-"+id} src={vlag} alt="vlag" className="vlag" onClick={() => showFiche(id)}></img>
+
+        {hasFlag==true && 
+        <span id={'span-'+id}>
+            <div className="textBox opinionBox">
+                <h1>Gesprek {id}</h1>
+                <img src={cross} alt="Close Pop-up" className="cross" onClick={() => setHasFlag(false)}></img>
+                <h4>Beschrijving</h4>
+                {shortDescription}
+                <h4>Hoe vond je dit gesprek?</h4>
+                <img src={like} alt="like_btn" className="opinionBtn opinionBtn_left" onClick={() => opinionBtnCall(id , true)}></img>
+                <img src={dislike} alt="dislike_btn" className="opinionBtn opinionBtn_right"></img>
+            </div>            
+        </span>}
 
         {hasDropped && <span id={'span-'+id}>
             <div className="textBox">

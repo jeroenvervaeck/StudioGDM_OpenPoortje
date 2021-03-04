@@ -1,5 +1,13 @@
 @import '../../_sass/abstracts/variables';
 
+.box{
+	width: 320px;
+}
+
+.stickerDiv{
+	width: 100px;
+}
+
 .buttons {
 	position: absolute;
 	bottom: 0;
@@ -77,6 +85,7 @@
 		color: $color-white;
 		border: none;
 		border-radius: 10px;
+		cursor:pointer;
 	}
 }
 

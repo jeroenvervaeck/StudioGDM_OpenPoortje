@@ -13,6 +13,7 @@
 
 .textBox{
 	background-color: white;
+	color: #000;
 	width: 300px;
 	position: relative;
 	padding: 20px;
@@ -23,6 +24,13 @@
 	box-shadow: 0px 2px 19px 2px rgba(0,0,0,0.51);
 	-webkit-box-shadow: 0px 2px 19px 2px rgba(0,0,0,0.51);
 	-moz-box-shadow: 0px 2px 19px 2px rgba(0,0,0,0.51);
+}
+
+.opinionBox{
+	
+	top: -410px;
+	overflow: hidden;
+
 }
 
 .textBox:after {
@@ -36,9 +44,14 @@
 	border-bottom: none;
   }
 
+.textbox h4{
+	font-weight: normal !important;
+}
+
 .textBox h1{
 	color: #000;
-	font-size: 1.8em;
+	font-size: 1.7em;
+	font-weight: normal !important;
 }
 
 .textBox .cross{
@@ -66,7 +79,7 @@
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	padding:15px 0px;
+	padding:0px 0px;
 	width: 200px;
 	text-align: center;
 	margin-left: 18%;
@@ -97,4 +110,27 @@
 	width: 540px;
 	height: 120px;
 
+}
+
+.opinionBtn{
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+.opinionBtn:hover{
+	opacity: 1;
+}
+
+.opinionBtn_left{
+	float: left;
+}
+
+.opinionBtn_right{
+	float: right;
+}
+
+.mountainAnimation{
+	position: absolute;
+	left: 0;
+	top: 0;
 }
