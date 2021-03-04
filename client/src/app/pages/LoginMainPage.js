@@ -17,8 +17,9 @@ const LoginMainPage = (props) => {
 		const username = document.getElementById('username').value;
 		const password = document.getElementById('password').value;
 
-		const response = await getToken(authMode, username, password);
-		window.location.reload();
+		const response = await getToken(authMode, username, password)
+		console.log(response)
+		// window.location.reload();
 	}
 
 	return (

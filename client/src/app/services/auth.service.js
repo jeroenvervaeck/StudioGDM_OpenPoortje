@@ -24,7 +24,10 @@ const AuthProvider = ({ children }) => {
         }), 
     }
 
-    const response = await fetch(url, options).then((result) => result.json());
+    const response = await fetch(url, options).then((result) => result.json())
+      .catch(() => {
+        return {error: "Inloggegevens zijn onjuist!"}
+      });
 
     if (response.message) return {error: "Inloggegevens zijn onjuist!"}
 

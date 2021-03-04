@@ -22,13 +22,13 @@ const Nav = ({}) => {
   const onClick = () => setShowNav(!showNav);
 
 	const profiles = [profile_01, profile_02, profile_03, profile_04];
-	let profileGif;
 
   const [ supervisor, setSupervisor ] = useState(JSON.parse(sessionStorage.getItem('supervisor')).supervisor);
   const [ kid, setKid ] = useState(JSON.parse(sessionStorage.getItem('selected-kid')));
+  const [ profilePic, setProfileKid ] = useState();
 
   useEffect(() => {
-    profileGif = profiles[+kid.skin_color.replace('skin-', '')-1];
+    setProfileKid(profiles[+kid.skin_color.replace('skin-', '')-1]);
   }, [kid]);
 
   const logOutSupervisor = () => {
@@ -82,7 +82,7 @@ const Nav = ({}) => {
                   </div>
                   <div className="nav-block__credentials-kid-info">
                     {/* <FaUserAlt /> */}
-                    {/* <img className="nav-block__credentials-kid-info-profile" src={(kid) ? profileGif : '.......'}/> */}
+                    <img className="nav-block__credentials-kid-info-profile" src={(kid) ? profilePic : '.......'}/>
                     <div className="nav-block__credentials-kid-info-wrapper">
                     <h2>{(kid) ? kid.first_name: 'Kind naam'} </h2>
                     <p>{(kid && kid.auth) ? kid.auth.username: 'Gebruikersnaam'}</p>
@@ -121,7 +121,7 @@ const Nav = ({}) => {
                   <FaWrench size={20} />
                   <p>Instellingen</p>
                 </Link>
-                <Link to={Routes.SUPERVISOR_SETTINGS} className="nav-block__routes-main-element">
+                <Link to={Routes.SUPERVISOR_INFO} className="nav-block__routes-main-element">
                   <FaInfo size={20} />
                   <p>Info</p>
                 </Link>
