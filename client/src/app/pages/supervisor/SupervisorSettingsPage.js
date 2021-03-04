@@ -9,7 +9,7 @@ import './SupervisorSettingsPage.scss'
 import { Nav } from '../../components'
 
 const SupervisorSettingsPage = () => {
-	const { editKid, updateSelectedKidData } = useApi();
+	const { editKid, updateSelectedKidData, colors } = useApi();
 	const history = useHistory();
 
 	const kidObj = JSON.parse(sessionStorage.getItem('selected-kid'))
@@ -90,7 +90,7 @@ const SupervisorSettingsPage = () => {
 							</div>
 						</div>
 					</div>
-					<input className="supervisor-settings__form-save" type="submit" value="Opslaan" onClick={(e) => {
+					<input className="supervisor-settings__form-save" type="submit" value="Opslaan" style={{backgroundColor: colors[(kid) ? kid.theme_color : 'color-01']}} onClick={(e) => {
 						e.preventDefault();
 						editKid(kid._id, {
 							theme_color: selectedThemeColor,

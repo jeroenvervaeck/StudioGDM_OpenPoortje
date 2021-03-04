@@ -9,6 +9,7 @@ import './LoginPage.scss'
 
 const LoginSecondaryPage = () => {	
 	const { getToken, getLoggedInRole, getIsSupervisorLoggedIn } = useAuth();
+	const [ error, setError ] = useState();
 
 	const submit = async (e) => {
 		e.preventDefault();
@@ -16,7 +17,11 @@ const LoginSecondaryPage = () => {
 		const password = document.getElementById('password').value;
 
 		const response = await getToken('supervisor', username, password);
-		window.location.reload();
+		if (response.error) {
+			setError(response.error);
+		} else {
+			window.location.reload();
+		}
 	}
 
 	return (
@@ -53,6 +58,17 @@ const LoginSecondaryPage = () => {
 				</div>
 
 				<input type="submit" value="Inloggen" className="login__form-btn" onClick={(e) => submit(e)}></input>
+
+				{
+					error
+					?
+						<div className="login__form-error">
+							<p>{error}</p>
+						</div>
+					:
+						undefined
+				}
+				
 			</form>
 		</div>
 	);

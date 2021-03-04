@@ -29,7 +29,7 @@ const AuthProvider = ({ children }) => {
         return {error: "Inloggegevens zijn onjuist!"}
       });
 
-    if (response.message) return {error: "Inloggegevens zijn onjuist!"}
+    if (response.message) return {error: "Uw gebruikersnaam/wachtwoord zijn onjuist."}
 
     if(role === 'organisation' || role === 'kid') {
       setCookie('auth', JSON.stringify({token: response.token, role}), 30);
