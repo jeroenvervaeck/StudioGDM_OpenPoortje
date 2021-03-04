@@ -12,6 +12,7 @@
 	&__main {
 		padding-left: 10vw;
 		padding-right: 5vw;
+		padding-bottom: 40px;
 		&-card {
 			margin-top: 20px;
 			box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.10);
@@ -39,6 +40,9 @@
 				padding: 20px 28px;
 				margin: 0;
 				border: $color-gray solid 1px;
+				strong {
+					padding: 12px 0;
+				}
 			}
 		}
 	}
