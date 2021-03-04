@@ -3,6 +3,7 @@ import { useApi, useAuth } from '../../services';
 import { Link, Redirect } from 'react-router-dom';
 import * as Routes from '../../routes';
 import { useHistory } from 'react-router-dom'
+import { loading } from '../../assets';
 
 import { FaSearch, FaWrench, FaSortAlphaDown, FaSortNumericDown } from 'react-icons/fa';
 
@@ -84,7 +85,7 @@ const SupervisorKidsPage = () => {
 							}}
 						/>
 					)
-					: <p>Hier zou een leuke loading animation moeten komen...</p>
+					: <img className="supervisor-kids__content-loading" src={ loading }></img>
 				}
 				
 			</div>

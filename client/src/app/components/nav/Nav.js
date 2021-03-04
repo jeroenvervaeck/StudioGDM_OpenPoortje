@@ -107,7 +107,7 @@ const Nav = ({}) => {
                   <FaWrench size={20} />
                   <p>Instellingen</p>
                 </Link>
-                <Link to={Routes.SUPERVISOR_SETTINGS} className="nav-block__routes-main-element">
+                <Link to={Routes.SUPERVISOR_INFO} className="nav-block__routes-main-element">
                   <FaInfo size={20} />
                   <p>Info</p>
                 </Link>

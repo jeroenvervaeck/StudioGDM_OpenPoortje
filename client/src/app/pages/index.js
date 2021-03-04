@@ -10,6 +10,7 @@ import { default as SupervisorKidsPage } from './supervisor/SupervisorKidsPage';
 import { default as SupervisorDashboardPage } from './supervisor/SupervisorDashboardPage';
 import { default as SupervisorFichePage } from './supervisor/SupervisorFichePage';
 import { default as SupervisorTimelinePage } from './supervisor/SupervisorTimelinePage';
+import { default as SupervisorInfoPage } from './supervisor/SupervisorInfoPage';
 import { default as SupervisorSettingsPage } from './supervisor/SupervisorSettingsPage';
 // fiches
 import { default as SupervisorMountainFiche } from './fiches/SupervisorMountainFiche';
@@ -32,6 +33,7 @@ export {
 	SupervisorDashboardPage,
 	SupervisorFichePage,
 	SupervisorTimelinePage,
+	SupervisorInfoPage,
 	SupervisorSettingsPage,
 	// fiches
 	SupervisorMountainFiche,

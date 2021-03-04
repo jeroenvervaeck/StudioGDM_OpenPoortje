@@ -16,6 +16,7 @@ import {
   SupervisorKidsPage,
   SupervisorFichePage,
   SupervisorTimelinePage,
+  SupervisorInfoPage,
   SupervisorSettingsPage,
   SupervisorMountainFiche,
   SupervisorDialogFiche,
@@ -44,6 +45,7 @@ function App() {
           <RouteWithLayout exact path={Routes.SUPERVISOR_DASHBOARD} component={Pages.SupervisorDashboardPage} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_FICHE} component={Pages.SupervisorFichePage} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_TIMELINE} component={Pages.SupervisorTimelinePage} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_INFO} component={Pages.SupervisorInfoPage} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_SETTINGS} component={Pages.SupervisorSettingsPage} layout={PageLayout} />
           // fiches
           <RouteWithLayout exact path={Routes.SUPERVISOR_MOUNTAIN} component={Pages.SupervisorMountainFiche} layout={PageLayout} />

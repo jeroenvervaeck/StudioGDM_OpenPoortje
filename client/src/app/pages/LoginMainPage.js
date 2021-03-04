@@ -9,6 +9,7 @@ import './LoginPage.scss'
 
 const LoginMainPage = (props) => {
 	const { getToken, checkIsLoggedIn, getLoggedInRole } = useAuth();
+	const [ error, setError ] = useState();
 
 	const [ authMode, setAuthMode ] = useState('kid');
 
@@ -18,7 +19,11 @@ const LoginMainPage = (props) => {
 		const password = document.getElementById('password').value;
 
 		const response = await getToken(authMode, username, password);
-		window.location.reload();
+		if (response.error) {
+			setError(response.error);
+		} else {
+			window.location.reload();
+		}
 	}
 
 	return (
@@ -56,6 +61,17 @@ const LoginMainPage = (props) => {
 				</div>
 
 				<input type="submit" value="Inloggen" className="login__form-btn" onClick={(e) => submit(e)}></input>
+
+				{
+					error
+					?
+						<div className="login__form-error">
+							<p>{error}</p>
+						</div>
+					:
+						undefined
+				}
+				
 			</form>
 		</div>
 	);

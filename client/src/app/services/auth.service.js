@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
 
     const response = await fetch(url, options).then((result) => result.json());
 
-    if (response.message) return {error: "Inloggegevens zijn onjuist!"}
+    if (response.message) return {error: "Uw gebruikersnaam/wachtwoord zijn onjuist."}
 
     if(role === 'organisation' || role === 'kid') {
       setCookie('auth', JSON.stringify({token: response.token, role}), 30);
