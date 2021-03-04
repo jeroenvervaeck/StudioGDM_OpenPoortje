@@ -353,6 +353,36 @@ const ApiProvider = ({children}) => {
     return response;
   }
 
+  const updateMountainFiche = async ( positionById, kidId, opinion_convo ) => {
+    const auth = JSON.parse(getCookie('sup-auth'));
+    const url = `${BASE_URL}/kid/fiche`;
+
+    const body = {
+      kidId: kidId,
+      fiche: {
+        fiche_type: "601a996b352c1d313cd7bca2",
+        picture_name: "",
+        fiche_data:{
+          positionById: positionById,
+          opinion_convo: opinion_convo
+        }
+      }
+    }
+
+    const options = {
+      method:'POST',
+      body:JSON.stringify(body),
+      headers: new Headers({
+          'Authorization': 'Bearer '+ auth.token, 
+          'Content-Type': 'application/json',
+        }), 
+    }
+
+    const response = await fetch(url, options).then((result) => result.json());
+
+    return response;
+  }
+
 
   return (
     <ApiContext.Provider value={{ 
@@ -381,6 +411,7 @@ const ApiProvider = ({children}) => {
       // fiches
       getFicheTypes,
       saveMountainFiche,
+      updateMountainFiche,
      }}>
       {children}
     </ApiContext.Provider>

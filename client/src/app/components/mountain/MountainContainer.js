@@ -3,14 +3,15 @@ import { Dustbin } from './Dustbin';
 import { Box } from './Box';
 import {ReactComponent as MountainBG} from './BERGBG.svg';
 import {ReactComponent as MountainPath} from './Bergpad.svg';
+import MountainAnimation from './BERG-ANIMATIES-unscreen.gif';
 import './mountain.scss'
 
 class MountainContainer extends Component {
 	constructor(props) {
 	  super(props)
 	  this.state = { 
-		leftPos: 200,
-		rightPos:-120, 
+		leftPos: 240,
+		rightPos:-230, 
 		PointPos : [
 			[580, 466],
 			[785, 360],
@@ -30,7 +31,7 @@ class MountainContainer extends Component {
 	
 
 	handler(left,top) {
-		//console.log(left,top);
+		console.log(left,top);
 		this.setState({
 			leftPos: left,
 			rightPos: top,
@@ -53,11 +54,13 @@ class MountainContainer extends Component {
 		<Dustbin id={6} position={this.state.PointPos[6]} handler = {this.handler}></Dustbin>
 		<Dustbin id={7} position={this.state.PointPos[7]} handler = {this.handler}></Dustbin>
 		<Dustbin id={8} position={this.state.PointPos[8]} handler = {this.handler}></Dustbin>
-		<Dustbin id={9} position={this.state.PointPos[9]} handler = {this.handler}></Dustbin>
-
+		<Dustbin id={9} position={this.state.PointPos[9]} handler = {this.handler}></Dustbin> 
+		{/* 
+		<img src={MountainAnimation} width="841.89px" alt="mountain" className="mountainAnimation"></img>
+		*/}
 		</div>
 
-			<Box left={this.state.leftPos} top={this.state.rightPos} ></Box>
+		<Box left={this.state.leftPos} top={this.state.rightPos} ></Box>
 		</div>  
 	  )
 	}

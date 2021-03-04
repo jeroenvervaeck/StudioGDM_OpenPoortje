@@ -7,7 +7,9 @@ import mannetje from './WIGGLING.gif';
 
 const style = {
     display: 'inline-block',
-    backgroundColor: 'transparent',
+    border: '1px dashed gray',
+    padding: '0.5rem 1rem',
+    backgroundColor: 'white',
     cursor: 'move',
     position: 'relative',
 };
@@ -15,23 +17,22 @@ const style = {
 export const Box = ({ id, left, top, hideSourceOnDrag, connectDragSource, connectDragPreview, children, }) => {
     hideSourceOnDrag = true;
     
-    const [{ isDragging }, drag, preview] = useDrag({
+    const [{ isDragging }, drag] = useDrag({
         item: { id, left, top, type: ItemTypes.BOX },
         collect: (monitor) => ({
             isDragging: monitor.isDragging(),
         }),
-        
     });
-     
+    
+    
     if (isDragging && hideSourceOnDrag) {
         return <div ref={drag}/>;
-        
     }
     
     return (
     <div ref={drag} style={{ ...style, left, top }}>
-        {/*<DragPreviewImage connect={preview} src={mannetje} />*/}
-        <img src={mannetje} alt="mannetje" className="mannetje" width="70px"></img>
+        <DragPreviewImage src={mannetje} connect={connectDragPreview} />
+        <img ref={connectDragSource} src={mannetje} alt="mannetje" className="mannetje" width="70px"></img>
 	</div>);
     };
 

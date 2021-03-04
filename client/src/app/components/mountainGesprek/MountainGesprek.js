@@ -14,6 +14,7 @@ const MountainGesprek = (id) => {
 
 	const kidObj = JSON.parse(sessionStorage.getItem('selected-kid'))
 	console.log(kidObj);
+	console.log(id);
 
 	function saveConvo(kid){
 		//console.log(kid);
