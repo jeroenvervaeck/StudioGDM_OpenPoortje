@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import * as Routes from '../../routes';
 import { RiScreenshot2Fill } from 'react-icons/ri';
 
+import * as Stickerimg from '../../assets/stickers';
 import * as Screenshot from 'html2canvas';
 
 import './stickers.css'
@@ -17,20 +18,128 @@ import './stickers.scss'
 const images = [
     {
         id: '0',
-        url: 'https://news.files.bbci.co.uk/include/newsspec/27716-us-poll-tracker-2020-v4/assets/app-project-assets/img/trump.png?v=2'
+        url: Stickerimg.sticker01
     },
     {
         id: '1',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Barack_Obama_Circle.png'
+        url: Stickerimg.sticker02
     },
     {
-      id: '2',
-      url: 'https://res.cloudinary.com/crooked-media/image/upload/f_auto,q_auto/c_scale,w_330/v1579049493/VSA-Candidate-Detail-QA_Biden_czv925.png'
+        id: '2',
+        url: Stickerimg.sticker03
     },
     {
-      id: '3',
-      url: 'https://www.flaticon.com/svg/static/icons/svg/61/61183.svg'
-    }
+        id: '3',
+        url: Stickerimg.sticker04
+    },
+    {
+        id: '4',
+        url: Stickerimg.sticker05
+    },
+    {
+        id: '5',
+        url: Stickerimg.sticker06
+    },
+    {
+        id: '6',
+        url: Stickerimg.sticker07
+    },
+    {
+        id: '7',
+        url: Stickerimg.sticker08
+    },
+    {
+        id: '8',
+        url: Stickerimg.sticker09
+    },
+    {
+        id: '9',
+        url: Stickerimg.sticker10
+    },
+    {
+        id: '10',
+        url: Stickerimg.sticker11
+    },
+    {
+        id: '11',
+        url: Stickerimg.sticker12
+    },
+    {
+        id: '12',
+        url: Stickerimg.sticker13
+    },
+    {
+        id: '13',
+        url: Stickerimg.sticker14
+    },
+    {
+        id: '14',
+        url: Stickerimg.sticker15
+    },
+    {
+        id: '15',
+        url: Stickerimg.sticker16
+    },
+    {
+        id: '16',
+        url: Stickerimg.sticker17
+    },
+    {
+        id: '17',
+        url: Stickerimg.sticker18
+    },
+    {
+        id: '18',
+        url: Stickerimg.sticker19
+    },
+    {
+        id: '19',
+        url: Stickerimg.sticker20
+    },
+    {
+        id: '20',
+        url: Stickerimg.sticker21
+    },
+    {
+        id: '21',
+        url: Stickerimg.sticker22
+    },
+    {
+        id: '22',
+        url: Stickerimg.sticker23
+    },
+    {
+        id: '23',
+        url: Stickerimg.sticker24
+    },
+    {
+        id: '24',
+        url: Stickerimg.sticker25
+    },
+    {
+        id: '25',
+        url: Stickerimg.sticker26
+    },
+    {
+        id: '26',
+        url: Stickerimg.sticker27
+    },
+    {
+        id: '27',
+        url: Stickerimg.sticker28
+    },
+    {
+        id: '28',
+        url: Stickerimg.sticker29
+    },
+    {
+        id: '29',
+        url: Stickerimg.sticker30
+    },
+    {
+        id: '30',
+        url: Stickerimg.stickerPencil
+    },
   ]
 
 class Board extends Component {
@@ -194,7 +303,7 @@ class Board extends Component {
             <div id="board">
                 <RiScreenshot2Fill className="screenshot"
                     onClick={() => {
-                        Screenshot(document.querySelector("#board")).then((canvas) => {
+                        Screenshot(document.querySelector("body")).then((canvas) => {
                             const img = canvas.toDataURL("image/png");
                             // download png
                             const element = document.createElement('a');
@@ -215,16 +324,51 @@ class Board extends Component {
                 
                 <div id="stickerPopup" className="popup">
                     <div className="modal-content">
-                        <span className="close">&times;</span>
-                        <img src={images[0].url} alt={images[0]} onClick={() => this.create_sticker(images[0].url)}></img>
-                        <img src={images[1].url} alt={images[1]} onClick={() => this.create_sticker(images[1].url)}></img>
-                        <img src={images[2].url} alt={images[2]} onClick={() => this.create_sticker(images[2].url)}></img>
-                        <Link to={Routes.SUPERVISOR_EIGENSTICKER} className="">
-                        <img src={images[3].url} alt={images[3]}></img>
+                        <div className="modal-content__buttons">
+                            <button className="popup-btn" type="button" onClick={() => this.remove_stickers()}>Stickers verwijderen</button>
+                            <span className="close">
+                                <p>x</p>
+                            </span>
+                        </div>
+                        <div className="modal-content__stickers">
+                            <img src={images[0].url} alt={images[0]} onClick={() => this.create_sticker(images[0].url)}></img>
+                            <img src={images[1].url} alt={images[1]} onClick={() => this.create_sticker(images[1].url)}></img>
+                            <img src={images[2].url} alt={images[2]} onClick={() => this.create_sticker(images[2].url)}></img>
+                            <img src={images[3].url} alt={images[3]} onClick={() => this.create_sticker(images[3].url)}></img>
+                            <img src={images[4].url} alt={images[4]} onClick={() => this.create_sticker(images[4].url)}></img>
+                            <img src={images[5].url} alt={images[5]} onClick={() => this.create_sticker(images[5].url)}></img>
+                            <img src={images[6].url} alt={images[6]} onClick={() => this.create_sticker(images[6].url)}></img>
+                            <img src={images[7].url} alt={images[7]} onClick={() => this.create_sticker(images[7].url)}></img>
+                            <img src={images[8].url} alt={images[8]} onClick={() => this.create_sticker(images[8].url)}></img>
+                            <img src={images[9].url} alt={images[9]} onClick={() => this.create_sticker(images[9].url)}></img>
+                            <img src={images[10].url} alt={images[10]} onClick={() => this.create_sticker(images[10].url)}></img>
+                            <img src={images[11].url} alt={images[11]} onClick={() => this.create_sticker(images[11].url)}></img>
+                            <img src={images[12].url} alt={images[12]} onClick={() => this.create_sticker(images[12].url)}></img>
+                            <img src={images[13].url} alt={images[13]} onClick={() => this.create_sticker(images[13].url)}></img>
+                            <img src={images[14].url} alt={images[14]} onClick={() => this.create_sticker(images[14].url)}></img>
+                            <img src={images[15].url} alt={images[15]} onClick={() => this.create_sticker(images[15].url)}></img>
+                            <img src={images[16].url} alt={images[16]} onClick={() => this.create_sticker(images[16].url)}></img>
+                            <img src={images[17].url} alt={images[17]} onClick={() => this.create_sticker(images[17].url)}></img>
+                            <img src={images[18].url} alt={images[18]} onClick={() => this.create_sticker(images[18].url)}></img>
+                            <img src={images[19].url} alt={images[19]} onClick={() => this.create_sticker(images[19].url)}></img>
+                            <img src={images[20].url} alt={images[20]} onClick={() => this.create_sticker(images[20].url)}></img>
+                            <img src={images[21].url} alt={images[21]} onClick={() => this.create_sticker(images[21].url)}></img>
+                            <img src={images[22].url} alt={images[22]} onClick={() => this.create_sticker(images[22].url)}></img>
+                            <img src={images[23].url} alt={images[23]} onClick={() => this.create_sticker(images[23].url)}></img>
+                            <img src={images[24].url} alt={images[24]} onClick={() => this.create_sticker(images[24].url)}></img>
+                            <img src={images[25].url} alt={images[25]} onClick={() => this.create_sticker(images[25].url)}></img>
+                            <img src={images[26].url} alt={images[26]} onClick={() => this.create_sticker(images[26].url)}></img>
+                            <img src={images[27].url} alt={images[27]} onClick={() => this.create_sticker(images[27].url)}></img>
+                            <img src={images[28].url} alt={images[28]} onClick={() => this.create_sticker(images[28].url)}></img>
+                            <img src={images[29].url} alt={images[29]} onClick={() => this.create_sticker(images[29].url)}></img>
+                        </div>
+                        <Link to={Routes.SUPERVISOR_EIGENSTICKER} className="modal-content__draw">
+                            <p>Teken je eigen sticker WIP</p>
+                            <img src={images[30].url} alt={images[30]}></img>
                         </Link>
-                        <button className="popup-btn" type="button" onClick={() => this.remove_stickers()}>Delete stickers</button>
                     </div>
                 </div>
+
                 <div className="buttons">
                     <AddNoteButton onAdd={this.create_note}/>
                     <AddStickerButton/>
