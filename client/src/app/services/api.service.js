@@ -419,6 +419,10 @@ const ApiProvider = ({children}) => {
     return response.filename;
   }
 
+  const getUrl = (route) => {
+    return BASE_URL + route;
+  }
+
 
   return (
     <ApiContext.Provider value={{ 
@@ -449,6 +453,8 @@ const ApiProvider = ({children}) => {
       saveMountainFiche,
       saveDialogFiche,
       updateMountainFiche,
+
+      getUrl,
      }}>
       {children}
     </ApiContext.Provider>

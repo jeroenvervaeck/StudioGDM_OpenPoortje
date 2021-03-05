@@ -3,7 +3,7 @@ import animation from "../../assets/DIALOOG_HUIDSKLEUR1.gif";
 import * as Routes from '../../routes';
 import { useApi, useAuth } from '../../services';
 import './SupervisorDialogFiche.scss';
-import Board from '../../components/stickers/Board'
+import Board from '../../components/stickers/Board';
 
 const SupervisorDialogFiche = () => {
 
