@@ -72,11 +72,11 @@ const SupervisorKidsPage = () => {
 					<FaSearch />
 					<input type="text" placeholder="Zoek op naam.." onChange={(e) => onSearchChange(e.target.value)}></input>
 				</div>
-				<div className="supervisor-kids__filter-icons">
+				{/* <div className="supervisor-kids__filter-icons">
 					<FaWrench />
 					<FaSortAlphaDown />
 					<FaSortNumericDown />
-				</div>
+				</div> */}
 			</form>
 
 			<div className="supervisor-kids__content">
