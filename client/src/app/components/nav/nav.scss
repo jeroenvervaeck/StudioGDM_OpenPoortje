@@ -32,6 +32,8 @@
 
 			&-profile {
 				position: relative;
+				border: none !important;
+				border-radius: 50%;
 				&-online {
 					position: absolute;
 					right: 0;
@@ -47,7 +49,6 @@
 					width: 28px;
 					height: 28px;
 					border: solid 2px $color-white;
-					background-color: $color-gray;
 					border-radius: 100%;
 				}
 /* 				svg {
