@@ -2,7 +2,7 @@ import { default as React, useEffect, useState } from 'react';
 import { FaBars, FaUserAlt, FaTimes, FaExchangeAlt, FaMountain, FaComments, FaFolder, FaBookmark, FaWrench, FaHome, FaInfo, FaBlog } from 'react-icons/fa';
 import { HiOutlineLogout } from 'react-icons/hi';
 import { useApi, useAuth } from '../../services'; 
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, NavLink } from 'react-router-dom';
 import * as Routes from '../../routes';
 import { useHistory } from 'react-router-dom'
 
@@ -18,7 +18,7 @@ import profile_04 from '../../assets/profileGifs/profile_04.gif'
 const Nav = ({}) => {
 	const { getLoggedInRole, getIsSupervisorLoggedIn, logoutSupervisor } = useAuth();
 	const { eraseCookie,colors } = useApi();
-  const [showNav, setShowNav] = useState(false);
+  const [showNav, setShowNav] = useState(true);
   const onClick = () => setShowNav(!showNav);
 
 	const profiles = [profile_01, profile_02, profile_03, profile_04];
@@ -66,7 +66,10 @@ const Nav = ({}) => {
                   <FaTimes onClick={onClick} />
                 </div>
                 <div className="nav-block__credentials-supervisor-info">
-                  <FaUserAlt />
+                  <div className="nav-block__credentials-supervisor-info-profile">
+                    <div className="nav-block__credentials-supervisor-info-profile-online"></div>
+                    <FaUserAlt />
+                  </div>
                   <div className="nav-block__credentials-supervisor-info-wrapper">
                     <h2>{(supervisor) ? supervisor.first_name: 'Begeleider naam'} </h2>
                     <p>{(supervisor) ? supervisor.auth.username: 'Gebruikersnaam'}</p>
@@ -96,35 +99,35 @@ const Nav = ({}) => {
             <div className="nav-block__routes">
               <div className="nav-block__routes-main">
                 <div className="nav-block__routes-main-wrapper">
-                  <Link to={Routes.SUPERVISOR_MOUNTAIN} className="nav-block__routes-main-wrapper-element">
+                  <NavLink to={Routes.SUPERVISOR_MOUNTAIN} className="nav-block__routes-main-wrapper-element" activeClassName="nav-block__routes-main-element-selected">
                     <FaMountain size={20} />
                     <p>Berglijn</p>
-                  </Link>
-                  <Link to={Routes.SUPERVISOR_DIALOG} className="nav-block__routes-main-wrapper-element">
+                  </NavLink>
+                  <NavLink to={Routes.SUPERVISOR_DIALOG} className="nav-block__routes-main-wrapper-element" activeClassName="nav-block__routes-main-element-selected">
                     <FaComments size={20} />
                     <p>Dialoog</p>
-                  </Link>
+                  </NavLink>
                 </div>
-                <Link to={Routes.SUPERVISOR_DASHBOARD} className="nav-block__routes-main-element">
+                <NavLink to={Routes.SUPERVISOR_DASHBOARD} className="nav-block__routes-main-element" activeClassName="nav-block__routes-main-element-selected">
                   <FaHome size={20} />
                   <p>Startpagina</p>
-                </Link>
-                <Link to={Routes.SUPERVISOR_FICHE} className="nav-block__routes-main-element">
+                </NavLink>
+                <NavLink to={Routes.SUPERVISOR_FICHE} className="nav-block__routes-main-element" activeClassName="nav-block__routes-main-element-selected">
                   <FaFolder size={20} />
                   <p>Fiches</p>
-                </Link>
-                <Link to={Routes.SUPERVISOR_TIMELINE} className="nav-block__routes-main-element">
+                </NavLink>
+                <NavLink to={Routes.SUPERVISOR_TIMELINE} className="nav-block__routes-main-element" activeClassName="nav-block__routes-main-element-selected">
                   <FaBookmark size={20} />
                   <p>Tijdlijn</p>
-                </Link>
-                <Link to={Routes.SUPERVISOR_SETTINGS} className="nav-block__routes-main-element">
+                </NavLink>
+                <NavLink to={Routes.SUPERVISOR_SETTINGS} className="nav-block__routes-main-element" activeClassName="nav-block__routes-main-element-selected">
                   <FaWrench size={20} />
                   <p>Instellingen</p>
-                </Link>
-                <Link to={Routes.SUPERVISOR_INFO} className="nav-block__routes-main-element">
+                </NavLink>
+                <NavLink to={Routes.SUPERVISOR_INFO} className="nav-block__routes-main-element" activeClassName="nav-block__routes-main-element-selected">
                   <FaInfo size={20} />
                   <p>Info</p>
-                </Link>
+                </NavLink>
               </div>
             </div>
             <div className="nav-block__click-on-me" onClick={onClick}></div>
@@ -133,8 +136,11 @@ const Nav = ({}) => {
           <div className="nav-none" style={{backgroundColor: colors[(kid) ? kid.theme_color : 'color-01']}} onClick={onClick}>
             <FaBars size={25} />
             <div className="nav-none__wrapper">
-              <FaUserAlt />
-              <FaUserAlt />
+              <div className="nav-none__wrapper-profile">
+                <div className="nav-none__wrapper-profile-online"></div>
+                <FaUserAlt />
+              </div>
+              <img className="nav-none__wrapper-kid" src={(kid) ? profilePic : '.......'}/>
             </div>
           </div>
       }

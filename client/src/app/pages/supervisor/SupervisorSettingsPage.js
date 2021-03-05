@@ -1,7 +1,7 @@
 import { default as React, useState } from 'react';
 import { useApi, useAuth } from '../../services';
 import * as Routes from '../../routes';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router'
 
 import './SupervisorSettingsPage.scss'
@@ -90,18 +90,24 @@ const SupervisorSettingsPage = () => {
 							</div>
 						</div>
 					</div>
-					<input className="supervisor-settings__form-save" type="submit" value="Opslaan" style={{backgroundColor: colors[(kid) ? kid.theme_color : 'color-01']}} onClick={(e) => {
-						e.preventDefault();
-						editKid(kid._id, {
-							theme_color: selectedThemeColor,
-							skin_color: selectedSkintone,
-						});
-						updateSelectedKidData(kidObj._id)
-							.then(() => {
-								history.go(0)
+					<div className="supervisor-settings__form-buttons">
+						<input className="supervisor-settings__form-buttons-save" type="submit" value="Opslaan" style={{backgroundColor: colors[(kid) ? kid.theme_color : 'color-01']}} onClick={(e) => {
+							e.preventDefault();
+							editKid(kid._id, {
+								theme_color: selectedThemeColor,
+								skin_color: selectedSkintone,
 							});
-						
-					}}></input>
+							updateSelectedKidData(kidObj._id)
+								.then(() => {
+									history.go(0)
+								});
+							
+						}}>
+						</input>
+						<Link className="supervisor-settings__form-buttons-cancel" to={Routes.SUPERVISOR_DASHBOARD}>
+							Annuleren
+						</Link>
+					</div>
 				</form>
 
 			</div>
