@@ -1,6 +1,8 @@
 import {default as Kid} from './kids/Kid';
 import {default as Fiches} from './fiches/Fiches';
 import {default as Fiche} from './fiches/Fiche';
+import {default as FicheTimeline} from './fiches/FicheTimeline';
+import {default as FicheDetail} from './fiches/FicheDetail';
 import {default as Nav} from './nav/Nav';
 import {default as Save} from './confirm/Save';
 import {default as Delete} from './confirm/Delete';
@@ -22,6 +24,8 @@ export {
   Kid,
   Fiches,
   Fiche,
+  FicheTimeline,
+  FicheDetail,
   Nav,
   Save,
   Delete,
