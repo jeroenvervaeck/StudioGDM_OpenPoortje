@@ -1,5 +1,5 @@
 import { default as React, useState } from 'react';
-import { SwingMainpage } from '../../assets';
+import { SwingMainpage01, SwingMainpage02, SwingMainpage03, SwingMainpage04 } from '../../assets';
 import { useApi } from '../../services'; 
 
 import './SupervisorDashboardPage.scss';
@@ -9,6 +9,13 @@ import { Nav } from '../../components';
 const SupervisorDashboardPage = () => {
 	const [ kid, setKid ] = useState(JSON.parse(sessionStorage.getItem('selected-kid')));
 	const { colors } = useApi();
+
+	const pickImage = (kid) => {
+		if ( kid.skin_color === 'skin-01' ) { return SwingMainpage01 } 
+		else if ( kid.skin_color === 'skin-02' ) { return SwingMainpage02 }
+		else if ( kid.skin_color === 'skin-03' ) { return SwingMainpage03 }
+		else { return SwingMainpage04 }
+ 	}
 
 	return (
 		<div>
@@ -24,7 +31,8 @@ const SupervisorDashboardPage = () => {
 							</h1>
 						</div>
 					</div>
-					<img src={ SwingMainpage }></img>
+
+					<img src={ pickImage(kid) }></img>
 				</div>
 			</div>
 		</div>

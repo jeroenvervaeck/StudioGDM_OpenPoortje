@@ -27,6 +27,7 @@
 					padding: 0;
 					color: $color-white;
 					font-size: 24px;
+					text-align: left;
 				}
 				svg {
 					margin: 0;
@@ -40,9 +41,7 @@
 				padding: 20px 28px;
 				margin: 0;
 				border: $color-gray solid 1px;
-				strong {
-					padding: 12px 0;
-				}
+				line-height: 24px;
 			}
 		}
 	}

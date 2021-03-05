@@ -44,6 +44,7 @@ const SupervisorKidsPage = () => {
 
 	return (
 		<div className="supervisor-kids">
+			
 		{
 			(getLoggedInRole() !== 'organisation') 
 			? <Redirect to={Routes.LOGIN_MAIN}/> 
@@ -55,7 +56,6 @@ const SupervisorKidsPage = () => {
 				: null
 		}
 
-			// Hans HIERZO
 			<Link className="supervisor-kids__nav" to={Routes.LOGIN_SECONDARY}
 				onClick={(e) => {
 					console.log('cookie verwijderen');

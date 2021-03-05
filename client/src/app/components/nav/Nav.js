@@ -4,22 +4,24 @@ import { HiOutlineLogout } from 'react-icons/hi';
 import { useApi, useAuth } from '../../services'; 
 import { Link, Redirect, NavLink } from 'react-router-dom';
 import * as Routes from '../../routes';
-import { useHistory } from 'react-router-dom'
+import { PasswordCheck } from '../';
 
 import './nav.scss'
 
-
-import profile_01 from '../../assets/profileGifs/profile_01.gif'
-import profile_02 from '../../assets/profileGifs/profile_02.gif'
-import profile_03 from '../../assets/profileGifs/profile_03.gif'
-import profile_04 from '../../assets/profileGifs/profile_04.gif'
+import { logo } from '../../assets/index';
+import profile_01 from '../../assets/profileGifs/profile_01.gif';
+import profile_02 from '../../assets/profileGifs/profile_02.gif';
+import profile_03 from '../../assets/profileGifs/profile_03.gif';
+import profile_04 from '../../assets/profileGifs/profile_04.gif';
 
 
 const Nav = ({}) => {
 	const { getLoggedInRole, getIsSupervisorLoggedIn, logoutSupervisor } = useAuth();
 	const { eraseCookie,colors } = useApi();
-  const [showNav, setShowNav] = useState(true);
+  const [showNav, setShowNav] = useState(false);
   const onClick = () => setShowNav(!showNav);
+
+  const [ passwordCheckVisible, setPasswordCheckVisible ] = useState(false)
 
 	const profiles = [profile_01, profile_02, profile_03, profile_04];
 
@@ -37,11 +39,14 @@ const Nav = ({}) => {
   }
 
   const deselectKid = () => {
-    sessionStorage.removeItem('selected-kid')
+    sessionStorage.removeItem('selected-kid');
   }
 
   return (
     <div className="nav">
+    
+    { passwordCheckVisible && <PasswordCheck role="supervisor" onClose={() => { setPasswordCheckVisible(false) }} proceed={() => { deselectKid() }} /> }
+
 		{
 			(getLoggedInRole() !== 'organisation') 
 			? <Redirect to={Routes.LOGIN_MAIN}/> 
@@ -68,7 +73,8 @@ const Nav = ({}) => {
                 <div className="nav-block__credentials-supervisor-info">
                   <div className="nav-block__credentials-supervisor-info-profile">
                     <div className="nav-block__credentials-supervisor-info-profile-online"></div>
-                    <FaUserAlt />
+                    {/* <FaUserAlt /> */}
+                    <img src={ logo }></img>
                   </div>
                   <div className="nav-block__credentials-supervisor-info-wrapper">
                     <h2>{(supervisor) ? supervisor.first_name: 'Begeleider naam'} </h2>
@@ -90,9 +96,9 @@ const Nav = ({}) => {
                     <h2>{(kid) ? kid.first_name: 'Kind naam'} </h2>
                     <p>{(kid && kid.auth) ? kid.auth.username: 'Gebruikersnaam'}</p>
                     </div>
-                    <Link to={Routes.SUPERVISOR_KID} onClick={deselectKid}>
+                    <div onClick={() => { setPasswordCheckVisible(true) }}>
                       <FaExchangeAlt />
-                    </Link>
+                    </div>
                   </div>
               </div>
             </div>
@@ -138,7 +144,8 @@ const Nav = ({}) => {
             <div className="nav-none__wrapper">
               <div className="nav-none__wrapper-profile">
                 <div className="nav-none__wrapper-profile-online"></div>
-                <FaUserAlt />
+                {/* <FaUserAlt /> */}
+                <img src={ logo }></img>
               </div>
               <img className="nav-none__wrapper-kid" src={(kid) ? profilePic : '.......'}/>
             </div>
