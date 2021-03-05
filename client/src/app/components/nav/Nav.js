@@ -134,7 +134,7 @@ const Nav = ({}) => {
             <FaBars size={25} />
             <div className="nav-none__wrapper">
               <FaUserAlt />
-              <FaUserAlt />
+              <img className="nav-none__wrapper-profile" src={(kid) ? profilePic : '.......'}/>
             </div>
           </div>
       }
