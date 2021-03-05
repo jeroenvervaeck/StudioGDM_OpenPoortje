@@ -43,12 +43,19 @@
 					box-shadow: 0px 0px 4px 0px $color-white;
 				}
 				// supervisor profilepic
-				svg {
+				img {
+					width: 28px;
+					height: 28px;
+					border: solid 2px $color-white;
+					background-color: $color-gray;
+					border-radius: 100%;
+				}
+/* 				svg {
 					border: solid 2px $color-white;
 					background-color: $color-gray;
 					border-radius: 100%;
 					padding: 5px;
-				}
+				} */
 			}
 
 			// Kid profilepic
@@ -62,7 +69,7 @@
 			&-kid {
 				border: solid 2px $color-white;
 				background-color: $color-white;
-				border: solid 2px $color-gray;
+				border: solid 2px $color-white;
 				width: 30px;
 			}
 		}
@@ -130,13 +137,20 @@
 							height: 14px;
 							box-shadow: 0px 0px 4px 0px $color-white;
 						}
-						svg {
+						img {
+							width: 44px;
+							height: 44px;
+							border: solid 2px $color-white;
+							background-color: $color-gray;
+							border-radius: 100%;
+						}
+/* 						svg {
 							font-size: 28px;
 							border: solid 2px $color-white;
 							background-color: $color-gray;
 							border-radius: 100%;
 							padding: 5px;
-						}
+						} */
 					}
 					&-wrapper {
 						display: flex;
@@ -186,7 +200,7 @@
 						width: 50px;
 						height: 50px;
 						// font-size: 28px;
-						border: solid 2px $color-gray;
+						border: solid 2px $color-white;
 						background-color: $color-white;
 						// padding: 5px;
 					}

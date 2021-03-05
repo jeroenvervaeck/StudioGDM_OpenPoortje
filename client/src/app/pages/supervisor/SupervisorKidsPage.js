@@ -13,7 +13,7 @@ import { Kid } from '../../components'
 
 const SupervisorKidsPage = () => {
 	const { getKidsOfOrganisation, eraseCookie } = useApi();
-	const { getLoggedInRole, getIsSupervisorLoggedIn } = useAuth();
+	const { getLoggedInRole, getIsSupervisorLoggedIn, logoutSupervisor } = useAuth();
 	const history = useHistory(); 
 
 	const [ children, setChildren ] = useState();
@@ -44,6 +44,7 @@ const SupervisorKidsPage = () => {
 
 	return (
 		<div className="supervisor-kids">
+			
 		{
 			(getLoggedInRole() !== 'organisation') 
 			? <Redirect to={Routes.LOGIN_MAIN}/> 
@@ -54,9 +55,10 @@ const SupervisorKidsPage = () => {
 				? <Redirect to={Routes.LOGIN_SECONDARY}/> 
 				: null
 		}
+
 			<Link className="supervisor-kids__nav" to={Routes.LOGIN_SECONDARY}
 				onClick={(e) => {
-					eraseCookie('sup-auth');
+					logoutSupervisor();
 					history.push(Routes.LOGIN_SECONDARY);
 				}}
 			>

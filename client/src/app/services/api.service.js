@@ -76,7 +76,7 @@ const ApiProvider = ({children}) => {
 
     const response = await fetch(url, options).then((result) => result.json());
 
-    sessionStorage.setItem('supervisor', JSON.stringify(response).supervisor);
+    sessionStorage.setItem('supervisor', JSON.stringify(response.supervisor));
     setUser(response);
 
     return response;
