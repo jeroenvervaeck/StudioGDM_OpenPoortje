@@ -1,7 +1,7 @@
 import { default as React, useState } from 'react';
 import { useApi, useAuth } from '../../services';
 import * as Routes from '../../routes';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router'
 
 import './SupervisorSettingsPage.scss'
@@ -51,20 +51,20 @@ const SupervisorSettingsPage = () => {
 							<p>Huidskleur</p>
 							<div className="supervisor-settings__form-personal-skintone-wrapper">
 								<label>
-									<input type="radio" id="brown" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
-									<div className="checkmark">{ selectedSkintone === ('skin-01') ? '✗' : '' }</div>
+									<input type="radio" id="skin-04" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
+									<div className="checkmark">{ selectedSkintone === ('skin-04') ? '✗' : '' }</div>
 								</label>
 								<label>
-									<input type="radio" id="orange" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
-									<div className="checkmark">{ selectedSkintone === ('skin-02') ? '✗' : '' }</div>
-								</label>
-								<label>
-									<input type="radio" id="pink" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
+									<input type="radio" id="skin-03" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
 									<div className="checkmark">{ selectedSkintone === ('skin-03') ? '✗' : '' }</div>
 								</label>
 								<label>
-									<input type="radio" id="pale" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
-									<div className="checkmark">{ selectedSkintone === ('skin-04') ? '✗' : '' }</div>
+									<input type="radio" id="skin-02" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
+									<div className="checkmark">{ selectedSkintone === ('skin-02') ? '✗' : '' }</div>
+								</label>
+								<label>
+									<input type="radio" id="skin-01" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
+									<div className="checkmark">{ selectedSkintone === ('skin-01') ? '✗' : '' }</div>
 								</label>
 							</div>
 						</div>
@@ -90,18 +90,24 @@ const SupervisorSettingsPage = () => {
 							</div>
 						</div>
 					</div>
-					<input className="supervisor-settings__form-save" type="submit" value="Opslaan" style={{backgroundColor: colors[(kid) ? kid.theme_color : 'color-01']}} onClick={(e) => {
-						e.preventDefault();
-						editKid(kid._id, {
-							theme_color: selectedThemeColor,
-							skin_color: selectedSkintone,
-						});
-						updateSelectedKidData(kidObj._id)
-							.then(() => {
-								history.go(0)
+					<div className="supervisor-settings__form-buttons">
+						<input className="supervisor-settings__form-buttons-save" type="submit" value="Opslaan" style={{backgroundColor: colors[(kid) ? kid.theme_color : 'color-01']}} onClick={(e) => {
+							e.preventDefault();
+							editKid(kid._id, {
+								theme_color: selectedThemeColor,
+								skin_color: selectedSkintone,
 							});
-						
-					}}></input>
+							updateSelectedKidData(kidObj._id)
+								.then(() => {
+									history.go(0)
+								});
+							
+						}}>
+						</input>
+						<Link className="supervisor-settings__form-buttons-cancel" to={Routes.SUPERVISOR_DASHBOARD}>
+							Annuleren
+						</Link>
+					</div>
 				</form>
 
 			</div>

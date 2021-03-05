@@ -130,15 +130,32 @@
 				}
 			}
 		}
-		&-save {
-			margin-top: 30px;
-			width: 200px;
-			background-color: $color-01;
-			border: none;
-			color: $color-white;
-			padding: 20px 0;
-			border-radius: 50px;
-			font-size: 18px;
+		&-buttons {
+			display: flex;
+			justify-content: flex-start;
+			&-save {
+				margin-top: 30px;
+				margin-right: 50px;
+				width: 200px;
+				background-color: $color-01;
+				border: none;
+				color: $color-white;
+				padding: 20px 0;
+				border-radius: 50px;
+				font-size: 18px;
+			}
+			&-cancel {
+				margin-top: 30px;
+				width: 300px;
+				background-color: $color-gray;
+				border: none;
+				color: $color-white;
+				padding: 20px 0;
+				border-radius: 50px;
+				font-size: 18px;
+				text-align: center;
+				text-decoration: none;
+			}
 		}
 	}
 }
