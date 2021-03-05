@@ -21,10 +21,10 @@ import {
   SupervisorMountainFiche,
   SupervisorDialogFiche,
   SupervisorTestFiche,
-  SupervisorEigenSticker
+  SupervisorEigenSticker,
+  SupervisorHartFiche,
+  SupervisorMoneyFiche,
 } from './pages';
-
-
 
 function App() {
   return (
@@ -60,6 +60,9 @@ function App() {
           <RouteWithLayout exact path={Routes.SUPERVISOR_DIALOG} component={SupervisorDialogFiche} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_TEST} component={SupervisorTestFiche} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_EIGENSTICKER} component={SupervisorEigenSticker} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_HART} component={Pages.SupervisorHartFiche} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_ZAKGELD} component={Pages.SupervisorMoneyFiche} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_GLIJBAAN} component={Pages.SupervisorSlideFiche} layout={PageLayout} />
         </Switch>
       </Router>
       </AuthProvider>

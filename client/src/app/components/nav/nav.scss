@@ -84,6 +84,7 @@
 		justify-content: flex-start;
 		align-items: center;
 		color: $color-white;
+		z-index: 1001;
 
 		&__click-on-me {
 			position: fixed;

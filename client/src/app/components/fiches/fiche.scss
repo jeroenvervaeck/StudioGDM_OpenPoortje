@@ -36,3 +36,72 @@
 		color: $color-text;
 	}
 }
+
+.fiche-detail {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background-color: hsla(0, 0, 0, 0.5);
+	z-index: 1001;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&__main {
+		box-shadow: 5px 5px 10px 5px rgba(0,0,0,0.25);
+		background-color: $color-white;
+		height: 60vw;
+		width: 80vw;
+		border-radius: 20px;
+		position: relative;
+		background-size: cover !important;
+		// Close icon
+		&-close {
+			position: absolute;
+			top: 0;
+			right: 0;
+			color: $color-gray;
+			font-size: 28px;
+			padding: 20px;
+		}
+		&-content {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			margin: 40px 0;
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			&-label {
+				width: 50%;
+				&-h1 {
+					font-size: 18px;
+					color: $color-text;
+					text-align: left !important;
+					margin: 0;
+					padding-left: 30px;
+					padding-bottom: 4px;
+					padding-top: 0 !important;
+				}
+				p {
+					font-size: 14px;
+					color: $color-text;
+					margin: 0;
+					padding-left: 30px;
+					padding-bottom: 4px;
+				}
+			}
+			&-buttons {
+				width: fit-content;
+				padding-right: 40px;
+				svg {
+					border-radius: 10px;
+					color: $color-gray;
+					font-size: 50px;
+					padding: 20px;
+					background-color: $color-white;
+					box-shadow: 0px 0px 10px 3px rgba(161,161,161,0.25);
+				}
+			}
+		}
+	}
+}

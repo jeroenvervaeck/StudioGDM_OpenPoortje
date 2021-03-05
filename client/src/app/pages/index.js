@@ -16,6 +16,9 @@ import { default as TestPage } from './supervisor/TestPage';
 // fiches
 import { default as SupervisorMountainFiche } from './fiches/SupervisorMountainFiche';
 import { default as SupervisorDialogFiche } from './fiches/SupervisorDialogFiche';
+import { default as SupervisorHartFiche } from './fiches/SupervisorHartFiche';
+import { default as SupervisorMoneyFiche } from './fiches/SupervisorMoneyFiche';
+import { default as SupervisorSlideFiche } from './fiches/SupervisorSlideFiche';
 import { default as SaveFiche } from './fiches/SaveFiche';
 import { default as SupervisorTestFiche } from './fiches/SupervisorTestFiche';
 import { default as SupervisorEigenSticker } from './fiches/SupervisorEigenSticker';
@@ -43,5 +46,8 @@ export {
 	SaveFiche,
 	SupervisorTestFiche,
 	SupervisorEigenSticker,
-	SupervisorBergGesprek
+	SupervisorBergGesprek,
+	SupervisorHartFiche,
+	SupervisorMoneyFiche,
+	SupervisorSlideFiche,
 }

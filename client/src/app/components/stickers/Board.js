@@ -286,12 +286,15 @@ class Board extends Component {
         )
     }
 
-    save = function( proceed ) {
-        const onSave = this.props.onSave;
+    save = function( e, proceed ) {
+        e.preventDefault();
+        // const onSave = this.props.onSave;
         Screenshot(document.querySelector("body")).then(async(canvas) => {
-            const img = canvas.toDataURL("image/png");
-            onSave(img)
-                .then(proceed);
+            const imgURL = canvas.toDataURL("image/png");
+            let blob = await fetch(imgURL).then(r => r.blob());
+            var img = new File([blob], "screenshot.png");
+            this.props.onSave(img)
+                // .then(proceed);
         });
     }
 

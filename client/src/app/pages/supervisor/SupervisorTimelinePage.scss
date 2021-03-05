@@ -1,7 +1,7 @@
 @import '../../_sass/abstracts/index';
 
 .supervisor-timeline {
-	padding: 0 4vw;
+	
 	h1 {
 		margin: 0;
 		padding-top: 25px;
@@ -10,8 +10,8 @@
 		color: $color-text;
 	}
 	&__month {
-		padding-left: 100px;
-		padding-right: 60px;
+		padding-left: 10vw;
+		padding-right: 6vw;
 		padding-bottom: 40px;
 		h2 {
 			color: $color-text;
@@ -24,6 +24,7 @@
 			flex-wrap: wrap;
 			&-element {
 				width: 48%;
+				height: auto;
 				margin-top: 20px;
 				display: flex;
 				flex-direction: column;
@@ -35,11 +36,12 @@
 
 				img {
 					padding: 20px;
+					object-fit: contain;
 				}
 				&-label {
 
 					h1 {
-						font-size: 22px;
+						font-size: 18px;
 						color: $color-text;
 						text-align: left;
 						margin: 0;
@@ -49,7 +51,7 @@
 						background-color: $color-white;
 					}
 					p {
-						font-size: 18px;
+						font-size: 14px;
 						color: $color-text;
 						margin: 0;
 						padding-left: 30px;

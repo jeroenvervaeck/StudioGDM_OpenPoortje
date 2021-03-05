@@ -7,7 +7,8 @@ const ApiContext = createContext();
 const useApi = () => useContext(ApiContext);
 
 const ApiProvider = ({children}) => {
-  const BASE_URL = `${apiConfig.baseURL || "http://localhost:8080"}`;
+  // const BASE_URL = `${apiConfig.baseURL || "http://localhost:8080"}`;
+  const BASE_URL = "https://open-poortje-api.herokuapp.com";
 
   const [ user, setUser ] = useState(JSON.parse(sessionStorage.getItem('user')));
 
@@ -400,21 +401,22 @@ const ApiProvider = ({children}) => {
 
   const saveScreenshot = async ( file, width = 800, height = 600 ) => {
     const data = new FormData();
-    await data.append('picture', file);
-    await data.append('width', width);
-    await data.append('height', height);
-    console.log(data);
+    data.append('picture', file);
+    data.append('width', width);
+    data.append('height', height);
 
     const url = `${BASE_URL}/fiche`;
 
     const options = {
       method:'POST',
       headers: {
+        // 'content-type': 'multipart/form-data'
         }, 
       body: data,
     }
 
     const response = await fetch(url, options).then((result) => result.json());
+    console.log(response)
     return response.filename;
   }
 
