@@ -12,10 +12,10 @@ const FicheDetail = ({ kid }) => {
           <div className="fiche-detail__main-content-label">
             <h1 className="fiche-detail__main-content-label-h1">Ervaringsdialoog</h1>
 						<p>Ingevuld op 12/12/2021</p>
-						<p>Begeleider: jeroen verver</p>
+						{/* <p>Begeleider: jeroen verver</p> */}
           </div>
           <div className="fiche-detail__main-content-buttons">
-            {/* // WIP Bewerk buttons */}
+            {/* // WIP edit button */}
             <FaPrint onClick={() => { console.log('print the fiche') }} />
           </div>
         </div>

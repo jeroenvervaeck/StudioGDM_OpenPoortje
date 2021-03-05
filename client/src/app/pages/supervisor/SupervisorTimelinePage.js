@@ -12,7 +12,7 @@ const SupervisorTimelinePage = () => {
 			<div className="supervisor-timeline">
 
 				{ 
-					true && <FicheDetail 
+					false && <FicheDetail 
 						
 					/> 
 				}

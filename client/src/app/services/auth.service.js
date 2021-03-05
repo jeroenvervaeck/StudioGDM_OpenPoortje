@@ -8,7 +8,8 @@ const useAuth = () => useContext(AuthContext);
 const AuthProvider = ({ children }) => {
   const { setCookie, getCookie, eraseCookie, updateUserData, updateSupervisorData } = useApi();
 
-  const BASE_URL = `${apiConfig.baseURL || "https://open-poortje-api.herokuapp.com"}`;
+  // const BASE_URL = `${apiConfig.baseURL || "https://open-poortje-api.herokuapp.com"}`;
+  const BASE_URL = "https://open-poortje-api.herokuapp.com";
 
   const getToken = async ( role, username, password ) => {
     const url = `${BASE_URL}/token/${role}`;

@@ -53,7 +53,7 @@
 		width: 80vw;
 		border-radius: 20px;
 		position: relative;
-		background-size: cover;
+		background-size: cover !important;
 		// Close icon
 		&-close {
 			position: absolute;

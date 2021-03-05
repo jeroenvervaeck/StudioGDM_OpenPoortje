@@ -11,3 +11,14 @@ body {
 
 	font-family: 'Montserrat', sans-serif;
 }
+
+#background-blur {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: 1000;
+	background-color: hsla(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
