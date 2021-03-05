@@ -1,14 +1,17 @@
-import { default as React } from 'react';
+import { default as React, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useAuth } from '../../services';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import * as Routes from '../../routes';
 import { logo } from '../../assets';
+import { PasswordCheck } from '../../components'; 
 
 import './organisation.scss'
 
 const OrganisationDashboardPage = () => {
+	const history = useHistory();
 	const { getLoggedInRole } = useAuth();
+	const [ passwordCheckTarget, setPasswordCheckTarget ] = useState()
 	return (
 		<div className="organisation-dashboard">
 			{
@@ -16,6 +19,17 @@ const OrganisationDashboardPage = () => {
 				? <Redirect to={Routes.LOGIN_MAIN}/> 
 				: null
 			}
+
+			{ 
+				(passwordCheckTarget)
+				? <PasswordCheck 
+					role="organisation" 
+					onClose={() => { setPasswordCheckTarget() }} 
+					proceed={() => { history.push((passwordCheckTarget === 'kid') ? Routes.ORGANISATION_CRUD_KIDS : Routes.ORGANISATION_CRUD_SUPERVISOR) }} 
+				/> 
+				: null
+			}
+
 
 			<div className="organisation-dashboard__top">
 				<h1>Dashboard voor:</h1>
@@ -30,12 +44,12 @@ const OrganisationDashboardPage = () => {
 			<div className="organisation-dashboard__bottom">
 				<h1>Kinderen of begeleiders beheren</h1>
 				<div className="organisation-dashboard__bottom-wrapper">
-					<Link to={ Routes.ORGANISATION_CRUD_KIDS }>
+					<div onClick={() => setPasswordCheckTarget('kid')}>
 						<p>Kinderen</p>
-					</Link>
-					<Link to={ Routes.ORGANISATION_CRUD_SUPERVISOR }>
-						<p>begeleiders</p>
-					</Link>
+					</div>
+					<div onClick={() => setPasswordCheckTarget('supervisor')}>
+						<p>Begeleider</p>
+					</div>
 				</div>
 			</div>
 		</div>

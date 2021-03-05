@@ -16,6 +16,9 @@ const PasswordCheck = ({role, onClose, proceed}) => {
 		<div className="pw-check__input">
 			<p>Wachtwoord:</p>
 			<input type='password' id="pw" defaultValue=""></input>
+			{
+				(error) ? <p className="pw-check__input-error">{error}</p> : null
+			}
 		</div>
 		<div className="pw-check__buttons">
 			<p onClick={ onClose }>Annuleren</p>
@@ -23,7 +26,7 @@ const PasswordCheck = ({role, onClose, proceed}) => {
 				e.preventDefault();
 				getToken(
 					role, 
-					JSON.parse(sessionStorage.getItem((role === 'organisation') ? 'user' : 'supervisor' )).supervisor.auth.username, 
+					JSON.parse(sessionStorage.getItem((role === 'organisation') ? 'user' : 'supervisor' )).auth.username, 
 					document.getElementById('pw').value
 				).then((response) => {
 					if (response.token) {

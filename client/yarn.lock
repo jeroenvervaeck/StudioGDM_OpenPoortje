@@ -1701,6 +1701,11 @@
   "resolved" "https://registry.npmjs.org/@types/html-minifier-terser/-/html-minifier-terser-5.1.1.tgz"
   "version" "5.1.1"
 
+"@types/html2canvas@0.0.36":
+  "integrity" "sha512-6g/TVYK5U5AyRaOj1lHVnEmlxzH21K9CRDkC0s6s3CAWLDFbwZ8s+dy0kPrhPfo0cEjIOQh3eeFtTjRBPN4Q0g=="
+  "resolved" "https://registry.npmjs.org/@types/html2canvas/-/html2canvas-0.0.36.tgz"
+  "version" "0.0.36"
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   "integrity" "sha512-sz7iLqvVUg1gIedBOvlkxPlc8/uVzyS5OwGz1cKjXzkl3FpL3al0crU8YGU1WoHkxn0Wxbw5tyi6hvzJKNzFsw=="
   "resolved" "https://registry.npmjs.org/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.3.tgz"
@@ -9748,6 +9753,13 @@
   "integrity" "sha512-HvPuUQnLp5H7TouGq3kzBeioJmXms1wHy9EGjz2OURWBp4qZO6AfGEcnxts1D/CbwPLRAgTMPCEgYhA3sEM4vw=="
   "resolved" "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.8.tgz"
   "version" "6.0.8"
+
+"react-gif-player@^0.4.2":
+  "integrity" "sha512-ub++AT0PgbVxw1S0ahV3Q/4m67772r3vrnE6VqYed0Wi0cB9iremID8UnkFhZJCge77lwumsFOYsk1ShmouAgA=="
+  "resolved" "https://registry.npmjs.org/react-gif-player/-/react-gif-player-0.4.2.tgz"
+  "version" "0.4.2"
+  dependencies:
+    "prop-types" "^15.6.0"
 
 "react-icons@^3.11.0":
   "integrity" "sha512-JRgiI/vdF6uyBgyZhVyYJUZAop95Sy4XDe/jmT3R/bKliFWpO/uZBwvSjWEdxwzec7SYbEPNPck0Kff2tUGM2Q=="

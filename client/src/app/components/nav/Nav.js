@@ -2,7 +2,7 @@ import { default as React, useEffect, useState } from 'react';
 import { FaBars, FaUserAlt, FaTimes, FaExchangeAlt, FaMountain, FaComments, FaFolder, FaBookmark, FaWrench, FaHome, FaInfo, FaBlog } from 'react-icons/fa';
 import { HiOutlineLogout } from 'react-icons/hi';
 import { useApi, useAuth } from '../../services'; 
-import { Link, Redirect, NavLink } from 'react-router-dom';
+import { Link, Redirect, NavLink, useHistory } from 'react-router-dom';
 import * as Routes from '../../routes';
 import { PasswordCheck } from '../';
 
@@ -16,6 +16,7 @@ import profile_04 from '../../assets/profileGifs/profile_04.gif';
 
 
 const Nav = ({}) => {
+  const history = useHistory();
 	const { getLoggedInRole, getIsSupervisorLoggedIn, logoutSupervisor } = useAuth();
 	const { eraseCookie,colors } = useApi();
   const [showNav, setShowNav] = useState(false);
@@ -33,13 +34,10 @@ const Nav = ({}) => {
     setProfileKid(profiles[+kid.skin_color.replace('skin-', '')-1]);
   }, [kid]);
 
-  const logOutSupervisor = () => {
-    sessionStorage.removeItem('supervisor');
-    eraseCookie('sup-auth');
-  }
 
   const deselectKid = () => {
     sessionStorage.removeItem('selected-kid');
+    history.push(Routes.SUPERVISOR_KID);
   }
 
   return (
