@@ -353,18 +353,29 @@ const ApiProvider = ({children}) => {
     return response;
   }
 
-  const updateMountainFiche = async ( positionById, kidId, opinion_convo ) => {
+  const updateMountainFiche = async ( fiches, kidId, newFiche, positionById ) => {
+    const newFiches = fiches.map((fiche) => {
+      if (fiche.fiche_data.positionById === positionById) {
+        return newFiche;
+      }
+      return fiche;
+    })
+    return editKid(kidId, {fiches: newFiches});
+  }
+
+  const saveDialogFiche = async ( questionBlue, questionYellow, questionRed, kidId ) => {
     const auth = JSON.parse(getCookie('sup-auth'));
     const url = `${BASE_URL}/kid/fiche`;
 
     const body = {
       kidId: kidId,
       fiche: {
-        fiche_type: "601a996b352c1d313cd7bca2",
+        fiche_type: "603e31d01b09a12647f1c244",
         picture_name: "",
         fiche_data:{
-          positionById: positionById,
-          opinion_convo: opinion_convo
+          questionBlue: questionBlue,
+          questionYellow: questionYellow,
+          questionRed: questionRed
         }
       }
     }
@@ -411,6 +422,7 @@ const ApiProvider = ({children}) => {
       // fiches
       getFicheTypes,
       saveMountainFiche,
+      saveDialogFiche,
       updateMountainFiche,
      }}>
       {children}

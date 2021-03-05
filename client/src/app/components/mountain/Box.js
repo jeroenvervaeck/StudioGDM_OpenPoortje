@@ -2,6 +2,7 @@ import { React,useEffect} from 'react';
 import { useDrag, DragSource, DragPreviewImage } from 'react-dnd';
 import { ItemTypes } from './ItemTypes';
 import mannetje from './WIGGLING.gif';
+
 //import KidAnimation from './Kid';
 //import { AdobeAn, createjs } from './KID_HTML_CANVAS.js?1611933293348';
 
@@ -24,13 +25,14 @@ export const Box = ({ id, left, top, hideSourceOnDrag, connectDragSource, connec
     });
      
     if (isDragging && hideSourceOnDrag) {
+        console.log("dragging");
         return <div ref={drag}/>;
         
     }
     
     return (
     <div ref={drag} style={{ ...style, left, top }}>
-        {/*<DragPreviewImage connect={preview} src={mannetje} />*/}
+        <DragPreviewImage connect={preview} src={mannetje} />
         <img src={mannetje} alt="mannetje" className="mannetje" width="70px"></img>
 	</div>);
     };

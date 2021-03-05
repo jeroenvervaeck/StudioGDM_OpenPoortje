@@ -1,5 +1,21 @@
 @import '../../_sass/abstracts/index';
 
+.page__main{
+	overflow: hidden;
+}
+
+#mountainContainer{
+
+	border: red solid 2px;
+	max-width: 820px;
+	max-height: 550px;;
+	margin-right: auto;
+    margin-left: auto;
+	margin-top: 200px;
+	position: relative;
+
+}
+
 .mountainPoint{
 	background-color: red;
 	border-radius: 20px;
@@ -131,6 +147,21 @@
 
 .mountainAnimation{
 	position: absolute;
-	left: 0;
-	top: 0;
+	width: 820px;
+    height: 410px;
+    left: 0px;
+    top: 30px;
 }
+
+
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1366px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+	#mountainContainer{
+		border: blue solid 2px;
+		width: 100%;
+		margin-top: 100px;
+	}
+}
+
