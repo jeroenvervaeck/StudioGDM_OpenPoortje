@@ -12,7 +12,7 @@ import './SupervisorKidsPage.scss'
 import { Kid } from '../../components'
 
 const SupervisorKidsPage = () => {
-	const { getKidsOfOrganisation, updateSelectedKidData } = useApi();
+	const { getKidsOfOrganisation, eraseCookie } = useApi();
 	const { getLoggedInRole, getIsSupervisorLoggedIn } = useAuth();
 	const history = useHistory(); 
 
@@ -58,7 +58,8 @@ const SupervisorKidsPage = () => {
 
 			<Link className="supervisor-kids__nav" to={Routes.LOGIN_SECONDARY}
 				onClick={(e) => {
-					console.log('cookie verwijderen');
+					eraseCookie('sup-auth');
+					history.push(Routes.LOGIN_SECONDARY);
 				}}
 			>
 				<p>Uitloggen</p>

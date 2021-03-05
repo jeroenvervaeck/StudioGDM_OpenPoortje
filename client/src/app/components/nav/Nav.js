@@ -142,6 +142,7 @@ const Nav = ({}) => {
           <div className="nav-none" style={{backgroundColor: colors[(kid) ? kid.theme_color : 'color-01']}} onClick={onClick}>
             <FaBars size={25} />
             <div className="nav-none__wrapper">
+=======
               <div className="nav-none__wrapper-profile">
                 <div className="nav-none__wrapper-profile-online"></div>
                 {/* <FaUserAlt /> */}

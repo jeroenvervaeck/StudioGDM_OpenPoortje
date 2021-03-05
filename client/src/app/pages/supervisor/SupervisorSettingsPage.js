@@ -42,7 +42,7 @@ const SupervisorSettingsPage = () => {
 						</div>
 						<div className="supervisor-settings__form-general-record">
 							<p>Geboortedatum</p>
-							<input type='date' id="first_name" defaultValue={(kid) ? new Date(kid.birth_date): ''} disabled></input>
+							<input type='date' id="first_name" defaultValue={(kid) ? new Date(kid.birth_date).toISOString().substr(0,10): ''} disabled></input>
 						</div>
 					</div>
 					<div className="supervisor-settings__form-personal">
@@ -51,20 +51,20 @@ const SupervisorSettingsPage = () => {
 							<p>Huidskleur</p>
 							<div className="supervisor-settings__form-personal-skintone-wrapper">
 								<label>
-									<input type="radio" id="brown" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
-									<div className="checkmark">{ selectedSkintone === ('skin-01') ? '✗' : '' }</div>
+									<input type="radio" id="skin-04" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
+									<div className="checkmark">{ selectedSkintone === ('skin-04') ? '✗' : '' }</div>
 								</label>
 								<label>
-									<input type="radio" id="orange" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
-									<div className="checkmark">{ selectedSkintone === ('skin-02') ? '✗' : '' }</div>
-								</label>
-								<label>
-									<input type="radio" id="pink" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
+									<input type="radio" id="skin-03" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
 									<div className="checkmark">{ selectedSkintone === ('skin-03') ? '✗' : '' }</div>
 								</label>
 								<label>
-									<input type="radio" id="pale" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
-									<div className="checkmark">{ selectedSkintone === ('skin-04') ? '✗' : '' }</div>
+									<input type="radio" id="skin-02" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
+									<div className="checkmark">{ selectedSkintone === ('skin-02') ? '✗' : '' }</div>
+								</label>
+								<label>
+									<input type="radio" id="skin-01" name="skintone" onClick={(e) => setSelectedSkintone(e.target.id)}></input>
+									<div className="checkmark">{ selectedSkintone === ('skin-01') ? '✗' : '' }</div>
 								</label>
 							</div>
 						</div>

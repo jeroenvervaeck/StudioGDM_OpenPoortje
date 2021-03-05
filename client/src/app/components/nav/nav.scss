@@ -59,6 +59,13 @@
 			}
 
 			// Kid profilepic
+			&-profile {
+				border: solid 2px $color-white;
+				background-color: $color-gray;
+				// padding: 5px;
+				width: 30px;
+				height: 30px;
+			}
 			&-kid {
 				border: solid 2px $color-white;
 				background-color: $color-white;
