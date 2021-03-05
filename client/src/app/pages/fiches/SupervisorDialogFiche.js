@@ -21,7 +21,7 @@ const SupervisorDialogFiche = () => {
 		var questionRed = kid.questionRed;
 		var kidId = kidObj._id;
 	
-		saveDialogFiche(questionBlue, questionYellow, questionRed, kidId, screenshot)
+		return saveDialogFiche(questionBlue, questionYellow, questionRed, kidId, screenshot)
 			.then(() => {
 				updateSelectedKidData();
 			});

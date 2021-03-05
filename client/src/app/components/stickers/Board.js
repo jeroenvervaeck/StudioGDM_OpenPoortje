@@ -299,12 +299,15 @@ class Board extends Component {
         )
     }
 
-    save = function( proceed ) {
-        const onSave = this.props.onSave;
+    save = function( e, proceed ) {
+        e.preventDefault();
+        // const onSave = this.props.onSave;
         Screenshot(document.querySelector("body")).then(async(canvas) => {
-            const img = canvas.toDataURL("image/png");
-            onSave(img)
-                .then(proceed);
+            const imgURL = canvas.toDataURL("image/png");
+            let blob = await fetch(imgURL).then(r => r.blob());
+            var img = new File([blob], "screenshot.png");
+            this.props.onSave(img)
+                // .then(proceed);
         });
     }
 
@@ -385,7 +388,7 @@ class Board extends Component {
                 </div>
 
                 <a href={Routes.SUPERVISOR_DASHBOARD} className="dialogBtn backBtn" >keer terug</a>
-			    <a href={Routes.SUPERVISOR_DASHBOARD} className="dialogBtn saveBtn" onClick={() => this.save(() => { console.log('fiche has been saved') })} >opslaan</a>
+			    <a href={Routes.SUPERVISOR_DASHBOARD} className="dialogBtn saveBtn" onClick={(e) => this.save(e, () => { console.log('fiche has been saved') })} >opslaan</a>
             </div>
         )
     }
