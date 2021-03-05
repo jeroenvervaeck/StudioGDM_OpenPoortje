@@ -299,11 +299,12 @@ class Board extends Component {
         )
     }
 
-    save = function() {
+    save = function( proceed ) {
         const onSave = this.props.onSave;
-        Screenshot(document.querySelector("body")).then((canvas) => {
+        Screenshot(document.querySelector("body")).then(async(canvas) => {
             const img = canvas.toDataURL("image/png");
-            onSave(img);
+            onSave(img)
+                .then(proceed);
         });
     }
 
@@ -383,7 +384,8 @@ class Board extends Component {
                     <AddStickerButton/>
                 </div>
 
-				<a className="saveBtn" onClick={this.save}>opslaan</a>
+                <a href={Routes.SUPERVISOR_DASHBOARD} className="dialogBtn backBtn" >keer terug</a>
+			    <a href={Routes.SUPERVISOR_DASHBOARD} className="dialogBtn saveBtn" onClick={this.save} >opslaan</a>
             </div>
         )
     }

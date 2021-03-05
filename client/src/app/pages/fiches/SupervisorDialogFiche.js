@@ -30,6 +30,7 @@ const SupervisorDialogFiche = () => {
 
 	return (
 		<div className="supervisor-dialog">
+			<Board onSave={(screenshot) => { saveDialog(kid, screenshot) }} />
 			<h1>Ervaringsdialoog</h1>
 			<div className="blueBoxContainer">
 				<h4 className="dialogTitle" style={{color: "#02A6C4"}}>Wat ik denk:</h4>
@@ -44,9 +45,6 @@ const SupervisorDialogFiche = () => {
                 <textarea name="redBox" rows="4" cols="30" className="dialogBox redBox" onChange={e => setKid({ ...kid, questionRed: e.target.value })}/>
             </div>
 			<img src={animation} alt="animation" id="dialogAnimation" width="200px"></img>
-
-			<a href={Routes.SUPERVISOR_DASHBOARD} className="dialogBtn backBtn" >keer terug</a>
-			<a href={Routes.SUPERVISOR_DASHBOARD} className="dialogBtn saveBtn" onClick={() => { saveDialog(kid) }} >opslaan</a>
 		</div>
 	);
 	
