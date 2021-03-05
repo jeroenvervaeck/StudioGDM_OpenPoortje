@@ -7,8 +7,8 @@ const ApiContext = createContext();
 const useApi = () => useContext(ApiContext);
 
 const ApiProvider = ({children}) => {
-  // const BASE_URL = `${apiConfig.baseURL || "http://localhost:8080"}`;
-  const BASE_URL = "https://open-poortje-api.herokuapp.com";
+  const BASE_URL = `${apiConfig.baseURL || "http://localhost:8080"}`;
+  // const BASE_URL = "https://open-poortje-api.herokuapp.com";
 
   const [ user, setUser ] = useState(JSON.parse(sessionStorage.getItem('user')));
 
@@ -420,6 +420,10 @@ const ApiProvider = ({children}) => {
     return response.filename;
   }
 
+  const getUrl = (route) => {
+    return BASE_URL + route;
+  }
+
 
   return (
     <ApiContext.Provider value={{ 
@@ -450,6 +454,8 @@ const ApiProvider = ({children}) => {
       saveMountainFiche,
       saveDialogFiche,
       updateMountainFiche,
+
+      getUrl,
      }}>
       {children}
     </ApiContext.Provider>

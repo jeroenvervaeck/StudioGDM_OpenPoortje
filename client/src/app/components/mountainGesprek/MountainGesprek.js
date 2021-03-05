@@ -3,7 +3,7 @@ import { useApi, useAuth } from '../../services';
 import * as Routes from '../../routes';
 import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router';
-import { Nav } from '..'
+import { Board } from '..'
 import {ReactComponent as BergGesprekBG} from './BergGesprek.svg';
 
 import './mountainGesprek.scss'
@@ -32,8 +32,9 @@ const MountainGesprek = (id) => {
 
     return ( 
         <div>
-		    <Nav />
+		    {/* <Nav /> */}
             <BergGesprekBG />
+			< Board />
             <div className="gesprek-container">
                 <form className="gesprek-inputBox">
                     <label> Waar hebben we rond gepraat en gewerkt? <textarea name="bergGesprek1" rows="4" cols="30" className="berg-gesprek-field" onChange={e => setKid({ ...kid, question1: e.target.value })}/></label>

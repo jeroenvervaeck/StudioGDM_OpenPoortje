@@ -380,9 +380,13 @@ class Board extends Component {
                     <AddNoteButton onAdd={this.create_note}/>
                     <AddStickerButton/>
                 </div>
-                <Save action={() => { this.saveBoxHandler() }} showState={this.state.showState}/>
+                <Save 
+                    onCancel={() => { this.saveBoxHandler() }} 
+                    onSave={this.props.onSave}
+                    showState={this.state.showState}
+                />
 
-                <a href={Routes.SUPERVISOR_DASHBOARD} className="dialogBtn backBtn" >keer terug</a>
+                <a href={"#"} className="dialogBtn backBtn" onClick={(e) => this.props.onBack(e) }>keer terug</a>
 			    <a href={"#"} className="dialogBtn saveBtn" onClick={() => { this.setState({showState:true}) }} >opslaan</a>
             </div>
         )
