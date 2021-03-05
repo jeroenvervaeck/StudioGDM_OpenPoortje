@@ -1,14 +1,14 @@
 import { default as React, useState } from 'react';
 import { useApi, useAuth } from '../../services';
 import * as Routes from '../../routes';
-import { Redirect } from 'react-router-dom';
-import { useHistory } from 'react-router';
+import { Redirect, useHistory } from 'react-router-dom';
 import { Board } from '..'
 import {ReactComponent as BergGesprekBG} from './BergGesprek.svg';
 
 import './mountainGesprek.scss'
 
 const MountainGesprek = (id) => {
+	const history = useHistory();
 	const { saveMountainFiche, updateSelectedKidData } = useApi();
 	const [kid, setKid] = useState({ question1: "", question2: "" })
 
@@ -16,16 +16,16 @@ const MountainGesprek = (id) => {
 	console.log(kidObj);
 	console.log(id);
 
-	function saveConvo(kid){
-		//console.log(kid);
-		var question1 = kid.question1;
-		var question2 = kid.question2;
+	const saveCanvo = (screenshot) => {
+		var question1 = document.getElementById("q1").value;
+		var question2 = document.getElementById("q2").value;
 		var positionById = id.id;
 		var kidId = kidObj._id;
-		console.log(question1 , question2 , positionById);
-		saveMountainFiche(question1,question2,positionById, kidId)
+
+		saveMountainFiche(question1,question2,positionById, kidId, screenshot)
 			.then(() => {
 				updateSelectedKidData();
+				history.push(Routes.SUPERVISOR_DASHBOARD);
 			});
 
 	}
@@ -34,15 +34,21 @@ const MountainGesprek = (id) => {
         <div>
 		    {/* <Nav /> */}
             <BergGesprekBG />
-			< Board />
+			< Board
+				onSave={(screenshot) => { saveCanvo(screenshot) }}
+				onBack={(e) => {
+					e.preventDefault();
+					history.goBack();
+				}}
+			/>
             <div className="gesprek-container">
                 <form className="gesprek-inputBox">
-                    <label> Waar hebben we rond gepraat en gewerkt? <textarea name="bergGesprek1" rows="4" cols="30" className="berg-gesprek-field" onChange={e => setKid({ ...kid, question1: e.target.value })}/></label>
-                    <label> Wat voel en denk ik hierbij? <textarea name="bergGesprek2" rows="4" cols="30" className="berg-gesprek-field" onChange={e => setKid({ ...kid, question2: e.target.value })}/></label>
+                    <label> Waar hebben we rond gepraat en gewerkt? <textarea name="bergGesprek1" rows="4" cols="30" className="berg-gesprek-field" id="q1"/></label>
+                    <label> Wat voel en denk ik hierbij? <textarea name="bergGesprek2" rows="4" cols="30" className="berg-gesprek-field" id="q2"/></label>
                 </form>
             </div>
-            <a href={Routes.SUPERVISOR_MOUNTAIN} className="myButton">Terug</a>
-            <a href={Routes.SUPERVISOR_MOUNTAIN} className="myButton" onClick={() => { saveConvo(kid) }} >opslaan</a>
+            {/* <a href={Routes.SUPERVISOR_MOUNTAIN} className="myButton">Terug</a>
+            <a href={Routes.SUPERVISOR_MOUNTAIN} className="myButton" onClick={() => { saveConvo(kid) }} >opslaan</a> */}
 		</div>
 	);
 	

@@ -7,6 +7,7 @@ import Board from '../../components/stickers/Board';
 import { useHistory } from 'react-router-dom';
 
 const SupervisorDialogFiche = () => {
+	const history = useHistory();
 
 	const { saveDialogFiche, updateSelectedKidData } = useApi();
 
@@ -25,6 +26,7 @@ const SupervisorDialogFiche = () => {
 		return saveDialogFiche(questionBlue, questionYellow, questionRed, kidId, screenshot)
 			.then(() => {
 				updateSelectedKidData();
+				history.push(Routes.SUPERVISOR_DASHBOARD);
 			});
 
 	}
@@ -49,8 +51,7 @@ const SupervisorDialogFiche = () => {
 			<Board 
 				onSave={(screenshot) => { saveDialog(screenshot) }}
 				onBack={(e) => {
-					e.preventDefault();
-					useHistory.push(Routes.SUPERVISOR_DASHBOARD);
+					history.goBack();
 				}}
 			/>
 		</div>

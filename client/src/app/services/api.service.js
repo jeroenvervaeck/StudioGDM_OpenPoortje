@@ -7,8 +7,8 @@ const ApiContext = createContext();
 const useApi = () => useContext(ApiContext);
 
 const ApiProvider = ({children}) => {
-  const BASE_URL = `${apiConfig.baseURL || "http://localhost:8080"}`;
-  // const BASE_URL = "https://open-poortje-api.herokuapp.com";
+  // const BASE_URL = `${apiConfig.baseURL || "http://localhost:8080"}`;
+  const BASE_URL = "https://open-poortje-api.herokuapp.com";
 
   const [ user, setUser ] = useState(JSON.parse(sessionStorage.getItem('user')));
 
@@ -323,7 +323,10 @@ const ApiProvider = ({children}) => {
     return response;
   }
 
-  const saveMountainFiche = async ( question1, question2, positionById, kidId ) => {
+  const saveMountainFiche = async ( question1, question2, positionById, kidId, screenshot ) => {
+    // save screenshot 
+    const pictureName = await saveScreenshot(screenshot);
+
     const auth = JSON.parse(getCookie('sup-auth'));
     const url = `${BASE_URL}/kid/fiche`;
 
@@ -331,7 +334,7 @@ const ApiProvider = ({children}) => {
       kidId: kidId,
       fiche: {
         fiche_type: "601a996b352c1d313cd7bca2",
-        picture_name: "",
+        picture_name: pictureName,
         fiche_data:{
           vraag1: question1,
           vraag2: question2,
