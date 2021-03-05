@@ -385,7 +385,7 @@ class Board extends Component {
                 </div>
 
                 <a href={Routes.SUPERVISOR_DASHBOARD} className="dialogBtn backBtn" >keer terug</a>
-			    <a href={Routes.SUPERVISOR_DASHBOARD} className="dialogBtn saveBtn" onClick={this.save} >opslaan</a>
+			    <a href={Routes.SUPERVISOR_DASHBOARD} className="dialogBtn saveBtn" onClick={() => this.save(() => { console.log('fiche has been saved') })} >opslaan</a>
             </div>
         )
     }
