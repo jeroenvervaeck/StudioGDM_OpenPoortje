@@ -21,10 +21,17 @@ const SupervisorKidsPage = () => {
 
 	useEffect(() => {
 		const fetchKids = async () => {
+			const startOfFetch = new Date().getTime();
 			const kidsResponse = await getKidsOfOrganisation();
-			setChildren(kidsResponse.kids)
-			setSelectedChildren(kidsResponse.kids)
-			console.log(kidsResponse);
+			const duration = new Date().getTime() - startOfFetch;
+			const desiredDuration = 2000;
+			if (duration < desiredDuration) {
+				setTimeout(() => {
+					setChildren(kidsResponse.kids)
+					setSelectedChildren(kidsResponse.kids)
+					console.log(kidsResponse);
+				}, desiredDuration - duration);
+			}
 		}
 
 		if (!children || !children.length) fetchKids() ;
@@ -97,7 +104,7 @@ const SupervisorKidsPage = () => {
 							}}
 						/>
 					)
-					: <img className="supervisor-kids__content-loading" src={ loading }></img>
+					: <div  className="supervisor-kids__content-loading"><img src={ loading }></img><p>Loading...</p></div>
 				}
 				
 			</div>
