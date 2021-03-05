@@ -3,26 +3,26 @@ import { Dustbin } from './Dustbin';
 import { Box } from './Box';
 import {ReactComponent as MountainBG} from './BERGBG.svg';
 import {ReactComponent as MountainPath} from './Bergpad.svg';
-import MountainAnimation from './BERG-ANIMATIES-unscreen.gif';
+import MountainAnimation from './BERG-ANIMATIES.gif';
 import './mountain.scss'
 
 class MountainContainer extends Component {
 	constructor(props) {
 	  super(props)
 	  this.state = { 
-		leftPos: 240,
+		leftPos: 70,
 		rightPos:-230, 
 		PointPos : [
-			[580, 466],
-			[785, 360],
-			[565, 372],
-			[395, 302],
-			[540, 303],
-			[630, 260],
-			[535, 190],
-			[605, 160],
-			[540, 115],
-			[580, 95],
+			[380, 466],
+			[585, 360],
+			[365, 372],
+			[195, 302],
+			[340, 303],
+			[430, 260],
+			[335, 190],
+			[405, 160],
+			[340, 115],
+			[380, 95],
 			],
 	  }
 	  this.handler = this.handler.bind(this)
@@ -41,10 +41,11 @@ class MountainContainer extends Component {
 	render() {
 	
 	  return ( 
-		<div>
+		<div id="mountainContainer">
 			
-		<div style={{ overflow: 'hidden', clear: 'both', marginLeft: '200px' }}>
+		<div style={{ overflow: 'hidden', clear: 'both' }}>
 		<MountainPath />
+		<img src={MountainAnimation} alt="mountain" className="mountainAnimation"></img>
 		<Dustbin id={0} position={this.state.PointPos[0]} handler = {this.handler}></Dustbin>
 		<Dustbin id={1} position={this.state.PointPos[1]} handler = {this.handler}></Dustbin>
 		<Dustbin id={2} position={this.state.PointPos[2]} handler = {this.handler}></Dustbin>
@@ -55,9 +56,6 @@ class MountainContainer extends Component {
 		<Dustbin id={7} position={this.state.PointPos[7]} handler = {this.handler}></Dustbin>
 		<Dustbin id={8} position={this.state.PointPos[8]} handler = {this.handler}></Dustbin>
 		<Dustbin id={9} position={this.state.PointPos[9]} handler = {this.handler}></Dustbin> 
-		{/* 
-		<img src={MountainAnimation} width="841.89px" alt="mountain" className="mountainAnimation"></img>
-		*/}
 		</div>
 
 		<Box left={this.state.leftPos} top={this.state.rightPos} ></Box>

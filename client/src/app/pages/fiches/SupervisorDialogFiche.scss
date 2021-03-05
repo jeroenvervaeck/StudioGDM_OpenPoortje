@@ -1,0 +1,51 @@
+@import '../../_sass/abstracts/index';
+
+.blueBoxContainer{
+    background-image: url("../../assets/blueBox.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 370px;
+    height: 244px;
+    float: left;
+    margin-top: 200px;
+}
+
+.yellowBoxContainer{
+    background-image: url("../../assets/yellowBox.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 300px;
+    height: 280px;
+    float: left;
+}
+
+.redBoxContainer{
+    background-image: url("../../assets/redBox.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 370px;
+    height: 244px;
+    float: left;
+    margin-top: 200px;
+}
+
+.redBox{
+    margin-left: 85px !important;
+}
+
+.dialogBox{
+    margin: 15px;
+    height: 170px;
+    border-radius: 30px;
+    padding: 20px;
+    resize: none;
+    border: none;
+    background-color: transparent;
+}
+
+#dialogAnimation{
+    position: absolute;
+    width: 280px;
+    left: 388px;
+    top: 368px;
+}

@@ -34,14 +34,14 @@ const MountainGesprek = (id) => {
         <div>
 		    <Nav />
             <BergGesprekBG />
-            <div class="gesprek-container">
+            <div className="gesprek-container">
                 <form className="gesprek-inputBox">
                     <label> Waar hebben we rond gepraat en gewerkt? <textarea name="bergGesprek1" rows="4" cols="30" className="berg-gesprek-field" onChange={e => setKid({ ...kid, question1: e.target.value })}/></label>
                     <label> Wat voel en denk ik hierbij? <textarea name="bergGesprek2" rows="4" cols="30" className="berg-gesprek-field" onChange={e => setKid({ ...kid, question2: e.target.value })}/></label>
                 </form>
             </div>
-            <a href={Routes.SUPERVISOR_MOUNTAIN} class="myButton">Terug</a>
-            <a href={Routes.SUPERVISOR_MOUNTAIN} class="myButton" onClick={() => { saveConvo(kid) }} >opslaan</a>
+            <a href={Routes.SUPERVISOR_MOUNTAIN} className="myButton">Terug</a>
+            <a href={Routes.SUPERVISOR_MOUNTAIN} className="myButton" onClick={() => { saveConvo(kid) }} >opslaan</a>
 		</div>
 	);
 	

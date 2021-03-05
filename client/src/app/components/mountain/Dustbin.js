@@ -8,6 +8,9 @@ import cross from './Cross.png';
 import like from './Like.png';
 import dislike from './Dislike.png';
 import { useApi, useAuth } from '../../services';
+import setupTouchDNDCustomEvents from 'touch-dnd-custom-events'
+
+
 
 function getStyle(backgroundColor , x , y) {
     return {
@@ -41,11 +44,13 @@ export const Dustbin = ({ id , handler , position , children }) => {
     const [hasDropped, setHasDropped] = useState(false);
     const [hasFlag, setHasFlag] = useState(false);
     const [shortDescription, setShortDescription] = useState("");
+    const [opinionBtnOpacity, setOpinionBtnOpacity] = useState(0.5);
     const { updateMountainFiche, updateSelectedKidData } = useApi();
 	const kidObj = JSON.parse(sessionStorage.getItem('selected-kid'))
     
-    
-    const [{ isOver, isOverCurrent }, drop] = useDrop({
+    setupTouchDNDCustomEvents()
+
+    const [{ isOver, isOverCurrent }, drop , touchdragover] = useDrop({
         accept: ItemTypes.BOX,
         drop(item, monitor) {
             const didDrop = monitor.didDrop();
@@ -72,13 +77,14 @@ export const Dustbin = ({ id , handler , position , children }) => {
                     return
                 }
             }else{
-                setHasDropped(false);
+                setHasDropped(true);
                 //prevDropped = true;
             }
             //setHasDropped(true);
         },
         collect: (monitor) => ({
             isOver: monitor.isOver(),
+            touchdragover: monitor.isOver({ shallow: true }),
             isOverCurrent: monitor.isOver({ shallow: true }),
         }),
     });
@@ -109,16 +115,18 @@ export const Dustbin = ({ id , handler , position , children }) => {
     const fiches = kidObj.fiches;
     var vraag1 = "";
     var vraag2 = "";
-    console.log(fiches);
+    //console.log(fiches);
 
     fiches.forEach(fiche => {
         if (fiche.fiche_data.positionById == id) {
             vraag1 = fiche.fiche_data.vraag1;
             vraag2 = fiche.fiche_data.vraag2;
+        }else if(fiche.fiche_data.optionConvo = true) {
+            console.log("er is een opinion in " +id)
+            setOpinionBtnOpacity(1);
         }
-       
     });
-    console.log(vraag1);
+    //console.log(vraag1);
     setHasFlag(true);
     setShortDescription(vraag1);
     
@@ -135,11 +143,20 @@ export const Dustbin = ({ id , handler , position , children }) => {
     } 
 
     const opinionBtnCall = (id , value) => {
-        console.log(kidObj);
+        //console.log(kidObj);
         var kidId = kidObj._id; 
         var positionById = id.id;
-        var opinion_convo = value;
-        updateMountainFiche(positionById, kidId, opinion_convo)
+        var fiches = kidObj.fiches;
+
+        const newFiche = fiches.map((fiche) => {
+            if (fiche.fiche_data.positionById == id) {
+                fiche.fiche_data.optionConvo = value;
+                console.log(fiche)
+            }
+            return fiche;
+          })
+        
+        updateMountainFiche(fiches, kidId, newFiche, positionById)
 			.then(() => {
 				updateSelectedKidData();
 			});
@@ -149,7 +166,6 @@ export const Dustbin = ({ id , handler , position , children }) => {
     
         const kidObj = JSON.parse(sessionStorage.getItem('selected-kid'));
         const fiches = kidObj.fiches;
-
         console.log(fiches);
     
         fiches.forEach(fiche => {
@@ -158,6 +174,13 @@ export const Dustbin = ({ id , handler , position , children }) => {
                 var vlag = document.getElementById("vlag-"+id);
                 if (vlag != null) {
                     vlag.style.display = "block";
+                    //document.getElementsByClassName("mountainPath-"+id).style.stroke="red";
+                    var mountainPath = document.getElementById("mountainPath-"+id);
+                    var mountainLine = document.getElementById("mountainLine-"+id);
+                    //console.log(mountainPath);
+                    mountainPath != null && mountainPath.setAttribute('stroke', '#DF222A');
+                    mountainLine != null && mountainLine.setAttribute('stroke', '#DF222A');
+                    //mountainPath.setAttribute('stroke', '#ff0000');
                 }
             }
            
@@ -184,8 +207,8 @@ export const Dustbin = ({ id , handler , position , children }) => {
                 <h4>Beschrijving</h4>
                 {shortDescription}
                 <h4>Hoe vond je dit gesprek?</h4>
-                <img src={like} alt="like_btn" className="opinionBtn opinionBtn_left" onClick={() => opinionBtnCall(id , true)}></img>
-                <img src={dislike} alt="dislike_btn" className="opinionBtn opinionBtn_right"></img>
+                <img src={like} alt="like_btn" className="opinionBtn opinionBtn_left" style={{opacity: opinionBtnOpacity }} onClick={() => opinionBtnCall(id , true)}></img>
+                <img src={dislike} alt="dislike_btn" className="opinionBtn opinionBtn_right" onClick={() => opinionBtnCall(id , false)}></img>
             </div>            
         </span>}
 
