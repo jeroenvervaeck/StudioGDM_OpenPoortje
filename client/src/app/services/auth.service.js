@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
   const getToken = async ( role, username, password ) => {
     const url = `${BASE_URL}/token/${role}`;
 
-    const auth = { username, password };
+    const auth = { username: username.toLowerCase(), password };
 
     const options = {
       method:'POST',
