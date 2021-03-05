@@ -7,7 +7,7 @@ const ApiContext = createContext();
 const useApi = () => useContext(ApiContext);
 
 const ApiProvider = ({children}) => {
-  const BASE_URL = `${apiConfig.baseURL || "https://open-poortje-api.herokuapp.com"}`;
+  const BASE_URL = `${apiConfig.baseURL || "http://localhost:8080"}`;
 
   const [ user, setUser ] = useState(JSON.parse(sessionStorage.getItem('user')));
 
@@ -353,18 +353,33 @@ const ApiProvider = ({children}) => {
     return response;
   }
 
-  const updateMountainFiche = async ( positionById, kidId, opinion_convo ) => {
+  const updateMountainFiche = async ( fiches, kidId, newFiche, positionById ) => {
+    const newFiches = fiches.map((fiche) => {
+      if (fiche.fiche_data.positionById === positionById) {
+        return newFiche;
+      }
+      return fiche;
+    })
+    return editKid(kidId, {fiches: newFiches});
+  }
+
+  const saveDialogFiche = async ( questionBlue, questionYellow, questionRed, kidId, screenshot ) => {
+    // save screenshot 
+    const pictureName = await saveScreenshot(screenshot);
+
+    // save fiche
     const auth = JSON.parse(getCookie('sup-auth'));
     const url = `${BASE_URL}/kid/fiche`;
 
     const body = {
       kidId: kidId,
       fiche: {
-        fiche_type: "601a996b352c1d313cd7bca2",
-        picture_name: "",
+        fiche_type: "603e31d01b09a12647f1c244",
+        picture_name: pictureName,
         fiche_data:{
-          positionById: positionById,
-          opinion_convo: opinion_convo
+          questionBlue: questionBlue,
+          questionYellow: questionYellow,
+          questionRed: questionRed
         }
       }
     }
@@ -381,6 +396,26 @@ const ApiProvider = ({children}) => {
     const response = await fetch(url, options).then((result) => result.json());
 
     return response;
+  }
+
+  const saveScreenshot = async ( file, width = 800, height = 600 ) => {
+    const data = new FormData();
+    await data.append('picture', file);
+    await data.append('width', width);
+    await data.append('height', height);
+    console.log(data);
+
+    const url = `${BASE_URL}/fiche`;
+
+    const options = {
+      method:'POST',
+      headers: {
+        }, 
+      body: data,
+    }
+
+    const response = await fetch(url, options).then((result) => result.json());
+    return response.filename;
   }
 
 
@@ -411,6 +446,7 @@ const ApiProvider = ({children}) => {
       // fiches
       getFicheTypes,
       saveMountainFiche,
+      saveDialogFiche,
       updateMountainFiche,
      }}>
       {children}
