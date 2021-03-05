@@ -1,5 +1,9 @@
 @import '../../_sass/abstracts/index';
 
+.supervisor-dialog h1{
+    margin: auto;
+}
+
 .blueBoxContainer{
     background-image: url("../../assets/blueBox.png");
     background-repeat: no-repeat;
@@ -43,9 +47,39 @@
     background-color: transparent;
 }
 
+.dialogTitle{
+    margin: -20px 35px;
+}
+
+.redDialogTitle{
+    margin: -20px 95px;
+}
+
 #dialogAnimation{
     position: absolute;
     width: 280px;
     left: 388px;
     top: 368px;
+}
+
+.dialogBtn{
+    background-color: #ADA39F;
+    border-radius: 30px;
+    color: white;
+    padding: 15px 60px;
+    text-decoration: none;
+    width: 85px;
+}
+
+.backBtn{
+    position: absolute;
+    left: -40px;
+    top: 20px;
+}
+
+.saveBtn{
+    position: absolute;
+    right: -40px;
+    top: 20px;
+    background-color: #93B993;
 }
