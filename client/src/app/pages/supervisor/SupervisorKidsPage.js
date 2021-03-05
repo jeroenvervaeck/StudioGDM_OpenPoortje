@@ -54,6 +54,16 @@ const SupervisorKidsPage = () => {
 				? <Redirect to={Routes.LOGIN_SECONDARY}/> 
 				: null
 		}
+
+			// Hans HIERZO
+			<Link className="supervisor-kids__nav" to={Routes.LOGIN_SECONDARY}
+				onClick={(e) => {
+					console.log('cookie verwijderen');
+				}}
+			>
+				<p>Uitloggen</p>
+			</Link>
+
 			<h1>Selecteer een kind</h1>
 
 			<form className="supervisor-kids__filter">
