@@ -7,7 +7,7 @@ const ApiContext = createContext();
 const useApi = () => useContext(ApiContext);
 
 const ApiProvider = ({children}) => {
-  const BASE_URL = `${apiConfig.baseURL || "https://open-poortje-api.herokuapp.com"}`;
+  const BASE_URL = `${apiConfig.baseURL || "http://localhost:8080"}`;
 
   const [ user, setUser ] = useState(JSON.parse(sessionStorage.getItem('user')));
 
@@ -363,7 +363,11 @@ const ApiProvider = ({children}) => {
     return editKid(kidId, {fiches: newFiches});
   }
 
-  const saveDialogFiche = async ( questionBlue, questionYellow, questionRed, kidId ) => {
+  const saveDialogFiche = async ( questionBlue, questionYellow, questionRed, kidId, screenshot ) => {
+    // save screenshot 
+    const pictureName = await saveScreenshot(screenshot);
+
+    // save fiche
     const auth = JSON.parse(getCookie('sup-auth'));
     const url = `${BASE_URL}/kid/fiche`;
 
@@ -371,7 +375,7 @@ const ApiProvider = ({children}) => {
       kidId: kidId,
       fiche: {
         fiche_type: "603e31d01b09a12647f1c244",
-        picture_name: "",
+        picture_name: pictureName,
         fiche_data:{
           questionBlue: questionBlue,
           questionYellow: questionYellow,
@@ -392,6 +396,27 @@ const ApiProvider = ({children}) => {
     const response = await fetch(url, options).then((result) => result.json());
 
     return response;
+  }
+
+  const saveScreenshot = async ( file, width = 800, height = 600 ) => {
+    const data = new FormData();
+    data.append('picture', file);
+    data.append('width', width);
+    data.append('height', height);
+
+    const url = `${BASE_URL}/fiche`;
+
+    const options = {
+      method:'POST',
+      headers: {
+        // 'content-type': 'multipart/form-data'
+        }, 
+      body: data,
+    }
+
+    const response = await fetch(url, options).then((result) => result.json());
+    console.log(response)
+    return response.filename;
   }
 
 

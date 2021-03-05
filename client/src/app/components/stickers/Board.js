@@ -157,6 +157,7 @@ class Board extends Component {
         this.remove_note = this.remove_note.bind(this)
         this.render_each_note = this.render_each_note.bind(this)
         this.render_each_sticker = this.render_each_sticker.bind(this)
+        this.save = this.save.bind(this)
     }
 
     update_note = function(id, new_title, new_text){
@@ -298,6 +299,18 @@ class Board extends Component {
         )
     }
 
+    save = function( e, proceed ) {
+        e.preventDefault();
+        // const onSave = this.props.onSave;
+        Screenshot(document.querySelector("body")).then(async(canvas) => {
+            const imgURL = canvas.toDataURL("image/png");
+            let blob = await fetch(imgURL).then(r => r.blob());
+            var img = new File([blob], "screenshot.png");
+            this.props.onSave(img)
+                // .then(proceed);
+        });
+    }
+
     render() { 
         return (
             <div id="board">
@@ -373,6 +386,9 @@ class Board extends Component {
                     <AddNoteButton onAdd={this.create_note}/>
                     <AddStickerButton/>
                 </div>
+
+                <a href={Routes.SUPERVISOR_DASHBOARD} className="dialogBtn backBtn" >keer terug</a>
+			    <a href={Routes.SUPERVISOR_DASHBOARD} className="dialogBtn saveBtn" onClick={(e) => this.save(e, () => { console.log('fiche has been saved') })} >opslaan</a>
             </div>
         )
     }
