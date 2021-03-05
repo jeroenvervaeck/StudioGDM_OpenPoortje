@@ -1,25 +1,27 @@
-import { default as React, useState } from 'react';
+import { default as React, useState, Fragment } from 'react';
 import animation from "../../assets/DIALOOG_HUIDSKLEUR1.gif";
 import * as Routes from '../../routes';
 import { useApi, useAuth } from '../../services';
 import './SupervisorDialogFiche.scss';
+import Board from '../../components/stickers/Board'
 
 const SupervisorDialogFiche = () => {
 
 	const { saveDialogFiche, updateSelectedKidData } = useApi();
 	const [kid, setKid] = useState({ questionBlue: "", questionYellow: "", questionRed: "" })
+	const [ screenshot, setScreenshot ] = useState();
 
 	const kidObj = JSON.parse(sessionStorage.getItem('selected-kid'))
 	console.log(kidObj);
 
-	function saveDialog(kid){
+	function saveDialog(kid, screenshot){
 		//console.log(kid);
 		var questionBlue = kid.questionBlue;
 		var questionYellow = kid.questionYellow;
 		var questionRed = kid.questionRed;
 		var kidId = kidObj._id;
 	
-		saveDialogFiche(questionBlue, questionYellow, questionRed, kidId)
+		saveDialogFiche(questionBlue, questionYellow, questionRed, kidId, screenshot)
 			.then(() => {
 				updateSelectedKidData();
 			});

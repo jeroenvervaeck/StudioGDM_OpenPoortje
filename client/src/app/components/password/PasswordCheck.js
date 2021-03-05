@@ -12,13 +12,10 @@ const PasswordCheck = ({role, onClose, proceed}) => {
     <form className="pw-check">
 		<FaRegCheckSquare />
 		<h1>Bevestig uw wachtwoord</h1>
-		<p>Let op! Voor deze actie is uw {role} wachtwoord nodig</p>
+		<p>Let op! Voor deze actie is uw {(role === 'organisation') ? 'organisatie' : 'begeleiders' } wachtwoord nodig</p>
 		<div className="pw-check__input">
 			<p>Wachtwoord:</p>
 			<input type='password' id="pw" defaultValue=""></input>
-			{
-				(error) ? <p className="pw-check__input-error">{error}</p> : null
-			}
 		</div>
 		<div className="pw-check__buttons">
 			<p onClick={ onClose }>Annuleren</p>
@@ -37,6 +34,9 @@ const PasswordCheck = ({role, onClose, proceed}) => {
 				})
 			}}></input>
 		</div>
+		{
+			(error) ? <p className="pw-check__error">{error}</p> : null
+		}
     </form>
   );
 };
