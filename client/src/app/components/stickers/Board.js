@@ -3,6 +3,7 @@ import Note from './Note'
 import Sticker from './Sticker.js';
 import AddNoteButton from './AddNoteButton'
 import AddStickerButton from './AddStickerButton'
+import { Save } from '..';
 import ReactDOM from 'react-dom';
 import Draggable from 'react-draggable';
 import { Link } from "react-router-dom";
@@ -147,7 +148,8 @@ class Board extends Component {
         super(props)
         this.state = { 
             notes : [],
-            stickers: []
+            stickers: [],
+            showState : false
         }
         this.componentDidMount = this.componentDidMount.bind(this)
         this.componentDidUpdate = this.componentDidUpdate.bind(this)
@@ -158,6 +160,7 @@ class Board extends Component {
         this.render_each_note = this.render_each_note.bind(this)
         this.render_each_sticker = this.render_each_sticker.bind(this)
         this.save = this.save.bind(this)
+        this.saveBoxHandler = this.saveBoxHandler.bind(this);
     }
 
     update_note = function(id, new_title, new_text){
@@ -223,29 +226,13 @@ class Board extends Component {
         let loaded_notes = JSON.parse(localStorage.getItem("notes"))
         let loaded_stickers = JSON.parse(localStorage.getItem("stickers"))
         
-
-        if(loaded_notes === null || loaded_notes.length === 0){
-            loaded_notes = [
-                    {
-                        title: "Sample note",
-                        text:   
-                            ["This is a demo-version of the application.",
-                            "The notes are stored in localStorage!",
-                            "Click here to view the note!",
-                            "Click this text or the edit button to edit.",
-                            "Click on Save button to update the changes!"
-                        ].join("\n"),
-                        id: 1
-                    }
-                ]
-            }
         this.setState(()=>({notes : loaded_notes}))
         this.setState(()=>({stickers : loaded_stickers}))
     }
 
     componentDidUpdate(){
-        localStorage.setItem("notes", JSON.stringify(this.state.notes))
-        localStorage.setItem("stickers", JSON.stringify(this.state.stickers))
+        localStorage.setItem("notes", JSON.stringify(this.state.notes));
+        localStorage.setItem("stickers", JSON.stringify(this.state.stickers));
     }
 
     componentWillReceiveProps(){
@@ -306,6 +293,13 @@ class Board extends Component {
             onSave(img)
                 .then(proceed);
         });
+    }
+
+    saveBoxHandler() {
+        this.setState({
+            showState: false
+        });
+        console.log(this.state.showState);
     }
 
     render() { 
@@ -383,9 +377,10 @@ class Board extends Component {
                     <AddNoteButton onAdd={this.create_note}/>
                     <AddStickerButton/>
                 </div>
+                <Save action={() => { this.saveBoxHandler() }} showState={this.state.showState}/>
 
                 <a href={Routes.SUPERVISOR_DASHBOARD} className="dialogBtn backBtn" >keer terug</a>
-			    <a href={Routes.SUPERVISOR_DASHBOARD} className="dialogBtn saveBtn" onClick={this.save} >opslaan</a>
+			    <a href={"#"} className="dialogBtn saveBtn" onClick={() => { this.setState({showState:true}) }} >opslaan</a>
             </div>
         )
     }

@@ -29,22 +29,23 @@ const SupervisorDialogFiche = () => {
 	}
 
 	return (
-		<div className="supervisor-dialog">
+		<div className="supervisor-container" >
+			<div className="supervisor-dialog">
+				<div className="blueBoxContainer">
+					<h4 className="dialogTitle" style={{color: "#02A6C4"}}>Wat ik denk:</h4>
+					<textarea name="blueBox" rows="4" cols="30" className="dialogBox" onChange={e => setKid({ ...kid, questionBlue: e.target.value })} />
+				</div>
+				<div className="yellowBoxContainer">
+					<h4 className="dialogTitle" style={{color: "#FEC81B"}}>Wat ik voel:</h4>
+					<textarea name="yellowBox" rows="4" cols="30" className="dialogBox" onChange={e => setKid({ ...kid, questionYellow: e.target.value })} />
+				</div>
+				<div className="redBoxContainer">
+					<h4 className="redDialogTitle" style={{color: "#EF4742"}}>Wat ik zou willen:</h4>
+					<textarea name="redBox" rows="4" cols="30" className="dialogBox redBox" onChange={e => setKid({ ...kid, questionRed: e.target.value })}/>
+				</div>
+				<img src={animation} alt="animation" id="dialogAnimation" width="200px"></img>
+			</div>
 			<Board onSave={(screenshot) => { saveDialog(kid, screenshot) }} />
-			<h1>Ervaringsdialoog</h1>
-			<div className="blueBoxContainer">
-				<h4 className="dialogTitle" style={{color: "#02A6C4"}}>Wat ik denk:</h4>
-                <textarea name="blueBox" rows="4" cols="30" className="dialogBox" onChange={e => setKid({ ...kid, questionBlue: e.target.value })} />
-            </div>
-			<div className="yellowBoxContainer">
-				<h4 className="dialogTitle" style={{color: "#FEC81B"}}>Wat ik voel:</h4>
-                <textarea name="yellowBox" rows="4" cols="30" className="dialogBox" onChange={e => setKid({ ...kid, questionYellow: e.target.value })} />
-            </div>
-			<div className="redBoxContainer">
-				<h4 className="redDialogTitle" style={{color: "#EF4742"}}>Wat ik zou willen:</h4>
-                <textarea name="redBox" rows="4" cols="30" className="dialogBox redBox" onChange={e => setKid({ ...kid, questionRed: e.target.value })}/>
-            </div>
-			<img src={animation} alt="animation" id="dialogAnimation" width="200px"></img>
 		</div>
 	);
 	
