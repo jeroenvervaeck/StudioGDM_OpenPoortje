@@ -16,9 +16,6 @@ const PasswordCheck = ({role, onClose, proceed}) => {
 		<div className="pw-check__input">
 			<p>Wachtwoord:</p>
 			<input type='password' id="pw" defaultValue=""></input>
-			{
-				(error) ? <p className="pw-check__input-error">{error}</p> : null
-			}
 		</div>
 		<div className="pw-check__buttons">
 			<p onClick={ onClose }>Annuleren</p>
@@ -37,6 +34,9 @@ const PasswordCheck = ({role, onClose, proceed}) => {
 				})
 			}}></input>
 		</div>
+		{
+			(error) ? <p className="pw-check__error">{error}</p> : null
+		}
     </form>
   );
 };
