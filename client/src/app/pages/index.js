@@ -12,6 +12,7 @@ import { default as SupervisorFichePage } from './supervisor/SupervisorFichePage
 import { default as SupervisorTimelinePage } from './supervisor/SupervisorTimelinePage';
 import { default as SupervisorInfoPage } from './supervisor/SupervisorInfoPage';
 import { default as SupervisorSettingsPage } from './supervisor/SupervisorSettingsPage';
+import { default as TestPage } from './supervisor/TestPage';
 // fiches
 import { default as SupervisorMountainFiche } from './fiches/SupervisorMountainFiche';
 import { default as SupervisorDialogFiche } from './fiches/SupervisorDialogFiche';
@@ -35,6 +36,7 @@ export {
 	SupervisorTimelinePage,
 	SupervisorInfoPage,
 	SupervisorSettingsPage,
+	TestPage,
 	// fiches
 	SupervisorMountainFiche,
 	SupervisorDialogFiche,

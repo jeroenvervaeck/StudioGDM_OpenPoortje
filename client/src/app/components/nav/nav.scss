@@ -30,18 +30,48 @@
 			align-items: center;
 			height: 28%;
 
-			// Supervisor profilepic
-			svg:nth-child(1) {
-				border: solid 2px $color-white;
-				background-color: $color-gray;
-				border-radius: 100%;
-				padding: 5px;
+			&-profile {
+				position: relative;
+				border: none !important;
+				border-radius: 50%;
+				&-online {
+					position: absolute;
+					right: 0;
+					top: -2px;
+					background-color: $color-login;
+					border-radius: 50%;
+					width: 10px;
+					height: 10px;
+					box-shadow: 0px 0px 4px 0px $color-white;
+				}
+				// supervisor profilepic
+				img {
+					width: 28px;
+					height: 28px;
+					border: solid 2px $color-white;
+					border-radius: 100%;
+				}
+/* 				svg {
+					border: solid 2px $color-white;
+					background-color: $color-gray;
+					border-radius: 100%;
+					padding: 5px;
+				} */
 			}
+
 			// Kid profilepic
-			svg:nth-child(2) {
+			&-profile {
 				border: solid 2px $color-white;
 				background-color: $color-gray;
-				padding: 5px;
+				// padding: 5px;
+				width: 30px;
+				height: 30px;
+			}
+			&-kid {
+				border: solid 2px $color-white;
+				background-color: $color-white;
+				border: solid 2px $color-white;
+				width: 30px;
 			}
 		}
 	}
@@ -68,6 +98,8 @@
 		&__credentials {
 			height: 35%;
 			width: 85%;
+			padding: 0 22px;
+			background-color: hsla(0, 0, 0, 0.2);
 
 			&-supervisor {
 				height: 50%;
@@ -94,12 +126,32 @@
 					justify-content: space-between;
 					align-items: center;
 					// admin profilepic
-					svg:nth-child(1) {
-						font-size: 28px;
-						border: solid 2px $color-white;
-						background-color: $color-gray;
-						border-radius: 100%;
-						padding: 5px;
+					&-profile {
+						position: relative;
+						&-online {
+							position: absolute;
+							right: 0;
+							top: -2px;
+							background-color: $color-login;
+							border-radius: 50%;
+							width: 14px;
+							height: 14px;
+							box-shadow: 0px 0px 4px 0px $color-white;
+						}
+						img {
+							width: 44px;
+							height: 44px;
+							border: solid 2px $color-white;
+							background-color: $color-gray;
+							border-radius: 100%;
+						}
+/* 						svg {
+							font-size: 28px;
+							border: solid 2px $color-white;
+							background-color: $color-gray;
+							border-radius: 100%;
+							padding: 5px;
+						} */
 					}
 					&-wrapper {
 						display: flex;
@@ -144,11 +196,14 @@
 					justify-content: space-between;
 					align-items: center;
 					// kid profilepic
-					svg:nth-child(1) {
-						font-size: 28px;
+					&-profile {
+
+						width: 50px;
+						height: 50px;
+						// font-size: 28px;
 						border: solid 2px $color-white;
-						background-color: $color-gray;
-						padding: 5px;
+						background-color: $color-white;
+						// padding: 5px;
 					}
 					&-wrapper {
 						display: flex;
@@ -164,8 +219,7 @@
 						}
 					}
 					// swap child icon 
-					a {
-						text-decoration: none;
+					div {
 						color: $color-white;
 						svg:nth-child(1) {
 							border: none;
@@ -196,15 +250,18 @@
 						flex-direction: column;
 						align-items: center;
 						justify-content: space-evenly;
-						box-shadow: 0px 0px 2px 1px $color-white;
 						text-decoration: none;
 						color: $color-white;
+						// border-bottom: 1px solid $color-white;
 
 						p {
 							margin: 0;
 						}
+						&-selected {
+							background-color: hsla(0, 0, 0, 0.2);
+						}
 						&:hover {
-							background-color: $color-text;
+							background-color: hsla(0, 0, 0, 0.1);
 						}
 					}
 				}
@@ -214,16 +271,19 @@
 					display: flex;
 					align-items: center;
 					justify-content: space-evenly;
-					box-shadow: 0px 0px 2px 1px $color-white;
 					text-decoration: none;
 					color: $color-white;
-					
+					// border-bottom: 1px solid $color-white;
+
 					p {
 						margin: 0;
 						width: 60%;
 					}
+					&-selected {
+						background-color: hsla(0, 0, 0, 0.2);
+					}
 					&:hover {
-						background-color: $color-text;
+						background-color: hsla(0, 0, 0, 0.1);
 					}
 				}
 			}

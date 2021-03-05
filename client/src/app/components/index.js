@@ -12,9 +12,11 @@ import {default as ReadChild} from './read/ReadChild';
 import {default as ReadSupervisor} from './read/ReadSupervisor';
 import {default as PasswordChild} from './password/PasswordChild';
 import {default as PasswordSupervisor} from './password/PasswordSupervisor';
+import {default as PasswordCheck} from './password/PasswordCheck';
 import {default as Board} from './stickers/Board';
 import {default as MountainContainer} from './mountain/MountainContainer';
 import {default as MountainGesprek} from './mountainGesprek/MountainGesprek';
+import {default as FicheUI} from './FicheUI/FicheUI';
 
 export {
   Kid,
@@ -31,7 +33,9 @@ export {
   ReadSupervisor,
   PasswordChild,
   PasswordSupervisor,
+  PasswordCheck,
   Board,
   MountainContainer,
   MountainGesprek,
+  FicheUI,
 }

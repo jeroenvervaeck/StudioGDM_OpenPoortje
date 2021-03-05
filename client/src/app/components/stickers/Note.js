@@ -77,7 +77,7 @@ class Note extends Component {
             <div className="modal-dialog">
             <div className="modal-content note">
                 <div className="modal-header">
-                    <h5 className="modal-title" id="cardModalLabel">
+                    <h5 className="modal-title" id="cardModalLabel" style={{display: "none"}}>
                         {this.props.title}</h5>
                     <button onClick={this.enterDefaultMode} className="close"
                         data-dismiss="modal" type="button" aria-label="Close">
@@ -134,7 +134,7 @@ class Note extends Component {
                 <form className="d-contents"  onSubmit={this.saveNote}>
                 
                 <div className="modal-header">
-                    <input className="card-title form-control" maxLength={100}
+                     <input className="card-title form-control" maxLength={100} style={{display: "none"}}
                         type="text" ref={input => this.new_title = input}
                         id="input-note-title" defaultValue={this.props.title}/>
                     
@@ -148,16 +148,17 @@ class Note extends Component {
                         defaultValue={this.props.text} rows={7}/>
                 </div>
                 <div className="modal-footer">
-                    <button onClick={this.cancelEditing} type="button"
-                        className="btn btn-outline-danger">
+                    <button onClick={this.cancelEditing} type="button" className="btn btn-outline-danger">
                         <span className="react-icon" role="img"
-                            aria-label="Cancel editing">
-                            <RiCloseLine /></span>
+                            aria-label="Save edits">
+                            <FaSave />
+                        </span>
                     </button>
                     <button type="submit" className="btn btn-outline-primary">
                         <span className="react-icon" role="img"
-                            aria-label="Save edits">
-                            <FaSave /></span>
+                            aria-label="Cancel editing">
+                            <RiCloseLine />
+                        </span>
                     </button>
                 </div>
 
@@ -172,13 +173,15 @@ class Note extends Component {
         return ( 
             <div id={this.props.id}>
                 <div className="card note">
-                <div className="card-body">
-                    <h5 className="card-title">
-                        {this.minify(this.props.title, 40)}</h5>
-                    <p className="card-text">
-                        {this.minify(this.props.text, 100)}</p>
-                </div>
-                <div className="modal-footer">
+                    <div className="card-body">
+                       <h5 className="card-title" style={{display: "none"}}>
+                            {this.minify(this.props.title, 40)}
+                        </h5>
+                        <p className="card-text">
+                            {this.minify(this.props.text, 100)}
+                        </p>
+                    </div>
+                    <div className="modal-footer">
                 <button onClick={this.enterReadingMode}
                         className="btn btn-outline-info">
                         <span className="react-icon" role="img"

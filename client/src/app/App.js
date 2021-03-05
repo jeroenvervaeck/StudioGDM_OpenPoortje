@@ -47,6 +47,7 @@ function App() {
           <RouteWithLayout exact path={Routes.SUPERVISOR_TIMELINE} component={Pages.SupervisorTimelinePage} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_INFO} component={Pages.SupervisorInfoPage} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_SETTINGS} component={Pages.SupervisorSettingsPage} layout={PageLayout} />
+          <RouteWithLayout exact path="/test" component={Pages.TestPage} layout={PageLayout} />
           // fiches
           <RouteWithLayout exact path={Routes.SUPERVISOR_MOUNTAIN} component={Pages.SupervisorMountainFiche} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_DIALOG} component={Pages.SupervisorDialogFiche} layout={PageLayout} />

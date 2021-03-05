@@ -7,7 +7,7 @@ const ApiContext = createContext();
 const useApi = () => useContext(ApiContext);
 
 const ApiProvider = ({children}) => {
-  const BASE_URL = `${apiConfig.baseURL || "http://localhost:8080"}`;
+  const BASE_URL = `${apiConfig.baseURL || "https://open-poortje-api.herokuapp.com"}`;
 
   const [ user, setUser ] = useState(JSON.parse(sessionStorage.getItem('user')));
 
@@ -76,7 +76,7 @@ const ApiProvider = ({children}) => {
 
     const response = await fetch(url, options).then((result) => result.json());
 
-    sessionStorage.setItem('supervisor', JSON.stringify(response));
+    sessionStorage.setItem('supervisor', JSON.stringify(response.supervisor));
     setUser(response);
 
     return response;

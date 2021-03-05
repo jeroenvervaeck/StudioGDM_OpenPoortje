@@ -12,8 +12,8 @@ import './SupervisorKidsPage.scss'
 import { Kid } from '../../components'
 
 const SupervisorKidsPage = () => {
-	const { getKidsOfOrganisation, updateSelectedKidData } = useApi();
-	const { getLoggedInRole, getIsSupervisorLoggedIn } = useAuth();
+	const { getKidsOfOrganisation, eraseCookie } = useApi();
+	const { getLoggedInRole, getIsSupervisorLoggedIn, logoutSupervisor } = useAuth();
 	const history = useHistory(); 
 
 	const [ children, setChildren ] = useState();
@@ -44,6 +44,7 @@ const SupervisorKidsPage = () => {
 
 	return (
 		<div className="supervisor-kids">
+			
 		{
 			(getLoggedInRole() !== 'organisation') 
 			? <Redirect to={Routes.LOGIN_MAIN}/> 
@@ -54,6 +55,16 @@ const SupervisorKidsPage = () => {
 				? <Redirect to={Routes.LOGIN_SECONDARY}/> 
 				: null
 		}
+
+			<Link className="supervisor-kids__nav" to={Routes.LOGIN_SECONDARY}
+				onClick={(e) => {
+					logoutSupervisor();
+					history.push(Routes.LOGIN_SECONDARY);
+				}}
+			>
+				<p>Uitloggen</p>
+			</Link>
+
 			<h1>Selecteer een kind</h1>
 
 			<form className="supervisor-kids__filter">
@@ -61,11 +72,11 @@ const SupervisorKidsPage = () => {
 					<FaSearch />
 					<input type="text" placeholder="Zoek op naam.." onChange={(e) => onSearchChange(e.target.value)}></input>
 				</div>
-				<div className="supervisor-kids__filter-icons">
+				{/* <div className="supervisor-kids__filter-icons">
 					<FaWrench />
 					<FaSortAlphaDown />
 					<FaSortNumericDown />
-				</div>
+				</div> */}
 			</form>
 
 			<div className="supervisor-kids__content">
@@ -79,6 +90,7 @@ const SupervisorKidsPage = () => {
 							username={kid.auth.username}
 							color={kid.theme_color}
 							birthdate={kid.birth_date}
+							skinTone={kid.skin_color}
 							onSelect={() => {
 								sessionStorage.setItem('selected-kid', JSON.stringify(kid));
 								history.push(Routes.SUPERVISOR_DASHBOARD);

@@ -25,24 +25,27 @@
 		background-color: $color-light-gray;
 		text-align: center;
 		height: 100px;
+		padding: 20px 0;
 		a {
 			text-decoration: none;
+			width: 60%;
 		}
 		h1 {
-			width: fit-content;
+			text-align: center;
+			width: 100%;
 			font-size: 22px;
 			margin: 0;
 			color: $color-white;
 			text-decoration: none;
 			background-color: $color-01;
-			padding: 20px 60px;
+			padding: 20px 0;
 			border-radius: 50px;
-			transform: translateY(-32px);
+			// transform: translateY(-32px);
 		}
 		p {
 			color: $color-text;
 			font-size: 16px;
-			transform: translateY(-24px);
+			// transform: translateY(-24px);
 		}
 	}
 	&__bottom {
@@ -61,16 +64,15 @@
 			transform: translateY(-40px);
 		}
 		&-wrapper {
-			width: 80%;
+			width: 60%;
 			display: flex;
-			justify-content: space-around;
+			justify-content: space-between;
 			a {
 				text-decoration: none;
 			}
 			p {
 				background-color: $color-01;
-				width: 100%;
-				padding: 20px 30px;
+				padding: 20px 60px;
 				transform: translateY(-20px);
 				color: $color-white;
 				border-radius: 40px;

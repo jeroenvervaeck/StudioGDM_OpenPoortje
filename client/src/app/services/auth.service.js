@@ -8,7 +8,7 @@ const useAuth = () => useContext(AuthContext);
 const AuthProvider = ({ children }) => {
   const { setCookie, getCookie, eraseCookie, updateUserData, updateSupervisorData } = useApi();
 
-  const BASE_URL = `${apiConfig.baseURL || "http://localhost:8080"}`;
+  const BASE_URL = `${apiConfig.baseURL || "https://open-poortje-api.herokuapp.com"}`;
 
   const getToken = async ( role, username, password ) => {
     const url = `${BASE_URL}/token/${role}`;
@@ -24,7 +24,10 @@ const AuthProvider = ({ children }) => {
         }), 
     }
 
-    const response = await fetch(url, options).then((result) => result.json());
+    const response = await fetch(url, options).then((result) => result.json())
+      .catch(() => {
+        return {error: "Inloggegevens zijn onjuist!"}
+      });
 
     if (response.message) return {error: "Uw gebruikersnaam/wachtwoord zijn onjuist."}
 
