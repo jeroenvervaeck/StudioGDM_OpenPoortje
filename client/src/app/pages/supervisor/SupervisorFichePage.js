@@ -15,8 +15,7 @@ const SupervisorFichePage = () => {
 	useEffect(() => {
 		const doFetch = async() => {
 			const types = await getFicheTypes();
-			console.log(types)
-			setFicheTypes(types);
+			setFicheTypes(types.filter((type) => type._id !== "601a996b352c1d313cd7bca2"));
 		}
 
 		if (!ficheTypes) doFetch();
