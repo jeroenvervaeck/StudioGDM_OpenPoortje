@@ -19,7 +19,8 @@ const SupervisorTimelinePage = () => {
 			const fichesFromStorage = JSON.parse(sessionStorage.getItem('selected-kid')).fiches;
 			const newFiches = fichesFromStorage.map((fiche) => {
 				const newFiche = fiche;
-				newFiche.fiche_type = types.filter((type) => type._id === fiche.fiche_type)[0].name;
+
+				newFiche.fiche_type = (types.filter((type) => type._id === fiche.fiche_type)[0]) ? types.filter((type) => type._id === fiche.fiche_type)[0].name : '';
 				return newFiche;
 			});
 			setFiches(newFiches);
