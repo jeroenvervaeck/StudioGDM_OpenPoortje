@@ -47,10 +47,8 @@ export const Dustbin = ({ id , handler , position , children }) => {
     const [opinionBtnOpacity, setOpinionBtnOpacity] = useState(0.5);
     const { updateMountainFiche, updateSelectedKidData } = useApi();
 	const kidObj = JSON.parse(sessionStorage.getItem('selected-kid'))
-    
-    setupTouchDNDCustomEvents()
 
-    const [{ isOver, isOverCurrent }, drop , touchdragover] = useDrop({
+    const [{ canDrop, isOver, isOverCurrent }, drop ] = useDrop({
         accept: ItemTypes.BOX,
         drop(item, monitor) {
             const didDrop = monitor.didDrop();
@@ -84,7 +82,7 @@ export const Dustbin = ({ id , handler , position , children }) => {
         },
         collect: (monitor) => ({
             isOver: monitor.isOver(),
-            touchdragover: monitor.isOver({ shallow: true }),
+            canDrop: monitor.canDrop(),
             isOverCurrent: monitor.isOver({ shallow: true }),
         }),
     });
@@ -169,7 +167,7 @@ export const Dustbin = ({ id , handler , position , children }) => {
         console.log(fiches);
     
         fiches.forEach(fiche => {
-            if ('positionById' in fiche.fiche_data && fiche.fiche_data.positionById == id) {
+            if (fiche.fiche_data != undefined && 'positionById' in fiche.fiche_data && fiche.fiche_data.positionById == id) {
                 //document.getElementById("vlag-"+id).style.display = "block";
                 var vlag = document.getElementById("vlag-"+id);
                 if (vlag != null) {

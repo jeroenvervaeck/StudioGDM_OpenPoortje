@@ -175,6 +175,7 @@ class Board extends Component {
                 )
             })
         )
+        console.log("upgedade")
     }
 
     remove_note = function(id){
@@ -197,8 +198,8 @@ class Board extends Component {
                     id : new_id,
                     title : new_title,
                     text : new_text,
-                    xpos : 0,
-                    ypos : 0,
+                    xpos : 800,
+                    ypos : 200,
                 }]
             })
         )
@@ -233,6 +234,7 @@ class Board extends Component {
     componentDidUpdate(){
         localStorage.setItem("notes", JSON.stringify(this.state.notes));
         localStorage.setItem("stickers", JSON.stringify(this.state.stickers));
+        console.log(this.state);
     }
 
     componentWillReceiveProps(){
