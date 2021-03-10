@@ -26,6 +26,8 @@ export const SUPERVISOR_TEST = '/supervisor/fiche/test';
 export const SUPERVISOR_EIGENSTICKER = '/supervisor/fiche/eigensticker';
 export const SUPERVISOR_BERGGESPREK = '/supervisor/fiche/bergGesprek';
 
+// kid
+export const KID = '/kid';
 
 // Token
 export const TOKEN_SUPERVISOR = '/token/supervisor';

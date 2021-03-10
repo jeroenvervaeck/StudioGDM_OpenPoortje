@@ -84,13 +84,21 @@ const AuthProvider = ({ children }) => {
     sessionStorage.removeItem('selected-kid')
   }
 
+  const logoutUser = () => {
+    logoutSupervisor(); // if is loggedin
+    eraseCookie('auth');
+    sessionStorage.removeItem('user');
+    
+    }
+
   return (
     <AuthContext.Provider value={{ 
       getToken,
       getLoggedInRole,
       getUserData,
       getIsSupervisorLoggedIn,
-      logoutSupervisor
+      logoutSupervisor,
+      logoutUser,
     }}>
       {children}
     </AuthContext.Provider>

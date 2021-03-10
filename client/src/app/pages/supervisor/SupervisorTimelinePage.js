@@ -55,14 +55,12 @@ const SupervisorTimelinePage = () => {
 
 				<h1>Jouw tijdlijn</h1>
 				<div className="supervisor-timeline__month">
-					<h2>Month - Year</h2>
 					<div className="supervisor-timeline__month-wrapper">
 						{
 							(fiches)
 							? renderFiches()
 							: null
 						}
-						{/* {renderFiches()} */}
 					</div>
 				</div>
 			</div>

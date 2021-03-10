@@ -322,6 +322,22 @@ const ApiProvider = ({children}) => {
 
     return response;
   }
+  const getKidFicheTypes = async () => {
+    const auth = JSON.parse(getCookie('auth'));
+    const url = `${BASE_URL}/kid/fichetypes`;
+
+    const options = {
+      method:'GET',
+      headers: new Headers({
+          'Authorization': 'Bearer '+ auth.token, 
+          'Content-Type': 'application/json',
+        }), 
+    }
+
+    const response = await fetch(url, options).then((result) => result.json());
+
+    return response;
+  }
 
   const saveMountainFiche = async ( question1, question2, positionById, kidId, screenshot ) => {
     // save screenshot 
@@ -454,6 +470,7 @@ const ApiProvider = ({children}) => {
 
       // fiches
       getFicheTypes,
+      getKidFicheTypes,
       saveMountainFiche,
       saveDialogFiche,
       updateMountainFiche,

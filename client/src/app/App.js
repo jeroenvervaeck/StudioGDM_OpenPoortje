@@ -11,21 +11,6 @@ import { PageLayout } from './layouts';
 
 import * as Pages from './pages';
 
-import { 
-  LoginPage,
-  SupervisorKidsPage,
-  SupervisorFichePage,
-  SupervisorTimelinePage,
-  SupervisorInfoPage,
-  SupervisorSettingsPage,
-  SupervisorMountainFiche,
-  SupervisorDialogFiche,
-  SupervisorTestFiche,
-  SupervisorEigenSticker,
-  SupervisorHartFiche,
-  SupervisorMoneyFiche,
-} from './pages';
-
 function App() {
   return (
     <div className="App">
@@ -52,17 +37,19 @@ function App() {
           <RouteWithLayout exact path={Routes.SUPERVISOR_MOUNTAIN} component={Pages.SupervisorMountainFiche} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_DIALOG} component={Pages.SupervisorDialogFiche} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_SAVE_FICHE} component={Pages.SaveFiche} layout={PageLayout} />
-          <RouteWithLayout exact path={Routes.SUPERVISOR_KID} component={SupervisorKidsPage} layout={PageLayout} />
-          <RouteWithLayout exact path={Routes.SUPERVISOR_FICHE} component={SupervisorFichePage} layout={PageLayout} />
-          <RouteWithLayout exact path={Routes.SUPERVISOR_TIMELINE} component={SupervisorTimelinePage} layout={PageLayout} />
-          <RouteWithLayout exact path={Routes.SUPERVISOR_SETTINGS} component={SupervisorSettingsPage} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_KID} component={Pages.SupervisorKidsPage} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_FICHE} component={Pages.SupervisorFichePage} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_TIMELINE} component={Pages.SupervisorTimelinePage} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_SETTINGS} component={Pages.SupervisorSettingsPage} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_BERGGESPREK} component={Pages.SupervisorBergGesprek} layout={PageLayout} />
-          <RouteWithLayout exact path={Routes.SUPERVISOR_DIALOG} component={SupervisorDialogFiche} layout={PageLayout} />
-          <RouteWithLayout exact path={Routes.SUPERVISOR_TEST} component={SupervisorTestFiche} layout={PageLayout} />
-          <RouteWithLayout exact path={Routes.SUPERVISOR_EIGENSTICKER} component={SupervisorEigenSticker} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_DIALOG} component={Pages.SupervisorDialogFiche} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_TEST} component={Pages.SupervisorTestFiche} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_EIGENSTICKER} component={Pages.SupervisorEigenSticker} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_HART} component={Pages.SupervisorHartFiche} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_ZAKGELD} component={Pages.SupervisorMoneyFiche} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_GLIJBAAN} component={Pages.SupervisorSlideFiche} layout={PageLayout} />
+          // kids
+          <RouteWithLayout exact path={Routes.KID} component={Pages.KidPage} layout={PageLayout} />
         </Switch>
       </Router>
       </AuthProvider>
