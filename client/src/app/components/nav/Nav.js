@@ -26,9 +26,11 @@ const Nav = ({}) => {
 
 	const profiles = [profile_01, profile_02, profile_03, profile_04];
 
-  const [ supervisor, setSupervisor ] = useState(JSON.parse(sessionStorage.getItem('supervisor')).supervisor);
+  const [ supervisor, setSupervisor ] = useState(JSON.parse(sessionStorage.getItem('supervisor')));
   const [ kid, setKid ] = useState(JSON.parse(sessionStorage.getItem('selected-kid')));
   const [ profilePic, setProfileKid ] = useState();
+
+    console.log(supervisor);
 
   useEffect(() => {
     setProfileKid(profiles[+kid.skin_color.replace('skin-', '')-1]);

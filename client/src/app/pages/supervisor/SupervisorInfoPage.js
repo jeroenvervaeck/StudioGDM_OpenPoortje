@@ -23,7 +23,7 @@ const SupervisorInfoPage = () => {
 		<div>
 			<Nav />
 			<div className="supervisor-info">
-				<h1>Infopage</h1>
+				<h1>Informatie pagina</h1>
 				<div className="supervisor-info__main">
 					<div className="supervisor-info__main-card" style={{backgroundColor: colors[(kid) ? kid.theme_color : 'color-01']}}>
 						<div className="supervisor-info__main-card-display" onClick={onClick01}>
