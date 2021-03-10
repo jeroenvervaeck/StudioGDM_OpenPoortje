@@ -25,6 +25,11 @@ export const SUPERVISOR_SAVE_FICHE = '/supervisor/fiche/save';
 export const SUPERVISOR_TEST = '/supervisor/fiche/test';
 export const SUPERVISOR_EIGENSTICKER = '/supervisor/fiche/eigensticker';
 export const SUPERVISOR_BERGGESPREK = '/supervisor/fiche/bergGesprek';
+export const SUPERVISOR_FICHE_13 = '/supervisor/fiche/PLACEHOLDER13';
+export const SUPERVISOR_FICHE_14 = '/supervisor/fiche/PLACEHOLDER14';
+export const SUPERVISOR_FICHE_27 = '/supervisor/fiche/PLACEHOLDER27';
+export const SUPERVISOR_FICHE_36 = '/supervisor/fiche/PLACEHOLDER36';
+export const SUPERVISOR_FICHE_37 = '/supervisor/fiche/PLACEHOLDER37';
 
 // kid
 export const KID = '/kid';
