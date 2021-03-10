@@ -10,7 +10,7 @@ import { LOGIN_MAIN } from '../../routes';
 const KidPage = () => {
 	const { colors, getUrl, getKidFicheTypes } = useApi();
 	const { logoutUser } = useAuth();
-	const [ fiches, setFiches ] = useState([]);
+	const [ fiches, setFiches ] = useState();
 	const [ selectedFiche, setSelectedFiche ] = useState();
 	const [ kid, setKid ] = useState(JSON.parse(sessionStorage.getItem('user')).kid);
 
@@ -27,7 +27,7 @@ const KidPage = () => {
 			});
 			setFiches(newFiches);
 		}
-		if (!fiches.length) getFiches();
+		if (!fiches || fiches && fiches.length === 0) getFiches();
 	}, [fiches]);
 
 	const renderFiches = () => {
