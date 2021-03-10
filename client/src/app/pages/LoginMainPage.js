@@ -1,7 +1,7 @@
 import { default as React, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useAuth } from '../services';
-import { ORGANISATION_DASHBOARD } from '../routes';
+import { ORGANISATION_DASHBOARD, KID } from '../routes';
 
 import { FaUserAlt, FaLock } from 'react-icons/fa';
 
@@ -31,7 +31,7 @@ const LoginMainPage = (props) => {
 			{
 				(getLoggedInRole() !== '') 
 				? <Redirect to={
-						(getLoggedInRole() === 'organisation') ? ORGANISATION_DASHBOARD : ''
+						(getLoggedInRole() === 'organisation') ? ORGANISATION_DASHBOARD : (getLoggedInRole() === 'kid') ? KID : null
 					}/> 
 				: null
 			}
@@ -60,7 +60,7 @@ const LoginMainPage = (props) => {
 					</div>
 				</div>
 
-				<input type="submit" value="Inloggen" className="login__form-btn" onClick={(e) => submit(e)}></input>
+				<p className="login__form-btn" onClick={(e) => submit(e)}>Inloggen</p>
 
 				{
 					error

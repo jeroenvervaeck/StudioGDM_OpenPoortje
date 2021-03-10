@@ -1,16 +1,20 @@
-import { default as React } from 'react';
+import { default as React, useState } from 'react';
 import { FaTimes, FaPrint } from 'react-icons/fa';
-import { fiche } from '../../assets'
+import { fiche } from '../../assets';
+import { useApi } from '../../services'; 
 import './fiche.scss'
 
 const FicheDetail = ({ imgSrc, date, onClose, name }) => {
+  const { colors } = useApi();
+  const [ kid, setKid ] = useState(JSON.parse(sessionStorage.getItem('selected-kid')));
+
   return (
     <div className="fiche-detail">
 		  <div className="fiche-detail__main" style={{ background: 'url(' + imgSrc + ') center 120% no-repeat' }}>
         <FaTimes className="fiche-detail__main-close" onClick={ onClose } />
         <div className="fiche-detail__main-content">
           <div className="fiche-detail__main-content-label">
-            <h1 className="fiche-detail__main-content-label-h1">{name}</h1>
+            <h1 className="fiche-detail__main-content-label-h1" style={{color: colors[(kid) ? kid.theme_color : 'color-01']}}>{name}</h1>
 						<p>Ingevuld op {new Date(date).getDate()}-{new Date(date).getMonth()}-{new Date(date).getFullYear()}</p>
 						{/* <p>Begeleider: jeroen verver</p> */}
           </div>

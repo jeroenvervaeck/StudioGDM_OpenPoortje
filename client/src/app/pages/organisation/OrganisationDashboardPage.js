@@ -10,7 +10,7 @@ import './organisation.scss'
 
 const OrganisationDashboardPage = () => {
 	const history = useHistory();
-	const { getLoggedInRole } = useAuth();
+	const { getLoggedInRole, logoutUser } = useAuth();
 	const [ passwordCheckTarget, setPasswordCheckTarget ] = useState()
 	return (
 		<div className="organisation-dashboard">
@@ -30,6 +30,10 @@ const OrganisationDashboardPage = () => {
 				: null
 			}
 
+
+			<Link className="organisation-dashboard__nav" to={Routes.LOGIN_MAIN} onClick={ () => { logoutUser() } }>
+				<p>Organisatie uitloggen</p>
+			</Link>
 
 			<div className="organisation-dashboard__top">
 				<h1>Dashboard voor:</h1>

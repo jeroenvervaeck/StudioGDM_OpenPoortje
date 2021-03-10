@@ -24,10 +24,6 @@ const AddChild = ({ onClose, reload }) => {
 			<input type='text' id="last_name" placeholder='...'></input>
 		</div>
 		<div className="add-child__input">
-			<p>Adres:</p>
-			<input type='text' id="addres" placeholder='...'></input>
-		</div>
-		<div className="add-child__input">
 			<p>Geboortedatum:</p>
 			<input type='date' id="birthdate" placeholder='...'></input>
 		</div>

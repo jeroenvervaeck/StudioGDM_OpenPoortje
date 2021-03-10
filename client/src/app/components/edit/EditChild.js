@@ -24,10 +24,6 @@ const EditChild = ({kid, onClose, reload}) => {
 			<input type='text' id="last_name" defaultValue={kid.last_name}></input>
 		</div>
 		<div className="edit-child__input">
-			<p>Adres:</p>
-			<input type='text' id="addres" defaultValue={'Wordt (nog) niet bewaard'}></input>
-		</div>
-		<div className="edit-child__input">
 			<p>Geboortedatum:</p>
 			<input type='date' id="birthdate" defaultValue={new Date(kid.birth_date).toISOString().substr(0,10)}></input>
 		</div>
