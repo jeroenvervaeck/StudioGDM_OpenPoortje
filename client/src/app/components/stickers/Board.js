@@ -15,6 +15,7 @@ import * as Screenshot from 'html2canvas';
 
 import './stickers.css'
 import './stickers.scss'
+import { Fragment } from 'react';
 
 const images = [
     {
@@ -151,6 +152,7 @@ class Board extends Component {
             stickers: [],
             showState : false, 
             screenshotURL: undefined,
+            showUI: true,
         }
         this.componentDidMount = this.componentDidMount.bind(this)
         this.componentDidUpdate = this.componentDidUpdate.bind(this)
@@ -310,24 +312,7 @@ class Board extends Component {
     render() { 
         return (
             <div id="board">
-                <RiScreenshot2Fill className="screenshot"
-                    onClick={() => {
-                        Screenshot(document.querySelector("body")).then((canvas) => {
-                            const img = canvas.toDataURL("image/png");
-                            // download png
-                            const element = document.createElement('a');
-                            element.setAttribute('href', img);
-                            element.setAttribute('download', 'file.png');
-
-                            element.style.display = 'none';
-                            document.body.appendChild(element);
-
-                            element.click();
-
-                            document.body.removeChild(element);
-                        });
-                    }}
-                />
+                
                 {(this.state.notes) ? this.state.notes.map(this.render_each_note) : null}
                 {(this.state.stickers) ? this.state.stickers.map(this.render_each_sticker) : null}
                 
@@ -377,25 +362,50 @@ class Board extends Component {
                         </Link>
                     </div>
                 </div>
+                {
+                    (this.state.showUI)
+                    ? <Fragment>
+                        <div className="buttons">
+                            <AddNoteButton onAdd={this.create_note}/>
+                            <AddStickerButton/>
+                        </div>
 
-                <div className="buttons">
-                    <AddNoteButton onAdd={this.create_note}/>
-                    <AddStickerButton/>
-                </div>
-                <Save 
-                    onCancel={() => { this.saveBoxHandler() }} 
-                    onSave={this.save}
-                    showState={this.state.showState}
-                />
+                        <Save 
+                            onCancel={() => { this.saveBoxHandler() }} 
+                            onSave={this.save}
+                            showState={this.state.showState}
+                        />
+                        <a href={"#"} className="dialogBtn backBtn" onClick={(e) => this.props.onBack(e) }>keer terug</a>
+                        <a href={"#"} className="dialogBtn saveBtn" onClick={() => {
+                            Screenshot(document.querySelector("body")).then(async(canvas) => {
+                                const imgURL = canvas.toDataURL("image/png");
+                                this.setState({screenshotURL:imgURL})
+                                this.setState({showState:true})
+                                this.setState({showUI:false})
+                            });  
+                        <RiScreenshot2Fill className="screenshot"
+                            onClick={() => {
+                                Screenshot(document.querySelector("body")).then((canvas) => {
+                                    const img = canvas.toDataURL("image/png");
+                                    // download png
+                                    const element = document.createElement('a');
+                                    element.setAttribute('href', img);
+                                    element.setAttribute('download', 'file.png');
+        
+                                    element.style.display = 'none';
+                                    document.body.appendChild(element);
+        
+                                    element.click();
+        
+                                    document.body.removeChild(element);
+                                });
+                            }}
+                        />
+                        }} >opslaan</a>
+                    </Fragment>
+                    : null
+                }
 
-                <a href={"#"} className="dialogBtn backBtn" onClick={(e) => this.props.onBack(e) }>keer terug</a>
-			    <a href={"#"} className="dialogBtn saveBtn" onClick={() => {
-                    Screenshot(document.querySelector("body")).then(async(canvas) => {
-                        const imgURL = canvas.toDataURL("image/png");
-                        this.setState({screenshotURL:imgURL})
-                        this.setState({showState:true})
-                    });  
-                }} >opslaan</a>
             </div>
         )
     }

@@ -9,7 +9,7 @@ import { useApi } from '../../services';
 const SupervisorTimelinePage = () => {
 	const { getUrl, getFicheTypes } = useApi();
 
-	const [ fiches, setFiches ] = useState([]);
+	const [ fiches, setFiches ] = useState();
 	const [ selectedFiche, setSelectedFiche ] = useState();
 
 	useEffect(() => {
@@ -25,8 +25,8 @@ const SupervisorTimelinePage = () => {
 			});
 			setFiches(newFiches);
 		}
-		if (!fiches.length) getFiches();
-	}, [fiches]);
+		if (fiches && fiches.length === 0) getFiches();
+	}, []);
 
 	const renderFiches = () => {
 		return fiches.map((fiche, index) => {
