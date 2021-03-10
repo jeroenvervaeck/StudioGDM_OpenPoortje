@@ -1,0 +1,82 @@
+@import '../../_sass/abstracts/variables';
+
+.kid-page {
+
+	&__logout {
+		position: absolute;
+		top: 0;
+		right: 0;
+		text-decoration: none;
+
+		p {
+			color: $color-white;
+			background-color: $color-text;
+			padding: 10px 30px;
+			border-radius: 20px 0 0 20px;
+			box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.30);
+			font-weight: 600;
+		}
+	}
+	h1 {
+		margin: 0;
+		padding-top: 25px;
+		text-align: center;
+		font-size: 38px;
+	}
+	&__timeline {
+
+		&-month {
+			padding-left: 10vw;
+			padding-right: 6vw;
+			padding-bottom: 40px;
+			h2 {
+				color: $color-text;
+				margin: 0;
+				margin-top: 40px;
+			}
+			&-wrapper {
+				display: flex;
+				justify-content: space-between;
+				flex-wrap: wrap;
+				&-element {
+					width: 48%;
+					height: auto;
+					margin-top: 20px;
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-end;
+					padding-bottom: 20px;
+					border: rgba(161,161,161,0.75) 1px solid;
+					box-shadow: 2px 2px 5px 0px rgba(161,161,161,0.75);
+					border-radius: 20px;
+	
+					img {
+						padding: 20px;
+						object-fit: contain;
+					}
+					&-label {
+	
+						h1 {
+							font-size: 18px;
+							color: $color-text;
+							text-align: left;
+							margin: 0;
+							padding-left: 30px;
+							padding-bottom: 4px;
+							padding-top: 0;
+							background-color: $color-white;
+						}
+						p {
+							font-size: 14px;
+							color: $color-text;
+							margin: 0;
+							padding-left: 30px;
+							padding-bottom: 4px;
+							background-color: $color-white;
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -25,7 +25,7 @@ const SupervisorTimelinePage = () => {
 			});
 			setFiches(newFiches);
 		}
-		if (fiches && fiches.length === 0) getFiches();
+		if (!fiches || fiches && fiches.length === 0) getFiches();
 	}, []);
 
 	const renderFiches = () => {
@@ -56,14 +56,12 @@ const SupervisorTimelinePage = () => {
 
 				<h1>Jouw tijdlijn</h1>
 				<div className="supervisor-timeline__month">
-					<h2>Month - Year</h2>
 					<div className="supervisor-timeline__month-wrapper">
 						{
 							(fiches)
 							? renderFiches()
 							: null
 						}
-						{/* {renderFiches()} */}
 					</div>
 				</div>
 			</div>

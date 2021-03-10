@@ -152,7 +152,6 @@ class Board extends Component {
             stickers: [],
             showState : false, 
             screenshotURL: undefined,
-            showUI: true,
         }
         this.componentDidMount = this.componentDidMount.bind(this)
         this.componentDidUpdate = this.componentDidUpdate.bind(this)
@@ -362,50 +361,52 @@ class Board extends Component {
                         </Link>
                     </div>
                 </div>
-                {
-                    (this.state.showUI)
-                    ? <Fragment>
-                        <div className="buttons">
-                            <AddNoteButton onAdd={this.create_note}/>
-                            <AddStickerButton/>
-                        </div>
+                <div id="ui">
+                    <div className="buttons">
+                        <AddNoteButton onAdd={this.create_note}/>
+                        <AddStickerButton/>
+                    </div>
 
-                        <Save 
-                            onCancel={() => { this.saveBoxHandler() }} 
-                            onSave={this.save}
-                            showState={this.state.showState}
-                        />
-                        <a href={"#"} className="dialogBtn backBtn" onClick={(e) => this.props.onBack(e) }>keer terug</a>
-                        <a href={"#"} className="dialogBtn saveBtn" onClick={() => {
-                            Screenshot(document.querySelector("body")).then(async(canvas) => {
-                                const imgURL = canvas.toDataURL("image/png");
-                                this.setState({screenshotURL:imgURL})
-                                this.setState({showState:true})
-                                this.setState({showUI:false})
-                            });  
-                        <RiScreenshot2Fill className="screenshot"
-                            onClick={() => {
-                                Screenshot(document.querySelector("body")).then((canvas) => {
-                                    const img = canvas.toDataURL("image/png");
-                                    // download png
-                                    const element = document.createElement('a');
-                                    element.setAttribute('href', img);
-                                    element.setAttribute('download', 'file.png');
-        
-                                    element.style.display = 'none';
-                                    document.body.appendChild(element);
-        
-                                    element.click();
-        
-                                    document.body.removeChild(element);
-                                });
-                            }}
-                        />
-                        }} >opslaan</a>
-                    </Fragment>
-                    : null
-                }
-
+                    <a href={"#"} className="dialogBtn backBtn" onClick={(e) => this.props.onBack(e) }>keer terug</a>
+                    <a href={"#"} className="dialogBtn saveBtn" onClick={() => {
+                        document.getElementById('ui').style.display = 'none';
+                        Screenshot(document.querySelector("body")).then(async(canvas) => {
+                            const imgURL = canvas.toDataURL("image/png");
+                            this.setState({screenshotURL:imgURL})
+                            this.setState({showState:true});
+                        });  
+                    }} >opslaan</a>
+                    <RiScreenshot2Fill className="screenshot"
+                        onClick={() => {
+                            document.getElementById('ui').style.display = 'none';
+                            Screenshot(document.querySelector("body")).then((canvas) => {
+                                const img = canvas.toDataURL("image/png");
+                                // download png
+                                const element = document.createElement('a');
+                                element.setAttribute('href', img);
+                                element.setAttribute('download', 'file.png');
+    
+                                element.style.display = 'none';
+                                document.body.appendChild(element);
+    
+                                element.click();
+    
+                                document.body.removeChild(element);
+                                document.getElementById('ui').style.display = 'block';
+                            });
+                        }}
+                    />
+                </div>
+                    <Save 
+                        onCancel={() => { 
+                            document.getElementById('ui').style.display = 'block';
+                            this.saveBoxHandler();
+                        }} 
+                        onSave={this.save}
+                        showState={this.state.showState}
+                    />
+            
+                
             </div>
         )
     }
