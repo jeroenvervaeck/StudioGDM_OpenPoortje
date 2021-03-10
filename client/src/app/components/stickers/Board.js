@@ -227,8 +227,11 @@ class Board extends Component {
         let loaded_notes = JSON.parse(localStorage.getItem("notes"))
         let loaded_stickers = JSON.parse(localStorage.getItem("stickers"))
         
-        this.setState(()=>({notes : loaded_notes}))
-        this.setState(()=>({stickers : loaded_stickers}))
+        loaded_notes = loaded_notes || [];
+        loaded_stickers = loaded_stickers || [];
+        
+        this.setState(()=>({notes : loaded_notes }))
+        this.setState(()=>({stickers : loaded_stickers }))
     }
 
     componentDidUpdate(){

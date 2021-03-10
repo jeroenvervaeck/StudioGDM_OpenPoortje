@@ -8,8 +8,8 @@ const useAuth = () => useContext(AuthContext);
 const AuthProvider = ({ children }) => {
   const { setCookie, getCookie, eraseCookie, updateUserData, updateSupervisorData } = useApi();
 
-  // const BASE_URL = `${apiConfig.baseURL || "https://open-poortje-api.herokuapp.com"}`;
-  const BASE_URL = "https://open-poortje-api.herokuapp.com";
+  const BASE_URL = `${apiConfig.baseURL || "https://open-poortje-api.herokuapp.com"}`;
+  // const BASE_URL = "http://localhost:8080";
 
   const getToken = async ( role, username, password ) => {
     const url = `${BASE_URL}/token/${role}`;
@@ -37,10 +37,6 @@ const AuthProvider = ({ children }) => {
       await updateUserData();
     } else if (role === 'supervisor') {
       setCookie('sup-auth', JSON.stringify({token: response.token, role}), 1);
-      // remove organisation login data
-      // eraseCookie('auth');
-      // sessionStorage.removeItem('user');
-
     }
 
 
