@@ -60,7 +60,7 @@ const LoginMainPage = (props) => {
 					</div>
 				</div>
 
-				<input type="submit" value="Inloggen" className="login__form-btn" onClick={(e) => submit(e)}></input>
+				<p className="login__form-btn" onClick={(e) => submit(e)}>Inloggen</p>
 
 				{
 					error
