@@ -149,7 +149,8 @@ class Board extends Component {
         this.state = { 
             notes : [],
             stickers: [],
-            showState : false
+            showState : false, 
+            screenshotURL: undefined,
         }
         this.componentDidMount = this.componentDidMount.bind(this)
         this.componentDidUpdate = this.componentDidUpdate.bind(this)
@@ -227,8 +228,11 @@ class Board extends Component {
         let loaded_notes = JSON.parse(localStorage.getItem("notes"))
         let loaded_stickers = JSON.parse(localStorage.getItem("stickers"))
         
-        this.setState(()=>({notes : loaded_notes}))
-        this.setState(()=>({stickers : loaded_stickers}))
+        loaded_notes = loaded_notes || [];
+        loaded_stickers = loaded_stickers || [];
+        
+        this.setState(()=>({notes : loaded_notes }))
+        this.setState(()=>({stickers : loaded_stickers }))
     }
 
     componentDidUpdate(){
@@ -249,7 +253,6 @@ class Board extends Component {
 
             <Draggable 
             key={"note-"+index}
-            handle=".card-body"
             defaultPosition={{x: note.xpos, y: note.ypos}}
             onStop={(e, data) => {
                     this.setState({ defaultPosition: { x: data.x, y: data.y } });
@@ -288,16 +291,14 @@ class Board extends Component {
         )
     }
 
-    save = function( e, proceed ) {
+    save = async function( e, proceed ) {
         e.preventDefault();
-        // const onSave = this.props.onSave;
-        Screenshot(document.querySelector("body")).then(async(canvas) => {
-            const imgURL = canvas.toDataURL("image/png");
-            let blob = await fetch(imgURL).then(r => r.blob());
-            var img = new File([blob], "screenshot.png");
-            this.props.onSave(img)
-                // .then(proceed);
+        this.setState({
+            showState: false
         });
+        let blob = await fetch(this.state.screenshotURL).then(r => r.blob());
+        var img = new File([blob], "screenshot.png");
+        this.props.onSave(img);
     }
 
     saveBoxHandler() {
@@ -382,10 +383,20 @@ class Board extends Component {
                     <AddNoteButton onAdd={this.create_note}/>
                     <AddStickerButton/>
                 </div>
-                <Save action={() => { this.saveBoxHandler() }} showState={this.state.showState}/>
+                <Save 
+                    onCancel={() => { this.saveBoxHandler() }} 
+                    onSave={this.save}
+                    showState={this.state.showState}
+                />
 
-                <a href={Routes.SUPERVISOR_DASHBOARD} className="dialogBtn backBtn" >keer terug</a>
-			    <a href={"#"} className="dialogBtn saveBtn" onClick={() => { this.setState({showState:true}) }} >opslaan</a>
+                <a href={"#"} className="dialogBtn backBtn" onClick={(e) => this.props.onBack(e) }>keer terug</a>
+			    <a href={"#"} className="dialogBtn saveBtn" onClick={() => {
+                    Screenshot(document.querySelector("body")).then(async(canvas) => {
+                        const imgURL = canvas.toDataURL("image/png");
+                        this.setState({screenshotURL:imgURL})
+                        this.setState({showState:true})
+                    });  
+                }} >opslaan</a>
             </div>
         )
     }

@@ -75,7 +75,7 @@ export const Dustbin = ({ id , handler , position , children }) => {
                     return
                 }
             }else{
-                setHasDropped(true);
+                setHasDropped(false);
                 //prevDropped = true;
             }
             //setHasDropped(true);
@@ -116,10 +116,10 @@ export const Dustbin = ({ id , handler , position , children }) => {
     //console.log(fiches);
 
     fiches.forEach(fiche => {
-        if (fiche.fiche_data.positionById == id) {
+        if (fiche.fiche_data != undefined && fiche.fiche_data.positionById == id) {
             vraag1 = fiche.fiche_data.vraag1;
             vraag2 = fiche.fiche_data.vraag2;
-        }else if(fiche.fiche_data.optionConvo = true) {
+        }else if(fiche.fiche_data != undefined && fiche.fiche_data.optionConvo == true) {
             console.log("er is een opinion in " +id)
             setOpinionBtnOpacity(1);
         }
@@ -147,7 +147,7 @@ export const Dustbin = ({ id , handler , position , children }) => {
         var fiches = kidObj.fiches;
 
         const newFiche = fiches.map((fiche) => {
-            if (fiche.fiche_data.positionById == id) {
+            if (fiche.fiche_data != undefined && fiche.fiche_data.positionById == id) {
                 fiche.fiche_data.optionConvo = value;
                 console.log(fiche)
             }
@@ -169,6 +169,7 @@ export const Dustbin = ({ id , handler , position , children }) => {
         fiches.forEach(fiche => {
             if (fiche.fiche_data != undefined && 'positionById' in fiche.fiche_data && fiche.fiche_data.positionById == id) {
                 //document.getElementById("vlag-"+id).style.display = "block";
+                console.log('er is een match'+ id);
                 var vlag = document.getElementById("vlag-"+id);
                 if (vlag != null) {
                     vlag.style.display = "block";

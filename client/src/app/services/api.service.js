@@ -323,7 +323,10 @@ const ApiProvider = ({children}) => {
     return response;
   }
 
-  const saveMountainFiche = async ( question1, question2, positionById, kidId ) => {
+  const saveMountainFiche = async ( question1, question2, positionById, kidId, screenshot ) => {
+    // save screenshot 
+    const pictureName = await saveScreenshot(screenshot);
+
     const auth = JSON.parse(getCookie('sup-auth'));
     const url = `${BASE_URL}/kid/fiche`;
 
@@ -331,7 +334,7 @@ const ApiProvider = ({children}) => {
       kidId: kidId,
       fiche: {
         fiche_type: "601a996b352c1d313cd7bca2",
-        picture_name: "",
+        picture_name: pictureName,
         fiche_data:{
           vraag1: question1,
           vraag2: question2,
@@ -356,7 +359,7 @@ const ApiProvider = ({children}) => {
 
   const updateMountainFiche = async ( fiches, kidId, newFiche, positionById ) => {
     const newFiches = fiches.map((fiche) => {
-      if (fiche.fiche_data.positionById === positionById) {
+      if (fiche.fiche_data != undefined && fiche.fiche_data.positionById === positionById) {
         return newFiche;
       }
       return fiche;
@@ -420,6 +423,10 @@ const ApiProvider = ({children}) => {
     return response.filename;
   }
 
+  const getUrl = (route) => {
+    return BASE_URL + route;
+  }
+
 
   return (
     <ApiContext.Provider value={{ 
@@ -450,6 +457,8 @@ const ApiProvider = ({children}) => {
       saveMountainFiche,
       saveDialogFiche,
       updateMountainFiche,
+
+      getUrl,
      }}>
       {children}
     </ApiContext.Provider>

@@ -27,6 +27,7 @@ class Note extends Component {
     EDITING_MODE = 2
 
     enterReadingMode = function(){
+        console.log("test");
         this.setState({ mode : this.READING_MODE })
     }
     
@@ -72,10 +73,8 @@ class Note extends Component {
 
     renderReadingMode(){
         return (
-            <div className="modal d-flex" id="noteModal" role="dialog"
-                aria-labelledby="cardModalLabel" onClick={this.closeDialog}>
-            <div className="modal-dialog">
-            <div className="modal-content note">
+            <div id={this.props.id}>
+            <div className="card note">
                 <div className="modal-header">
                     <h5 className="modal-title" id="cardModalLabel" style={{display: "none"}}>
                         {this.props.title}</h5>
@@ -102,7 +101,7 @@ class Note extends Component {
                 </div>
             </div>
             </div>
-            </div>
+        
         )
     }
     componentDidMount(){
@@ -127,10 +126,8 @@ class Note extends Component {
 
     renderEditingMode(){
         return (
-            <div className="modal d-flex" id="noteModal" role="dialog"
-                aria-labelledby="cardModalLabel" onClick={this.closeDialog}>
-            <div className="modal-dialog">
-            <div className="modal-content note">
+            <div id={this.props.id}>
+                <div className="card note">
                 <form className="d-contents"  onSubmit={this.saveNote}>
                 
                 <div className="modal-header">
@@ -148,13 +145,13 @@ class Note extends Component {
                         defaultValue={this.props.text} rows={7}/>
                 </div>
                 <div className="modal-footer">
-                    <button onClick={this.cancelEditing} type="button" className="btn btn-outline-danger">
+                    <button onClick={this.saveNote} type="button" className="btn btn-outline-danger">
                         <span className="react-icon" role="img"
                             aria-label="Save edits">
                             <FaSave />
                         </span>
                     </button>
-                    <button type="submit" className="btn btn-outline-primary">
+                    <button onClick={this.cancelEditing} type="submit" className="btn btn-outline-primary">
                         <span className="react-icon" role="img"
                             aria-label="Cancel editing">
                             <RiCloseLine />
@@ -163,7 +160,6 @@ class Note extends Component {
                 </div>
 
                 </form>
-            </div>
             </div>
             </div>
         )
@@ -187,7 +183,7 @@ class Note extends Component {
                         <span className="react-icon" role="img"
                             aria-label="Edit note">
                                 <FaEye/></span>
-                    </button>
+                </button>
                 </div>
                 </div>
             </div>
