@@ -257,6 +257,7 @@ class Board extends Component {
             key={"note-"+index}
             handle={'.drag-icon'}
             defaultPosition={{x: note.xpos, y: note.ypos}}
+            onStart={e => e.preventDefault()}
             onStop={(e, data) => {
                     this.setState({ defaultPosition: { x: data.x, y: data.y } });
                     note.xpos = data.x;
