@@ -105,7 +105,7 @@ const Nav = ({}) => {
                 <div className="nav-block__routes-main-wrapper">
                   <NavLink to={Routes.SUPERVISOR_MOUNTAIN} className="nav-block__routes-main-wrapper-element" activeClassName="nav-block__routes-main-element-selected">
                     <FaMountain size={20} />
-                    <p>Berglijn</p>
+                    <p>Begeleidingslijn</p>
                   </NavLink>
                   <NavLink to={Routes.SUPERVISOR_DIALOG} className="nav-block__routes-main-wrapper-element" activeClassName="nav-block__routes-main-element-selected">
                     <FaComments size={20} />

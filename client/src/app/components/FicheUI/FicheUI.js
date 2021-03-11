@@ -3,8 +3,6 @@ import { default as React, Fragment, useState, useEffect } from 'react';
 import './FicheUI.scss';
 
 // Component imports
-import { Nav } from '../../components';
-import { fiche } from '../../assets';
 import Note from './Components/Note';
 
 const FicheUI = () => {
