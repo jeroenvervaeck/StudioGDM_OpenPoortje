@@ -222,6 +222,7 @@ class Board extends Component {
             })
         )
         console.log("sticker aangemaakt! : " + this.state.stickers)
+        document.getElementById("stickerPopup").style.display = "none";
     }
 
 
@@ -356,10 +357,12 @@ class Board extends Component {
                             <img src={images[28].url} alt={images[28]} onClick={() => this.create_sticker(images[28].url)}></img>
                             <img src={images[29].url} alt={images[29]} onClick={() => this.create_sticker(images[29].url)}></img>
                         </div>
+                        {/* 
                         <Link to={Routes.SUPERVISOR_EIGENSTICKER} className="modal-content__draw">
                             <p>Teken je eigen sticker WIP</p>
                             <img src={images[30].url} alt={images[30]}></img>
-                        </Link>
+                        </Link> 
+                        */}
                     </div>
                 </div>
                 <div id="ui">

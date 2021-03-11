@@ -17,7 +17,8 @@ const ReadChild = ({kid, onClose}) => {
 			<h1>Familienaam</h1>
 			<p>{kid.last_name}</p>
 		</div>
-		<div className="read-child__record">
+		{/*
+ 		<div className="read-child__record">
 			<h1>Adres</h1>
 			<p>Wordt Nog niet opgeslaan</p>
 		</div>
@@ -25,6 +26,7 @@ const ReadChild = ({kid, onClose}) => {
 			<h1>Begeleider</h1>
 			<p>jeroen de begeleider</p>
 		</div>
+		*/}
 		<div className="read-child__record-color">
 			<h1>Huidskleur</h1>
 			<div style={{backgroundColor: kid.skin_color}}></div>

@@ -37,9 +37,9 @@ const SupervisorFichePage = () => {
 */}
 
 				<div className="supervisor-fiche__content">
-					<Fiches catogerie="CKG" color="#EF4742" fiches={(ficheTypes) ? ficheTypes.filter((type) => type.category === 'CKG').map((type) => type.name) : []} />
-					<Fiches catogerie="Ik" color="#FAAB4B" fiches={(ficheTypes) ? ficheTypes.filter((type) => type.category === 'Ik').map((type) => type.name) : []} />
-					<Fiches catogerie="Rechten" color="#01AEB1" fiches={(ficheTypes) ? ficheTypes.filter((type) => type.category === 'Rechten').map((type) => type.name) : []} />
+					<Fiches catogerie="CKG" color="#EF4742" fiches={(ficheTypes) ? ficheTypes.filter((type) => type.category === 'CKG') : []} />
+					<Fiches catogerie="Ik" color="#FAAB4B" fiches={(ficheTypes) ? ficheTypes.filter((type) => type.category === 'Ik') : []} />
+					<Fiches catogerie="Rechten" color="#01AEB1" fiches={(ficheTypes) ? ficheTypes.filter((type) => type.category === 'Rechten') : []} />
 
 				</div>
 				

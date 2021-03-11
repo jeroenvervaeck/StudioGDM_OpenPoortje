@@ -25,6 +25,11 @@ import { default as SaveFiche } from './fiches/SaveFiche';
 import { default as SupervisorTestFiche } from './fiches/SupervisorTestFiche';
 import { default as SupervisorEigenSticker } from './fiches/SupervisorEigenSticker';
 import { default as SupervisorBergGesprek } from './fiches/SupervisorBergGesprek';
+import { default as Supervisor13Fiche } from './fiches/Supervisor13Fiche';
+import { default as Supervisor14Fiche } from './fiches/Supervisor14Fiche';
+import { default as Supervisor27Fiche } from './fiches/Supervisor27Fiche';
+import { default as Supervisor36Fiche } from './fiches/Supervisor36Fiche';
+import { default as Supervisor37Fiche } from './fiches/Supervisor37Fiche';
 
 export {
 	// prepages
@@ -54,4 +59,9 @@ export {
 	SupervisorHartFiche,
 	SupervisorMoneyFiche,
 	SupervisorSlideFiche,
+	Supervisor13Fiche,
+	Supervisor14Fiche,
+	Supervisor27Fiche,
+	Supervisor36Fiche,
+	Supervisor37Fiche,
 }
