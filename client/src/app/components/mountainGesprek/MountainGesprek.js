@@ -31,16 +31,10 @@ const MountainGesprek = (id) => {
 	}
 
     return ( 
-        <div>
+        <div className="supervisor-gesprek">
+			<div className="gesprekFiche">
 		    {/* <Nav /> */}
             <BergGesprekBG />
-			< Board
-				onSave={(screenshot) => { saveCanvo(screenshot) }}
-				onBack={(e) => {
-					e.preventDefault();
-					history.goBack();
-				}}
-			/>
             <div className="gesprek-container">
                 <form className="gesprek-inputBox">
                     <label> Waar hebben we rond gepraat en gewerkt? <textarea name="bergGesprek1" rows="4" cols="30" className="berg-gesprek-field" id="q1"/></label>
@@ -49,6 +43,14 @@ const MountainGesprek = (id) => {
             </div>
             {/* <a href={Routes.SUPERVISOR_MOUNTAIN} className="myButton">Terug</a>
             <a href={Routes.SUPERVISOR_MOUNTAIN} className="myButton" onClick={() => { saveConvo(kid) }} >opslaan</a> */}
+			</div>
+			< Board
+				onSave={(screenshot) => { saveCanvo(screenshot) }}
+				onBack={(e) => {
+					e.preventDefault();
+					history.goBack();
+				}}
+			/>
 		</div>
 	);
 	

@@ -72,7 +72,7 @@ const SupervisorMoneyFiche = () => {
 						<li>Het zakgeld wordt bewaard in jouw eigen geldkistje</li>
 						<li>Je beslist zelf wat je met je zakgeld doet</li>
 					</ul>
-					<form className="gesprek-inputBox">
+					<form className="money-inputBox">
                     	<label> Hoeveel zakgeld krijg jij?  <input type="text" id="zakgeld" name="zakgeld" id="moneyAmount"></input></label>
                 	</form>
 				</div>
