@@ -255,6 +255,7 @@ class Board extends Component {
 
             <Draggable 
             key={"note-"+index}
+            handle={'.drag-icon'}
             defaultPosition={{x: note.xpos, y: note.ypos}}
             onStop={(e, data) => {
                     this.setState({ defaultPosition: { x: data.x, y: data.y } });

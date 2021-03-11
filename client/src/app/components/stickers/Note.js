@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {FaEye, FaPencilAlt} from 'react-icons/fa'
+import {FaEye, FaPencilAlt, FaCompressArrowsAlt} from 'react-icons/fa'
 import {FaTrash} from 'react-icons/fa'
 import {FaSave} from 'react-icons/fa'
 import {RiCloseLine} from 'react-icons/ri'
@@ -170,6 +170,9 @@ class Note extends Component {
             <div id={this.props.id}>
                 <div className="card note">
                     <div className="card-body">
+                        <span className="drag-icon" role="img"
+                            aria-label="Edit note">
+                                <FaCompressArrowsAlt/></span>
                        <h5 className="card-title" style={{display: "none"}}>
                             {this.minify(this.props.title, 40)}
                         </h5>
