@@ -58,7 +58,16 @@ export const Dustbin = ({ id , handler , position , children }) => {
             const boxId = id;
             //console.log(didDrop);
             handler(left,top)
-            if (boxId > 0) {
+            if (boxId == 0){
+                const currentDustbin = document.getElementById(boxId);
+                const currentFlag = currentDustbin.querySelector('.vlag');
+                const currentStyle = getComputedStyle(currentFlag);
+                if( currentStyle.display == "none" ) {
+                    console.log("Het is de eerste");
+                    setHasDropped(true);
+                }
+            }
+            else if (boxId > 0) {
                 const currentDustbin = document.getElementById(boxId);
                 const previousDustbin = document.getElementById(boxId-1);
                 const currentFlag = currentDustbin.querySelector('.vlag');
@@ -67,16 +76,16 @@ export const Dustbin = ({ id , handler , position , children }) => {
                 const previousStyle = getComputedStyle(previousFlag);
                 console.log(currentStyle.display);
 
-                if( currentStyle.display == "none" && previousStyle.display == "block") {
+                if(boxId > 0 && currentStyle.display == "none" && previousStyle.display == "block") {
                     console.log("er is een span");
                     setHasDropped(true);
                 }else{
                     console.log("geen span");
                     return
                 }
-            }else{
+            }
+            else{
                 setHasDropped(false);
-                //prevDropped = true;
             }
             //setHasDropped(true);
         },
