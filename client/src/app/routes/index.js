@@ -17,14 +17,19 @@ export const SUPERVISOR_SETTINGS = '/supervisor/settings';
 // fiches
 // export const SUPERVISOR_MOUNTAIN = '/supervisor/fiche/begeleidingslijn';
 export const SUPERVISOR_MOUNTAIN = '/supervisor/fiche/Mountain';
-export const SUPERVISOR_DIALOG = '/supervisor/Ervaringsdialoog';
-export const SUPERVISOR_HART = '/supervisor/Hart';
-export const SUPERVISOR_ZAKGELD = '/supervisor/Zakgeld';
-export const SUPERVISOR_GLIJBAAN = '/supervisor/Glijbaan';
+export const SUPERVISOR_DIALOG = '/supervisor/603e31d01b09a12647f1c244';
+export const SUPERVISOR_HART = '/supervisor/603e319e29a98e25552d3db3';
+export const SUPERVISOR_ZAKGELD = '/supervisor/603e32231b09a12647f1c246';
+export const SUPERVISOR_GLIJBAAN = '/supervisor/603e31ee1b09a12647f1c245';
 export const SUPERVISOR_SAVE_FICHE = '/supervisor/fiche/save';
 export const SUPERVISOR_TEST = '/supervisor/fiche/test';
 export const SUPERVISOR_EIGENSTICKER = '/supervisor/fiche/eigensticker';
 export const SUPERVISOR_BERGGESPREK = '/supervisor/fiche/bergGesprek';
+export const SUPERVISOR_FICHE_13 = '/supervisor/fiche/604a0d296f94830004ba8909';
+export const SUPERVISOR_FICHE_14 = '/supervisor/fiche/604a0d806f94830004ba890a';
+export const SUPERVISOR_FICHE_27 = '/supervisor/fiche/604a0cc26f94830004ba8907';
+export const SUPERVISOR_FICHE_36 = '/supervisor/fiche/604a0cf46f94830004ba8908';
+export const SUPERVISOR_FICHE_37 = '/supervisor/fiche/604a0c616f94830004ba8906';
 
 // kid
 export const KID = '/kid';

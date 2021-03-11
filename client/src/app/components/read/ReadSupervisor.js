@@ -4,6 +4,7 @@ import { logo } from '../../assets'
 import './read.scss'
 
 const ReadSupervisor = ({supervisor, onClose}) => {
+	console.log(supervisor);
   return (
     <div className="read-supervisor">
 		<img src={logo}></img>
@@ -17,6 +18,7 @@ const ReadSupervisor = ({supervisor, onClose}) => {
 			<h1>Familienaam</h1>
 			<p>{supervisor.last_name}</p>
 		</div>
+		{/* 		
 		<div className="read-supervisor__record">
 			<h1>Organisatie</h1>
 			<p>org</p>
@@ -24,7 +26,8 @@ const ReadSupervisor = ({supervisor, onClose}) => {
 		<div className="read-supervisor__record">
 			<h1>Begeleider sinds</h1>
 			<p>date</p>
-		</div>
+		</div> 
+		*/}
 		<h2 onClick={ onClose }>Klaar</h2>
     </div>
   );

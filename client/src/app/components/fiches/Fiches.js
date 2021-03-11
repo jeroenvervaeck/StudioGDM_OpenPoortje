@@ -18,7 +18,7 @@ const Fiches = ({ catogerie, color, fiches }) => {
 		{ show ?
 			<div className="fiches__list">
 				{fiches.map(fiche => {
-					return <Fiche key={fiche} name={fiche} route={fiche} />
+					return <Fiche key={fiche._id} name={fiche.name} route={fiche._id} />
 				})}
 			</div>
 		 :

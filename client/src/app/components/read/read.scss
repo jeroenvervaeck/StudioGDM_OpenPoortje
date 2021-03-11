@@ -5,8 +5,10 @@
 	left: 50%;
 	margin-left: -320px;
 	border: rgba(161,161,161,0.75) 1px solid;
-	box-shadow: 2px 2px 5px 0px rgba(161,161,161,0.75);
-	width: 540px;
+	box-shadow: 
+		2px 2px 5px 0px rgba(161,161,161,0.75),
+		0 0 0 100000px hsla(0, 0, 0, 0.5)
+	;	width: 540px;
 	border-radius: 20px;
 	background-color: $color-white;
 	padding: 40px 60px;
@@ -63,8 +65,10 @@
 	left: 50%;
 	margin-left: -320px;
 	border: rgba(161,161,161,0.75) 1px solid;
-	box-shadow: 2px 2px 5px 0px rgba(161,161,161,0.75);
-	width: 540px;
+	box-shadow: 
+		2px 2px 5px 0px rgba(161,161,161,0.75),
+		0 0 0 100000px hsla(0, 0, 0, 0.5)
+	;	width: 540px;
 	border-radius: 20px;
 	background-color: $color-white;
 	padding: 40px 60px;

@@ -5,7 +5,7 @@ import './fiche.scss'
 
 const Fiche = ({ name, route }) => {
   return (
-    <Link className="fiche" to={route}>
+    <Link className="fiche" to={'fiche/'+route}>
 		  <p>{ name }</p>
     </Link>
   );

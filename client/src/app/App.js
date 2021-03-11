@@ -48,6 +48,11 @@ function App() {
           <RouteWithLayout exact path={Routes.SUPERVISOR_HART} component={Pages.SupervisorHartFiche} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_ZAKGELD} component={Pages.SupervisorMoneyFiche} layout={PageLayout} />
           <RouteWithLayout exact path={Routes.SUPERVISOR_GLIJBAAN} component={Pages.SupervisorSlideFiche} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_FICHE_13} component={Pages.Supervisor13Fiche} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_FICHE_14} component={Pages.Supervisor14Fiche} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_FICHE_27} component={Pages.Supervisor27Fiche} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_FICHE_36} component={Pages.Supervisor36Fiche} layout={PageLayout} />
+          <RouteWithLayout exact path={Routes.SUPERVISOR_FICHE_37} component={Pages.Supervisor37Fiche} layout={PageLayout} />
           // kids
           <RouteWithLayout exact path={Routes.KID} component={Pages.KidPage} layout={PageLayout} />
         </Switch>

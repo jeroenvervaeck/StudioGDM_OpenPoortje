@@ -30,6 +30,7 @@
 	p {
 		text-align: left;
 		border: $color-gray solid 1px;
+		border-top: none;
 		padding: 20px 28px;
 		font-size: 20px;
 		margin: 0;
@@ -102,6 +103,44 @@
 					box-shadow: 0px 0px 10px 3px rgba(161,161,161,0.25);
 				}
 			}
+		}
+	}
+}
+
+.fiche-timeline {
+	width: 48%;
+	height: auto;
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	padding-bottom: 20px;
+	border: rgba(161,161,161,0.75) 1px solid;
+	box-shadow: 2px 2px 5px 0px rgba(161,161,161,0.75);
+	border-radius: 20px;
+
+	img {
+		padding: 20px;
+		object-fit: contain;
+	}
+	&-label {
+		h1 {
+			font-size: 22px !important;
+			color: $color-text;
+			text-align: left !important;
+			margin: 0;
+			padding-left: 30px;
+			padding-bottom: 4px;
+			padding-top: 0;
+			background-color: $color-white;
+		}
+		p {
+			font-size: 14px;
+			color: $color-text;
+			margin: 0;
+			padding-left: 30px;
+			padding-bottom: 4px;
+			background-color: $color-white;
 		}
 	}
 }
