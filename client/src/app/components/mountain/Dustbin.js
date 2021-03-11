@@ -63,7 +63,7 @@ export const Dustbin = ({ id , handler , position , children }) => {
                 const currentFlag = currentDustbin.querySelector('.vlag');
                 const currentStyle = getComputedStyle(currentFlag);
                 if( currentStyle.display == "none" ) {
-                    console.log("Het is de eerste");
+                    // console.log("Het is de eerste");
                     setHasDropped(true);
                 }
             }
@@ -74,13 +74,13 @@ export const Dustbin = ({ id , handler , position , children }) => {
                 const previousFlag = previousDustbin.querySelector('.vlag');
                 const currentStyle = getComputedStyle(currentFlag);
                 const previousStyle = getComputedStyle(previousFlag);
-                console.log(currentStyle.display);
+                // console.log(currentStyle.display);
 
                 if(boxId > 0 && currentStyle.display == "none" && previousStyle.display == "block") {
-                    console.log("er is een span");
+                    // console.log("er is een span");
                     setHasDropped(true);
                 }else{
-                    console.log("geen span");
+                    // console.log("geen span");
                     return
                 }
             }
@@ -117,7 +117,7 @@ export const Dustbin = ({ id , handler , position , children }) => {
     */
 
    const showFiche = (id) => {
-    console.log(id);
+    // console.log(id);
     const kidObj = JSON.parse(sessionStorage.getItem('selected-kid'));
     const fiches = kidObj.fiches;
     var vraag1 = "";
@@ -129,7 +129,7 @@ export const Dustbin = ({ id , handler , position , children }) => {
             vraag1 = fiche.fiche_data.vraag1;
             vraag2 = fiche.fiche_data.vraag2;
         }else if(fiche.fiche_data != undefined && fiche.fiche_data.optionConvo == true) {
-            console.log("er is een opinion in " +id)
+            // console.log("er is een opinion in " +id)
             setOpinionBtnOpacity(1);
         }
     });
@@ -145,7 +145,7 @@ export const Dustbin = ({ id , handler , position , children }) => {
     } 
 
     const imageClick = (id) => {
-    console.log('Click');
+    // console.log('Click');
     setHasDropped(false);
     } 
 
@@ -158,7 +158,7 @@ export const Dustbin = ({ id , handler , position , children }) => {
         const newFiche = fiches.map((fiche) => {
             if (fiche.fiche_data != undefined && fiche.fiche_data.positionById == id) {
                 fiche.fiche_data.optionConvo = value;
-                console.log(fiche)
+                // console.log(fiche)
             }
             return fiche;
           })
@@ -173,12 +173,11 @@ export const Dustbin = ({ id , handler , position , children }) => {
     
         const kidObj = JSON.parse(sessionStorage.getItem('selected-kid'));
         const fiches = kidObj.fiches;
-        console.log(fiches);
     
         fiches.forEach(fiche => {
             if (fiche.fiche_data != undefined && 'positionById' in fiche.fiche_data && fiche.fiche_data.positionById == id) {
                 //document.getElementById("vlag-"+id).style.display = "block";
-                console.log('er is een match'+ id);
+                // console.log('er is een match'+ id);
                 var vlag = document.getElementById("vlag-"+id);
                 if (vlag != null) {
                     vlag.style.display = "block";
@@ -198,9 +197,8 @@ export const Dustbin = ({ id , handler , position , children }) => {
 
     useEffect(() => {
         getKidFiches();
-      }, []); // <-- empty array means 'run once'
+      }); // <-- empty array means 'run once'
 
-    console.log(hasFlag);
     return (
 
         <div id={id} ref={drop} className='mountainPoint' style={getStyle(backgroundColor , x , y)}>

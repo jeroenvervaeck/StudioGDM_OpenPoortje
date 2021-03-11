@@ -345,7 +345,7 @@ const ApiProvider = ({children}) => {
 
     const auth = JSON.parse(getCookie('sup-auth'));
     const url = `${BASE_URL}/kid/fiche`;
-
+    
     const body = {
       kidId: kidId,
       fiche: {
