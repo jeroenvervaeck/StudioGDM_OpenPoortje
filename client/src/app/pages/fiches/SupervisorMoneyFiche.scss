@@ -1,0 +1,43 @@
+.supervisor-money{
+    background-color: #FBFBFB;
+    font-style: bold;
+    display: flex;
+    justify-content: center; /* align horizontal */
+    //align-items: center; /* align vertical */
+}
+
+.moneyFiche {
+    position: relative;
+    width: 1050px;
+}
+
+.moneyAnimation {
+    position: absolute;
+    left: -50px;
+    top: 0;
+}
+
+.moneyText {
+    float: right;
+    width: 500px;
+    position: relative;
+    margin-top: 200px;
+}
+
+.moneyList {
+    list-style-image: url('../../assets/check-solid.png');
+}
+
+.gesprek-inputBox{
+    margin-top: 80px;
+    margin-right: 10px;
+    width: 300px;
+    float: right;
+
+    input{
+        margin-top: 20px;
+        padding: 10px;
+        width: 285px;
+        border: solid #9BB896 1px;
+    }
+}

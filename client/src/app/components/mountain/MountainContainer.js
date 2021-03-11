@@ -66,7 +66,7 @@ class MountainContainer extends Component {
 			  ...style,
 			  background: "transparent"
 			};
-			return <div style={newStyle}><img src={mannetje} alt="mannetje" className="mannetje" width="50px"></img></div>;
+			return <div style={newStyle}><img src={mannetje} alt="mannetje" className="mannetje" width="60px"></img></div>;
 		};
 	
 	  return ( 

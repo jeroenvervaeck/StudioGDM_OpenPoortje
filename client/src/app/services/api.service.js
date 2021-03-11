@@ -418,6 +418,39 @@ const ApiProvider = ({children}) => {
     return response;
   }
 
+  const saveMoneyFiche = async ( moneyAmount, kidId, screenshot ) => {
+    // save screenshot 
+    const pictureName = await saveScreenshot(screenshot);
+
+    // save fiche
+    const auth = JSON.parse(getCookie('sup-auth'));
+    const url = `${BASE_URL}/kid/fiche`;
+
+    const body = {
+      kidId: kidId,
+      fiche: {
+        fiche_type: "603e31d01b09a12647f1c244",
+        picture_name: pictureName,
+        fiche_data:{
+          moneyAmount: moneyAmount,
+        }
+      }
+    }
+
+    const options = {
+      method:'POST',
+      body:JSON.stringify(body),
+      headers: new Headers({
+          'Authorization': 'Bearer '+ auth.token, 
+          'Content-Type': 'application/json',
+        }), 
+    }
+
+    const response = await fetch(url, options).then((result) => result.json());
+
+    return response;
+  }
+
   const saveScreenshot = async ( file, width = 800, height = 600 ) => {
     const data = new FormData();
     data.append('picture', file);
@@ -474,6 +507,7 @@ const ApiProvider = ({children}) => {
       saveMountainFiche,
       saveDialogFiche,
       updateMountainFiche,
+      saveMoneyFiche,
 
       getUrl,
      }}>

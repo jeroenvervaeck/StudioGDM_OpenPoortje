@@ -6,7 +6,6 @@
 
 #mountainContainer{
 
-	border: red solid 2px;
 	max-width: 820px;
 	max-height: 550px;;
 	margin-right: auto;
@@ -159,7 +158,6 @@
   and (max-device-width: 1366px) 
   and (-webkit-min-device-pixel-ratio: 2) {
 	#mountainContainer{
-		border: blue solid 2px;
 		width: 100%;
 		margin-top: 100px;
 	}

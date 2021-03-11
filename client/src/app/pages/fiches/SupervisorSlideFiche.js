@@ -1,9 +1,10 @@
-import { default as React, useState, Fragment } from 'react';
+import React, { useState } from "react";
+//import AnimateCC from "react-adobe-animate";
 import { useApi } from '../../services';
 import './SupervisorSlideFiche.scss';
 import Board from '../../components/stickers/Board';
 import { useHistory } from 'react-router-dom';
-//import AnimateCC from "react-adobe-animate";
+
 
 const SupervisorSlideFiche = () => {
 	const history = useHistory();
@@ -22,19 +23,23 @@ const SupervisorSlideFiche = () => {
   	console.log(AnimationObject);
 	*/
 
+
 	return (
 		
 		<div className="supervisor-slide">
-		
-		{/*
 		<div style={{ width: "400px" }}>
-			<AnimateCC
-				animationName="GLIJBAAN_HTML5Canvas"
-				paused={paused}
-			/>
-			<button onClick={onClick}>{paused ? "Unpause" : "Pause"}</button><br />
-		</div>
+
+		{/* 	
+		<AnimateCC
+        animationName="lishtml5"
+        composition="C1475B64B160904BB90B34246A5FF54B"
+        paused={paused}
+      	/>
+		<button onClick={onClick}>{paused ? "Unpause" : "Pause"}</button>
 		*/}
+
+		</div>
+		
 		<Board 
 			onSave={(screenshot) => { console.log(screenshot) }}
 			onBack={() => history.goBack()} 
