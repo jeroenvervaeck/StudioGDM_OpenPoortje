@@ -5,6 +5,10 @@ import { useApi, useAuth } from '../../services';
 import './SupervisorDialogFiche.scss';
 import Board from '../../components/stickers/Board';
 import { useHistory } from 'react-router-dom';
+import Animationskin_01 from '../../assets/DIALOOG_HUIDSKLEUR1.gif';
+import Animationskin_02 from '../../assets/DIALOOG_HUIDSKLEUR1.gif';
+import Animationskin_03 from '../../assets/DIALOOG_HUIDSKLEUR1.gif';
+import Animationskin_04 from '../../assets/DIALOOG_HUIDSKLEUR1.gif';
 
 const SupervisorDialogFiche = () => {
 	const history = useHistory();
@@ -46,7 +50,32 @@ const SupervisorDialogFiche = () => {
 					<h4 className="redDialogTitle" style={{color: "#EF4742"}}>Wat ik zou willen:</h4>
 					<textarea name="redBox" rows="4" cols="30" className="dialogBox redBox" id="q3"/>
 				</div>
-				<img src={animation} alt="animation" id="dialogAnimation" width="200px"></img>
+				{(() => {
+
+				switch (kidObj.skin_color) {
+					case "skin-01":
+						return (
+							<img src={Animationskin_01} alt="Animationskin_01" id="dialogAnimation" width="200px"></img>
+						)
+					case "skin-02":
+						return (
+							<img src={Animationskin_02} alt="Animationskin_02" id="dialogAnimation" width="200px"></img>
+						)
+					case "skin-03":
+						return (
+							<img src={Animationskin_03} alt="Animationskin_03" id="dialogAnimation" width="200px"></img>
+						)
+					case "skin-04":
+						return (
+							<img src={Animationskin_04} alt="Animationskin_04" id="dialogAnimation" width="200px"></img>
+						)
+					default:
+						return (
+							<img src={Animationskin_01} alt="Animationskin_01" id="dialogAnimation" width="200px"></img>
+						)
+				}
+
+				})()}
 			</div>
 			<Board 
 				onSave={(screenshot) => { saveDialog(screenshot) }}

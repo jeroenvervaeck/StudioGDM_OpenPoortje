@@ -227,14 +227,15 @@ class Board extends Component {
 
 
     componentDidMount(){
+        /*
         let loaded_notes = JSON.parse(localStorage.getItem("notes"))
         let loaded_stickers = JSON.parse(localStorage.getItem("stickers"))
         
         loaded_notes = loaded_notes || [];
-        loaded_stickers = loaded_stickers || [];
+        loaded_stickers = loaded_stickers || [];*/
         
-        this.setState(()=>({notes : loaded_notes }))
-        this.setState(()=>({stickers : loaded_stickers }))
+        this.setState(()=>({notes : '' }))
+        this.setState(()=>({stickers : '' }))
     }
 
     componentDidUpdate(){
@@ -373,7 +374,7 @@ class Board extends Component {
                         <AddStickerButton/>
                     </div>
 
-                    <p className="dialogBtn backBtn" onClick={(e) => this.props.onBack(e) }>keer terug</p>
+                    <p className="dialogBtn backBtn" onClick={(e) => {this.props.onBack(e)} }>keer terug</p>
                     <p className="dialogBtn saveBtn" onClick={() => {
                         document.getElementById('ui').style.display = 'none';
                         Screenshot(document.querySelector("body")).then(async(canvas) => {
