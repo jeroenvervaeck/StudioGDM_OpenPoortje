@@ -373,15 +373,15 @@ class Board extends Component {
                         <AddStickerButton/>
                     </div>
 
-                    <a href={"#"} className="dialogBtn backBtn" onClick={(e) => this.props.onBack(e) }>keer terug</a>
-                    <a href={"#"} className="dialogBtn saveBtn" onClick={() => {
+                    <p className="dialogBtn backBtn" onClick={(e) => this.props.onBack(e) }>keer terug</p>
+                    <p className="dialogBtn saveBtn" onClick={() => {
                         document.getElementById('ui').style.display = 'none';
                         Screenshot(document.querySelector("body")).then(async(canvas) => {
                             const imgURL = canvas.toDataURL("image/png");
                             this.setState({screenshotURL:imgURL})
                             this.setState({showState:true});
                         });  
-                    }} >opslaan</a>
+                    }} >opslaan</p>
                     <RiScreenshot2Fill className="screenshot"
                         onClick={() => {
                             document.getElementById('ui').style.display = 'none';

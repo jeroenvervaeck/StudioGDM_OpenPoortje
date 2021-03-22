@@ -10,7 +10,6 @@ import './mountainGesprek.scss'
 const MountainGesprek = (id) => {
 	const history = useHistory();
 	const { saveMountainFiche, updateSelectedKidData } = useApi();
-	const [kid, setKid] = useState({ question1: "", question2: "" })
 
 	const kidObj = JSON.parse(sessionStorage.getItem('selected-kid'))
 	console.log(kidObj);
@@ -21,8 +20,9 @@ const MountainGesprek = (id) => {
 		var question2 = document.getElementById("q2").value;
 		var positionById = id.id;
 		var kidId = kidObj._id;
+		console.log(id)
 
-		saveMountainFiche(question1,question2,positionById, kidId, screenshot)
+		saveMountainFiche(question1,question2, positionById, kidId, screenshot)
 			.then(() => {
 				updateSelectedKidData();
 				history.push(Routes.SUPERVISOR_DASHBOARD);
@@ -45,7 +45,9 @@ const MountainGesprek = (id) => {
             <a href={Routes.SUPERVISOR_MOUNTAIN} className="myButton" onClick={() => { saveConvo(kid) }} >opslaan</a> */}
 			</div>
 			< Board
-				onSave={(screenshot) => { saveCanvo(screenshot) }}
+				onSave={(screenshot) => { 
+					saveCanvo(screenshot) 
+				}}
 				onBack={(e) => {
 					e.preventDefault();
 					history.goBack();
