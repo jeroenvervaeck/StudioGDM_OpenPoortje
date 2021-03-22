@@ -22,14 +22,14 @@ const PasswordSupervisor = ({supervisor, onClose, reload}) => {
 		</div>
 		<div className="pw-supervisor__buttons">
 			<p onClick= { onClose }>Annuleren</p>
-			<input type="submit" value="Opslaan" onClick={(e) => {
+			<h1 onClick={(e) => {
 				e.preventDefault();
 				editAuthSupervisor(supervisor._id, {
 					newPassword: document.getElementById('new_pw').value,
 					confirmNewPassword: document.getElementById('verify_pw').value,
 				}).then(reload)
 				.then(onClose);
-			}}></input>
+			}}>Opslaan</h1>
 		</div>
     </form>
   );

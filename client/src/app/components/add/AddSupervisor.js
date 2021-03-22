@@ -25,7 +25,7 @@ const AddSupervisor = ({onClose, reload, }) => {
 		</div> */}
 		<div className="add-supervisor__buttons">
 			<p onClick={ onClose }>Annuleren</p>
-			<input type="submit" value="Opslaan" onClick={(e) => {
+			<h1 onClick={(e) => {
 				e.preventDefault();
 				newSupervisor({
 					first_name: document.getElementById('first_name').value,
@@ -34,7 +34,7 @@ const AddSupervisor = ({onClose, reload, }) => {
 					organisation_id: JSON.parse(sessionStorage.getItem('user'))._id
 				}).then(reload)
 				.then(onClose);
-			}}></input>
+			}}>Opslaan</h1>
 		</div>
     </form>
   );

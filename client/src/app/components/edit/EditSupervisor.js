@@ -26,14 +26,14 @@ const EditSupervisor = ({supervisor, onClose, reload}) => {
 		</div> */}
 		<div className="edit-supervisor__buttons">
 			<p onClick= { onClose }>Annuleren</p>
-			<input type="submit" value="Opslaan" onClick={(e) => {
+			<h1 onClick={(e) => {
 				e.preventDefault();
 				editSupervisor(supervisor._id, {
 					first_name: document.getElementById('first_name').value,
 					last_name: document.getElementById('last_name').value,
 				}).then(reload)
 				.then(onClose);
-			}}></input>
+			}}>Opslaan</h1>
 		</div>
     </form>
   );

@@ -71,7 +71,7 @@ const AddChild = ({ onClose, reload }) => {
 		</div>
 		<div className="add-child__buttons">
 			<p onClick={ onClose }>Annuleren</p>
-			<input type="submit" value="Opslaan" onClick={(e) => {
+			<h1 onClick={(e) => {
 				e.preventDefault();
 				newKid({
 					first_name: document.getElementById('first_name').value,
@@ -83,7 +83,7 @@ const AddChild = ({ onClose, reload }) => {
 					organisation_id: JSON.parse(sessionStorage.getItem('user'))._id
 				}).then(reload)
 				.then(onClose);
-			}}></input>
+			}}>Opslaan</h1>
 		</div>
     </form>
   );

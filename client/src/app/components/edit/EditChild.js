@@ -71,7 +71,7 @@ const EditChild = ({kid, onClose, reload}) => {
 		</div>
 		<div className="edit-child__buttons">
 			<p onClick={ onClose }>Annuleren</p>
-			<input type="submit" value="Opslaan" onClick={(e) => {
+			<h1 onClick={(e) => {
 				e.preventDefault();
 				editKid(kid._id, {
 					first_name: document.getElementById('first_name').value,
@@ -81,7 +81,7 @@ const EditChild = ({kid, onClose, reload}) => {
 					skin_color: selectedSkintone,
 				}).then(reload)
 				.then(onClose);
-			}}></input>
+			}}>Opslaan</h1>
 		</div>
     </form>
   );
