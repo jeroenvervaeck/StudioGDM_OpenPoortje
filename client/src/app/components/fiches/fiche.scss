@@ -49,9 +49,10 @@
 	align-items: center;
 	&__main {
 		box-shadow: 5px 5px 10px 5px rgba(0,0,0,0.25);
-		background-color: $color-white;
-		height: 60vw;
-		width: 80vw;
+		height: 80%;
+		max-height: 720px;
+		width: 80%;
+		max-width: 800px;
 		border-radius: 20px;
 		position: relative;
 		background-size: cover !important;
@@ -109,7 +110,7 @@
 
 .fiche-timeline {
 	width: 48%;
-	height: auto;
+	height: 400px;
 	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
@@ -120,7 +121,6 @@
 	border-radius: 20px;
 
 	img {
-		padding: 20px;
 		object-fit: contain;
 	}
 	&-label {

@@ -20,7 +20,7 @@ const PasswordCheck = ({role, onClose, proceed}) => {
 			</div>
 			<div className="pw-check__buttons">
 				<p onClick={ onClose }>Annuleren</p>
-				<input type="submit" value="Bevestig" onClick={(e) => {
+				<h1 onClick={(e) => {
 					e.preventDefault();
 					getToken(
 						role, 
@@ -33,7 +33,7 @@ const PasswordCheck = ({role, onClose, proceed}) => {
 							setError('Uw wachtwoord is incorrect!')
 						}
 					})
-				}}></input>
+				}}>Bevestig</h1>
 			</div>
 			{
 				(error) ? <p className="pw-check__error">{error}</p> : null

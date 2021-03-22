@@ -10,12 +10,12 @@ const FicheDetail = ({ imgSrc, date, onClose, name }) => {
 
   return (
     <div className="fiche-detail">
-		  <div className="fiche-detail__main" style={{ background: 'url(' + imgSrc + ') center 120% no-repeat' }}>
+		  <div className="fiche-detail__main" style={{ background: 'url(' + imgSrc + ') center 100% no-repeat' }}>
         <FaTimes className="fiche-detail__main-close" onClick={ onClose } />
         <div className="fiche-detail__main-content">
           <div className="fiche-detail__main-content-label">
             <h1 className="fiche-detail__main-content-label-h1" style={{color: colors[(kid) ? kid.theme_color : 'color-01']}}>{name}</h1>
-						<p>Ingevuld op {new Date(date).getDate()}-{new Date(date).getMonth()}-{new Date(date).getFullYear()}</p>
+						<p>Ingevuld op {new Date(date).getDate()}-{new Date(date).getMonth()+1}-{new Date(date).getFullYear()}</p>
 						{/* <p>Begeleider: jeroen verver</p> */}
           </div>
           <div className="fiche-detail__main-content-buttons">
